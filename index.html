@@ -1036,7 +1036,9 @@
 <p class="text-2xl text-orange-100 font-bold">Ready to transform your meal routine? Let's make it happen! ✨</p>
 </div>
 <div class="bg-white rounded-2xl p-8 border-4 border-yellow-300 shadow-2xl">
-<form action="" class="space-y-6" data-netlify="true" method="POST" name="contact" netlify-honeypot="bot-field" onsubmit="handleOrderSubmit(event)"><input name="form-name" type="hidden" value="contact"/>
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="contact">
+
 <div class="grid md:grid-cols-2 gap-6">
 <div class="transform hover:scale-105 transition-all duration-200">
 <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
@@ -1415,7 +1417,8 @@
 </div>
 <div>
 <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
-<form action="" class="space-y-4" data-netlify="true" method="POST" name="contact" netlify-honeypot="bot-field" onsubmit="handleContactSubmit(event)"><input name="form-name" type="hidden" value="contact"/>
+<form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="order">
 <div>
 <input class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-white" placeholder="Your Name" required="" type="text"/>
 </div>
