@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rations &amp; Roots - Fresh Meal Delivery</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+        .hero-bg {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
+        }
+        .menu-tab-active {
+            background-color: #059669 !important;
+            color: white !important;
+        }
+        .menu-tab-inactive {
+            background-color: #e5e7eb;
+            color: #374151;
+        }
+        .menu-tab-inactive:hover {
+            background-color: #d1d5db;
+        }
+        .meal-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .meal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+<!-- Header -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center py-4">
+<div class="flex items-center space-x-3">
+<div class="text-3xl">🌱</div>
+<div>
+<h1 class="text-3xl font-bold text-emerald-700">Rations &amp; Roots</h1>
+<p class="text-sm text-gray-600 font-medium">Premium Meal Prep • Chef Crafted</p>
+</div>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a class="text-gray-700 hover:text-emerald-600 font-medium" href="#menu">Menu</a>
+<a class="text-gray-700 hover:text-emerald-600 font-medium" href="#pricing">Pricing</a>
+<a class="text-gray-700 hover:text-emerald-600 font-medium" href="#testimonials">Reviews</a>
+<a class="text-gray-700 hover:text-emerald-600 font-medium" href="#contact">Contact</a>
+</nav>
+<div class="bg-gradient-to-r from-emerald-600 to-green-500 text-white px-4 py-2 rounded-lg font-semibold shadow cursor-default select-none">
+  🇺🇸 Veteran Owned & Operated
+</div>
+
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-bg text-white py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-6xl font-black mb-6 text-yellow-300 drop-shadow-lg">Fuel Your Mission.<br/>Fork the Rest.</h2>
+<p class="text-xl mb-8 max-w-2xl mx-auto">Veteran-crafted meal prep that's fresh, flavorful, and ready in minutes. Your week, solved in one order</p>
+<div class="flex justify-center mt-8">
+  <img src="images/rooted-in-purpose-badge.png"
+     alt="Rooted in Purpose"
+     class="h-40 md:h-32 sm:h-28 w-auto rounded-lg shadow-lg transition-all duration-500 ease-in-out hover:scale-110 hover:shadow-[0_0_35px_6px_rgba(255,215,0,0.5)] mx-auto">
+
+</div>
+
+</div>
+</section>
+<!-- Benefits Section -->
+<section class="py-16 bg-gradient-to-br from-emerald-50 to-teal-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-3 gap-8">
+<div class="text-center">
+<div class="text-4xl mb-4">👨‍🍳</div>
+<h3 class="text-xl font-bold mb-3 text-gray-800">Chef-Crafted</h3>
+<p class="text-gray-600">Every meal is designed by professional chefs using premium ingredients and time-tested recipes.</p>
+</div>
+<div class="text-center">
+<div class="text-4xl mb-4">🚜</div>
+<h3 class="text-xl font-bold mb-3 text-gray-800">Farm Fresh</h3>
+<p class="text-gray-600">We source directly from local farms to ensure the freshest, most nutritious ingredients in every bite.</p>
+</div>
+<div class="text-center">
+<div class="text-4xl mb-4">⚡</div>
+<h3 class="text-xl font-bold mb-3 text-gray-800">Lightning Fast</h3>
+<p class="text-gray-600">Same-day delivery available with our network of local kitchens and delivery partners.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Section with Tabs -->
+<section class="py-16 bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 text-white" id="menu">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold text-white mb-4">Our Menu</h2>
+<p class="text-xl text-emerald-100">Choose from our variety of fresh, nutritious meal options</p>
+</div>
+<!-- Tab Navigation -->
+<div class="flex flex-wrap justify-center gap-2 mb-12">
+<button class="menu-tab-active px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors" id="tab-high-protein" onclick="showTab('high-protein')">
+                    High Protein
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-overnight-oats" onclick="showTab('overnight-oats')">
+                    Overnight Oats
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-carnivore" onclick="showTab('carnivore')">
+                    Carnivore
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-all-veggies" onclick="showTab('all-veggies')">
+                    All Veggies
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-kid-friendly" onclick="showTab('kid-friendly')">
+                    Kid Friendly
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-mason-jar-salads" onclick="showTab('mason-jar-salads')">
+                    Mason Jar Salads
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-family-meals" onclick="showTab('family-meals')">
+                    Family Meals
+                </button>
+</div>
+<!-- Tab Content -->
+<div class="tab-content" id="content-high-protein">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="meal-card bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">💎</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">PR Steak Out</h3>
+<p class="text-gray-600 mb-3 text-sm">Lean sirloin steak with brown rice &amp; roasted vegetables</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">370 cal | 36g protein | 20g carbs | 16g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-red-600">$15.00</div>
+<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-l-4 border-green-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌱</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Lean Machine</h3>
+<p class="text-gray-600 mb-3 text-sm">Grilled lemon herb chicken with quinoa &amp; roasted broccoli</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">410 cal | 34g protein | 44g carbs | 10g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-green-600">$13.50</div>
+<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-blue-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌱</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Power Plate</h3>
+<p class="text-gray-600 mb-3 text-sm">Chicken, brown rice &amp; steamed broccoli</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">410 cal | 32g protein | 45g carbs | 11g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-blue-600">$12.00</div>
+<button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌱</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Strength Builder</h3>
+<p class="text-gray-600 mb-3 text-sm">Chicken &amp; veggie skillet with brown rice</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">400 cal | 33g protein | 48g carbs | 7g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-purple-600">$12.00</div>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">💎</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Omega Gainz</h3>
+<p class="text-gray-600 mb-3 text-sm">Baked salmon with roasted sweet potatoes &amp; green beans</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">430 cal | 34g protein | 38g carbs | 15g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-orange-600">$15.00</div>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl shadow-lg p-6 border-l-4 border-teal-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-teal-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">👑</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">HIIT Fuel</h3>
+<p class="text-gray-600 mb-3 text-sm">Chicken fried rice with broccoli and carrots</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">410 cal | 34g protein | 51g carbs</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-teal-600">$12.00</div>
+<button class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content hidden" id="content-overnight-oats">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌱</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Classic Peanut Butter Banana</h3>
+<p class="text-gray-600 mb-3 text-sm">Rolled oats, milk, yogurt, banana, peanut butter, honey, cinnamon</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">350 cal | 13g protein | 52g carbs | 11g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-yellow-600">$7.00</div>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-red-50 to-pink-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌱</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Apple Cinnamon</h3>
+<p class="text-gray-600 mb-3 text-sm">Rolled oats, milk, applesauce, diced apple, chia seeds, honey, cinnamon</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">290 cal | 8g protein | 54g carbs | 5g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-red-600">$7.00</div>
+<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌱</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Berry Yogurt</h3>
+<p class="text-gray-600 mb-3 text-sm">Rolled oats, milk, yogurt, mixed berries, honey</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">270 cal | 10g protein | 48g carbs | 4g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-purple-600">$7.00</div>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">👑</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Carrot Cake</h3>
+<p class="text-gray-600 mb-3 text-sm">Rolled oats, milk, yogurt, grated carrot, raisins, honey, cinnamon, nutmeg</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">260 cal | 9g protein | 48g carbs | 4g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-orange-600">$7.00</div>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-amber-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">👑</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Maple Walnut</h3>
+<p class="text-gray-600 mb-3 text-sm">Rolled oats, milk, yogurt, maple syrup, walnuts, vanilla, cinnamon</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">360 cal | 10g protein | 44g carbs | 16g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-amber-600">$7.00</div>
+<button class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-lg p-6 border-l-4 border-emerald-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">💎</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Tropical Coconut Mango</h3>
+<p class="text-gray-600 mb-3 text-sm">Rolled oats, coconut milk, yogurt, mango, shredded coconut, honey</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">350 cal | 8g protein | 53g carbs</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-emerald-600">$8.00</div>
+<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content hidden" id="content-carnivore">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="meal-card bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">💎</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Alpha Ribeye Steak</h3>
+<p class="text-gray-600 mb-3 text-sm">8oz premium ribeye steak, seasoned with salt and pepper, cooked to your preference</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">520 cal | 45g protein | 0g carbs | 38g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-red-600">$24.99</div>
+<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">💎</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Beast Mode Beef Brisket</h3>
+<p class="text-gray-600 mb-3 text-sm">6oz slow-cooked beef brisket, tender and juicy with natural beef fat</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">480 cal | 42g protein | 0g carbs | 34g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-orange-600">$19.99</div>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-pink-50 to-red-50 rounded-xl shadow-lg p-6 border-l-4 border-pink-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">💎</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Warrior Salmon Fillet</h3>
+<p class="text-gray-600 mb-3 text-sm">7oz wild-caught salmon fillet, grilled with minimal seasoning</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">450 cal | 40g protein | 0g carbs | 32g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-pink-600">$18.99</div>
+<button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌱</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Primal Pork Chops</h3>
+<p class="text-gray-600 mb-3 text-sm">Two 4oz thick-cut pork chops, seasoned and grilled to maintain natural flavors</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">420 cal | 38g protein | 0g carbs | 29g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-purple-600">$17.99</div>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌱</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Hunter's Chicken Thighs</h3>
+<p class="text-gray-600 mb-3 text-sm">Three bone-in chicken thighs (approx 6oz meat) with crispy skin, salt and pepper seasoning</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">380 cal | 35g protein | 0g carbs | 26g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-yellow-600">$14.99</div>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl shadow-lg p-6 border-l-4 border-gray-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-gray-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🍔</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Apex Ground Beef Bowl</h3>
+<p class="text-gray-600 mb-3 text-sm">8oz portion of 80/20 ground beef, seasoned with salt and cooked in its own fat</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">460 cal | 36g protein | 0g carbs | 34g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-gray-600">$16.99</div>
+<button class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-lg p-6 border-l-4 border-emerald-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">🥘</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Carnivore Power Trio</h3>
+<p class="text-gray-600 mb-3 text-sm">Perfect blend: 3oz ground beef, 2oz pork tenderloin, 3oz chicken thigh - seasoned with salt and herbs</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">520 cal | 48g protein | 0g carbs | 36g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-emerald-600">$22.99</div>
+<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-blue-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">🏆</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Land &amp; Sea Warrior Plate</h3>
+<p class="text-gray-600 mb-3 text-sm">Surf and turf combo: 4oz grilled sirloin steak strips with 4oz salmon fillet</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">580 cal | 52g protein | 0g carbs | 40g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-blue-600">$27.99</div>
+<button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content hidden" id="content-all-veggies">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="meal-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-l-4 border-green-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🥦</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Cauliflower Rice &amp; Roasted Vegetables</h3>
+<p class="text-gray-600 mb-3 text-sm">Cauliflower rice, bell peppers, zucchini, herbs and seasonings</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">120 cal | 5g protein | 18g carbs | 4g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-green-600">$8.00</div>
+<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-lg p-6 border-l-4 border-emerald-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">🌾</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Quinoa &amp; Roasted Broccoli Bowl</h3>
+<p class="text-gray-600 mb-3 text-sm">Fluffy quinoa, roasted broccoli florets, lemon juice, Italian herbs, garlic</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">280 cal | 10g protein | 44g carbs | 8g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-emerald-600">$8.50</div>
+<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-lime-50 to-green-50 rounded-xl shadow-lg p-6 border-l-4 border-lime-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-lime-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🍚</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Brown Rice &amp; Steamed Broccoli</h3>
+<p class="text-gray-600 mb-3 text-sm">Perfectly cooked brown rice with steamed broccoli florets</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">220 cal | 6g protein | 45g carbs | 3g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-lime-600">$7.00</div>
+<button class="bg-lime-500 text-white px-4 py-2 rounded-lg hover:bg-lime-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🌽</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Mixed Veggie Medley with Rice</h3>
+<p class="text-gray-600 mb-3 text-sm">Rice with mixed vegetables (carrots, peas, corn, green beans), onion</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">240 cal | 7g protein | 48g carbs | 2g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-yellow-600">$7.50</div>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-orange-50 to-red-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">🍠</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Roasted Sweet Potatoes &amp; Green Beans</h3>
+<p class="text-gray-600 mb-3 text-sm">Cubed sweet potatoes, fresh green beans, lemon juice, herbs</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">180 cal | 4g protein | 38g carbs | 2g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-orange-600">$8.00</div>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl shadow-lg p-6 border-l-4 border-teal-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-teal-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">🥢</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Asian Veggie Fried Rice</h3>
+<p class="text-gray-600 mb-3 text-sm">Rice, broccoli florets, diced carrots, soy sauce, sesame oil, green onions</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">260 cal | 8g protein | 51g carbs | 4g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-teal-600">$8.50</div>
+<button class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content hidden" id="content-kid-friendly">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🐔</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Cluck Cluck Cheesy Chicken Bowls</h3>
+<p class="text-gray-600 mb-3 text-sm">Brown rice, diced chicken breast, peas and carrots, cheddar cheese</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">320 cal | 25g protein | 32g carbs | 11g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-yellow-600">$9.00</div>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl shadow-lg p-6 border-l-4 border-pink-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🦃</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Silly Turkey Tumble Roll-Ups</h3>
+<p class="text-gray-600 mb-3 text-sm">Deli turkey, cheese slices, baby carrots, grapes</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">180 cal | 16g protein | 16g carbs | 6g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-pink-600">$8.00</div>
+<button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">🍝</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Twirly Spaghetti Jar</h3>
+<p class="text-gray-600 mb-3 text-sm">Spaghetti noodles, marinara sauce, ground beef/turkey, parmesan cheese</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">370 cal | 19g protein | 48g carbs | 10g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-red-600">$10.00</div>
+<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">🍕</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Bagel Pizza Party Bites</h3>
+<p class="text-gray-600 mb-3 text-sm">Mini bagels, marinara sauce, mozzarella cheese, mini pepperoni</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">270 cal | 12g protein | 38g carbs | 7g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-orange-600">$8.50</div>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">🥗 ESSENTIAL</span>
+<div class="text-3xl">🥜</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Uncrustable-Style PB&amp;J with Apple Slices</h3>
+<p class="text-gray-600 mb-3 text-sm">Whole wheat bread, peanut butter, grape or strawberry jam, apple slices</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">300 cal | 9g protein | 41g carbs | 12g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-purple-600">$7.50</div>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content hidden" id="content-mason-jar-salads">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="meal-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-l-4 border-green-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">🥗</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Muscle-Up Chicken Ranch Jar</h3>
+<p class="text-gray-600 mb-3 text-sm">Chicken breast, romaine, cherry tomatoes, carrots, Greek yogurt ranch, cheddar</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">255 cal | 30g protein | 10g carbs | 9g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-green-600">$11.00</div>
+<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-orange-50 to-red-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">🔥</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Power Play Buffalo Crunch Jar</h3>
+<p class="text-gray-600 mb-3 text-sm">Buffalo chicken breast, romaine, carrots, celery, Greek yogurt blue cheese dressing</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">210 cal | 25g protein | 9g carbs | 8g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-orange-600">$11.50</div>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍽️ GOURMET</span>
+<div class="text-3xl">🌮</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Fiesta Fuel Quinoa Jar</h3>
+<p class="text-gray-600 mb-3 text-sm">Quinoa, black beans, corn, red bell pepper, romaine, salsa</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">265 cal | 12g protein | 48g carbs | 3g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-yellow-600">$9.50</div>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+<div class="meal-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">💎 PREMIUM</span>
+<div class="text-3xl">👑</div>
+</div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">Shred &amp; Spread Caesar Jar</h3>
+<p class="text-gray-600 mb-3 text-sm">Chicken breast, romaine, cherry tomatoes, parmesan, Greek yogurt Caesar dressing</p>
+<div class="bg-white rounded-lg p-3 mb-4">
+<div class="text-xs text-gray-500 mb-1">NUTRITION FACTS</div>
+<div class="text-sm font-semibold text-gray-700">260 cal | 31g protein | 8g carbs | 10g fat</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-2xl font-bold text-purple-600">$11.00</div>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content hidden" id="content-family-meals">
+  <div class="mb-8 text-center">
+    <div class="text-4xl mb-4">🍽️</div>
+    <h3 class="text-2xl font-bold mb-4">Family Adventure Meals</h3>
+    <p class="text-gray-600 mb-6">Complete dinner experiences that bring everyone to the table</p>
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
+      <div class="text-2xl mb-2">🎲</div>
+      <h4 class="font-bold text-lg mb-2">Monthly Menu Magic!</h4>
+      <p class="text-gray-700">
+        Our family meals rotate every month with new themes and flavors. From "Taco Tuesday Takeover" to "Pizza Palace Night" – there's always something exciting coming to your dinner table!
+      </p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
+      <div class="flex items-center justify-between mb-4">
+        <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">👑 FAMILY FAVORITE</span>
+        <div class="text-3xl">🍗</div>
+      </div>
+      <h3 class="font-bold text-xl mb-3 text-gray-800">The Cozy Crew Chicken Feast</h3>
+      <p class="text-gray-600 mb-3 text-sm">Complete family dinner for 4–6 people with starter and main course</p>
+      <div class="bg-white rounded-lg p-3 mb-4">
+        <div class="text-xs text-gray-500 mb-1">INCLUDES</div>
+        <div class="text-sm font-semibold text-gray-700">
+          Garden salad + Herb-roasted chicken thighs + Garlic mashed potatoes + Green beans
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold text-yellow-600">$39.99</div>
+        <a href="https://buy.stripe.com/8x2dR90yP75k0Mz3hWgrS0g" target="_blank" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">
+          Buy Now
+        </a>
+      </div>
+    </div>
+
+    <div class="meal-card bg-gradient-to-br from-red-50 to-pink-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
+      <div class="flex items-center justify-between mb-4">
+        <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">🇮🇹 ITALIAN NIGHT</span>
+        <div class="text-3xl">🍝</div>
+      </div>
+      <h3 class="font-bold text-xl mb-3 text-gray-800">Family Pasta Bake</h3>
+      <p class="text-gray-600 mb-3 text-sm">Authentic Italian family dinner experience for 4–6 people</p>
+      <div class="bg-white rounded-lg p-3 mb-4">
+        <div class="text-xs text-gray-500 mb-1">INCLUDES</div>
+        <div class="text-sm font-semibold text-gray-700">
+          Caesar salad + Baked spaghetti &amp; meatballs + Garlic breadsticks
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold text-red-600">$39.99</div>
+        <a href="https://buy.stripe.com/8x25kDgxN9ds9j5g4IgrS0h" target="_blank" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">
+          Buy Now
+        </a>
+      </div>
+    </div>
+
+    <div class="meal-card bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
+      <div class="flex items-center justify-between mb-4">
+        <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">🔥 BBQ BASH</span>
+        <div class="text-3xl">🍔</div>
+      </div>
+      <h3 class="font-bold text-xl mb-3 text-gray-800">The Backyard Bash Box</h3>
+      <p class="text-gray-600 mb-3 text-sm">Summer BBQ vibes brought to your dinner table for 4–6 people</p>
+      <div class="bg-white rounded-lg p-3 mb-4">
+        <div class="text-xs text-gray-500 mb-1">INCLUDES</div>
+        <div class="text-sm font-semibold text-gray-700">
+          Veggie sticks &amp; ranch + BBQ chicken sliders + Sweet corn on the cob
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold text-orange-600">$39.99</div>
+        <a href="https://buy.stripe.com/cNi28rftJ9ds8f1f0EgrS0f" target="_blank" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">
+          Buy Now
+        </a>
+      </div>
+    </div>
+
+    <div class="meal-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-blue-500 transform hover:scale-105 transition-all duration-300">
+      <div class="flex items-center justify-between mb-4">
+        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">⚡ ONE-PAN WONDER</span>
+        <div class="text-3xl">🍚</div>
+      </div>
+      <h3 class="font-bold text-xl mb-3 text-gray-800">The All-in-One Adventure Tray</h3>
+      <p class="text-gray-600 mb-3 text-sm">Easy cleanup, maximum flavor family meal for 4–6 people</p>
+      <div class="bg-white rounded-lg p-3 mb-4">
+        <div class="text-xs text-gray-500 mb-1">INCLUDES</div>
+        <div class="text-sm font-semibold text-gray-700">
+          Cucumber tomato salad + Herb chicken &amp; rice + Mixed vegetables
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold text-blue-600">$39.99</div>
+        <a href="https://buy.stripe.com/5kQ14n5T961g1QDbOsgrS0e" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold">
+          Buy Now
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+<!-- Testimonials -->
+<section class="py-16 bg-gradient-to-br from-emerald-100 to-teal-100" id="testimonials">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold text-gray-800 mb-4">What Our Customers Say</h2>
+<p class="text-xl text-gray-600">Real stories from real people</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-gray-50 rounded-lg p-6">
+<div class="flex items-center mb-4">
+<div class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+</div>
+<p class="text-gray-700 mb-4">"The convenience is unmatched! Fresh, delicious meals delivered right to my door. The portion sizes are perfect and the nutrition info helps me stay on track."</p>
+<div class="font-semibold text-gray-800">Sarah M.</div>
+<div class="text-gray-600 text-sm">Busy Professional</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-6">
+<div class="flex items-center mb-4">
+<div class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+</div>
+<p class="text-gray-700 mb-4">"As a fitness enthusiast, I love having access to high-protein meals that actually taste amazing. The variety keeps me excited about eating healthy."</p>
+<div class="font-semibold text-gray-800">Mike R.</div>
+<div class="text-gray-600 text-sm">Fitness Coach</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-6">
+<div class="flex items-center mb-4">
+<div class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+</div>
+<p class="text-gray-700 mb-4">"Finally, a meal service that caters to my whole family! The kids love their special meals, and my husband and I can enjoy restaurant-quality dinners at home."</p>
+<div class="font-semibold text-gray-800">Jennifer L.</div>
+<div class="text-gray-600 text-sm">Mother of 3</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing -->
+<section class="py-16 bg-gradient-to-br from-teal-50 to-emerald-100" id="pricing">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold text-gray-800 mb-4">Plans We Offer</h2>
+<p class="text-xl text-gray-600">Flexible options to fit your lifestyle</p>
+</div>
+<div class="grid lg:grid-cols-3 gap-8">
+<!-- Essential Tier -->
+<div class="bg-white rounded-xl shadow-lg p-8 border-2 border-green-200">
+<div class="flex items-center mb-4">
+<span class="text-3xl mr-3">🌱</span>
+<div>
+<h3 class="text-2xl font-bold text-gray-800">Essential Tier</h3>
+<p class="text-gray-600">Great nutrition, great value</p>
+</div>
+</div>
+<div class="mb-6">
+<p class="text-lg text-gray-700 mb-2">Essential Tier meals range from <span class="font-bold text-green-600">$7.00 - $12.00</span> each</p>
+<p class="text-sm text-gray-600 mb-4">Final weekly cost depends on your specific meal selections</p>
+<div class="space-y-3">
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="flex justify-between items-center">
+<span class="font-semibold">6 Meals/Week</span>
+<span class="text-2xl font-bold text-green-600">$42 - $72</span>
+</div>
+<p class="text-sm text-gray-600">Perfect for trying us out</p>
+</div>
+<div class="bg-green-50 rounded-lg p-4 border-2 border-green-300 relative">
+<div class="absolute -top-2 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">Most Popular</div>
+<div class="flex justify-between items-center">
+<span class="font-semibold">12 Meals/Week</span>
+<span class="text-2xl font-bold text-green-600">$84 - $144</span>
+</div>
+<p class="text-sm text-gray-600">Most popular essential option</p>
+</div>
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="flex justify-between items-center">
+<span class="font-semibold">18 Meals/Week</span>
+<span class="text-2xl font-bold text-green-600">$126 - $216</span>
+</div>
+<p class="text-sm text-gray-600">Family-friendly option</p>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<ul class="space-y-2 text-sm">
+<li class="flex items-center"><span class="mr-2">🌅</span>Overnight oats &amp; breakfast items ($7.00)</li>
+<li class="flex items-center"><span class="mr-2">🍚</span>Basic mains &amp; simple bowls ($7.00-$12.00)</li>
+<li class="flex items-center"><span class="mr-2">🚚</span>Free delivery over $75</li>
+<li class="flex items-center"><span class="mr-2">⏸️</span>Skip or cancel anytime</li>
+</ul>
+</div>
+<div class="mb-6 p-3 bg-yellow-50 rounded-lg">
+<p class="text-sm"><span class="mr-1">🍝</span><strong>Add Kid Meals:</strong> $7.50 each</p>
+</div>
+
+</div>
+<!-- Premium Tier -->
+<div class="bg-white rounded-xl shadow-lg p-8 border-2 border-blue-300 relative">
+<div class="flex items-center mb-4">
+<span class="text-3xl mr-3">⭐</span>
+<div>
+<h3 class="text-2xl font-bold text-gray-800">Premium Tier</h3>
+<p class="text-gray-600">The perfect balance</p>
+</div>
+</div>
+<div class="mb-6">
+<p class="text-lg text-gray-700 mb-2">Premium Tier meals range from <span class="font-bold text-blue-600">$12.00 - $15.00</span> each</p>
+<p class="text-sm text-gray-600 mb-4">Final weekly cost depends on your specific meal selections</p>
+<div class="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
+<div class="flex items-center mb-2">
+<span class="text-red-600 font-bold text-sm mr-2">🇺🇸 HERO DISCOUNT</span>
+</div>
+<p class="text-xs text-gray-700 mb-1">Military • Veterans • Law Enforcement • Educators</p>
+<p class="font-bold text-red-600">$11.40 - $14.25/meal (5% off)</p>
+</div>
+<div class="space-y-3">
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="flex justify-between items-center">
+<span class="font-semibold">6 Meals/Week</span>
+<span class="text-2xl font-bold text-blue-600">$72 - $90</span>
+</div>
+<p class="text-sm text-gray-600">Great for power bowl lovers</p>
+</div>
+<div class="bg-blue-50 rounded-lg p-4 border-2 border-blue-300 relative">
+<div class="absolute -top-2 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">Most Popular</div>
+<div class="flex justify-between items-center">
+<span class="font-semibold">12 Meals/Week</span>
+<span class="text-2xl font-bold text-blue-600">$144 - $180</span>
+</div>
+<p class="text-sm text-gray-600">Most popular choice</p>
+</div>
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="flex justify-between items-center">
+<span class="font-semibold">18 Meals/Week</span>
+<span class="text-2xl font-bold text-blue-600">$216 - $270</span>
+</div>
+<p class="text-sm text-gray-600">Premium family option</p>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<ul class="space-y-2 text-sm">
+<li class="flex items-center"><span class="mr-2">✅</span>All Essential meals PLUS</li>
+<li class="flex items-center"><span class="mr-2">🏋️</span>Power bowls &amp; specialty proteins</li>
+<li class="flex items-center"><span class="mr-2">🎯</span>Priority support</li>
+<li class="flex items-center"><span class="mr-2">🎛️</span>Full customization</li>
+<li class="flex items-center"><span class="mr-2">📊</span>Nutrition tracking</li>
+</ul>
+</div>
+<div class="mb-6 p-3 bg-yellow-50 rounded-lg">
+<p class="text-sm"><span class="mr-1">🍝</span><strong>Add Kid Meals:</strong> $7.50 each</p>
+</div>
+</div>
+<!-- Gourmet Tier -->
+<div class="bg-white rounded-xl shadow-lg p-8 border-2 border-purple-300">
+<div class="flex items-center mb-4">
+<span class="text-3xl mr-3">👑</span>
+<div>
+<h3 class="text-2xl font-bold text-gray-800">Gourmet Tier</h3>
+<p class="text-gray-600">Luxury dining experience</p>
+</div>
+</div>
+<div class="mb-6">
+<p class="text-lg text-gray-700 mb-2">Gourmet Tier meals range from <span class="font-bold text-purple-600">$15.00 - $28.00</span> each</p>
+<p class="text-sm text-gray-600 mb-4">Final weekly cost depends on your specific meal selections</p>
+<div class="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
+<div class="flex items-center mb-2">
+<span class="text-red-600 font-bold text-sm mr-2">🇺🇸 HERO DISCOUNT</span>
+</div>
+<p class="text-xs text-gray-700 mb-1">Military • Veterans • Law Enforcement • Educators</p>
+<p class="font-bold text-red-600">$14.25 - $26.60/meal (5% off)</p>
+</div>
+<div class="space-y-3">
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="flex justify-between items-center">
+<span class="font-semibold">6 Meals/Week</span>
+<span class="text-2xl font-bold text-purple-600">$90 - $168</span>
+</div>
+<p class="text-sm text-gray-600">Luxury meal experience</p>
+</div>
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="flex justify-between items-center">
+<span class="font-semibold">12 Meals/Week</span>
+<span class="text-2xl font-bold text-purple-600">$180 - $336</span>
+</div>
+<p class="text-sm text-gray-600">Premium dining weekly</p>
+</div>
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="flex justify-between items-center">
+<span class="font-semibold">18 Meals/Week</span>
+<span class="text-2xl font-bold text-purple-600">$270 - $504</span>
+</div>
+<p class="text-sm text-gray-600">Ultimate luxury family plan</p>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<ul class="space-y-2 text-sm">
+<li class="flex items-center"><span class="mr-2">✅</span>All Premium meals PLUS</li>
+<li class="flex items-center"><span class="mr-2">🥩</span>Premium proteins (steak, salmon)</li>
+<li class="flex items-center"><span class="mr-2">👨‍🍳</span>Chef specialties &amp; luxury ingredients</li>
+<li class="flex items-center"><span class="mr-2">👑</span>VIP support &amp; early access</li>
+<li class="flex items-center"><span class="mr-2">🎯</span>Personal nutrition consultation</li>
+</ul>
+</div>
+<div class="mb-6 p-3 bg-yellow-50 rounded-lg">
+<p class="text-sm"><span class="mr-1">🍝</span><strong>Add Kid Meals:</strong> $7.50 each</p>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<!-- Order Form -->
+<section class="py-16 bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-100 relative overflow-hidden">
+<!-- Fun Background Elements -->
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-20 left-10 w-16 h-16 bg-orange-400 rounded-full animate-bounce"></div>
+<div class="absolute top-40 right-20 w-12 h-12 bg-green-400 rounded-full animate-pulse"></div>
+<div class="absolute bottom-32 left-1/4 w-20 h-20 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.7s;"></div>
+<div class="absolute bottom-20 right-1/3 w-14 h-14 bg-red-400 rounded-full animate-pulse" style="animation-delay: 1.2s;"></div>
+</div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 rounded-3xl shadow-2xl border-4 border-white p-8 md:p-12 transform hover:scale-105 transition-all duration-300">
+<div class="text-center mb-12">
+<div class="text-6xl mb-4 animate-bounce">🚀</div>
+<h2 class="text-5xl font-black text-white mb-4 drop-shadow-lg">Start Your Food Adventure!</h2>
+<p class="text-2xl text-orange-100 font-bold">Ready to transform your meal routine? Let's make it happen! ✨</p>
+</div>
+<div class="bg-white rounded-2xl p-8 border-4 border-yellow-300 shadow-2xl">
+<form action="" class="space-y-6" data-netlify="true" method="POST" name="contact" netlify-honeypot="bot-field" onsubmit="handleOrderSubmit(event)"><input name="form-name" type="hidden" value="contact"/>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="transform hover:scale-105 transition-all duration-200">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">👋</span>
+                                    First Name
+                                </label>
+<input class="w-full px-6 py-4 border-4 border-pink-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-semibold bg-gradient-to-r from-pink-50 to-purple-50" placeholder="What should we call you?" required="" type="text"/>
+</div>
+<div class="transform hover:scale-105 transition-all duration-200">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">🎯</span>
+                                    Last Name
+                                </label>
+<input class="w-full px-6 py-4 border-4 border-pink-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-semibold bg-gradient-to-r from-pink-50 to-purple-50" placeholder="Your family name!" required="" type="text"/>
+</div>
+</div>
+<div class="transform hover:scale-105 transition-all duration-200">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">📧</span>
+                                Email Address
+                            </label>
+<input class="w-full px-6 py-4 border-4 border-green-300 rounded-2xl focus:ring-4 focus:ring-green-300 focus:border-green-500 text-lg font-semibold bg-gradient-to-r from-green-50 to-emerald-50" placeholder="your.awesome@email.com" required="" type="email"/>
+</div>
+<div class="transform hover:scale-105 transition-all duration-200">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">📱</span>
+                                Phone Number
+                            </label>
+<input class="w-full px-6 py-4 border-4 border-blue-300 rounded-2xl focus:ring-4 focus:ring-blue-300 focus:border-blue-500 text-lg font-semibold bg-gradient-to-r from-blue-50 to-cyan-50" placeholder="(555) 123-4567" required="" type="tel"/>
+</div>
+<div class="transform hover:scale-105 transition-all duration-200">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">🚚</span>
+                                Delivery Option
+                            </label>
+<select class="w-full px-6 py-4 border-4 border-orange-300 rounded-2xl focus:ring-4 focus:ring-orange-300 focus:border-orange-500 text-lg font-bold bg-gradient-to-r from-orange-50 to-yellow-50" id="deliveryOption" onchange="toggleDeliveryAddress()" required="">
+<option value="">🎯 How would you like to get your meals?</option>
+<option value="pickup">🏋️ Pickup at Centerville Gym (Mondays 8am-10am) - FREE!</option>
+<option value="delivery">🏠 Home Delivery (+$9.99 delivery fee)</option>
+</select>
+</div>
+<div class="transform hover:scale-105 transition-all duration-200 hidden" id="deliveryAddressSection">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">🏠</span>
+                                Delivery Address
+                            </label>
+<textarea class="w-full px-6 py-4 border-4 border-orange-300 rounded-2xl focus:ring-4 focus:ring-orange-300 focus:border-orange-500 text-lg font-semibold bg-gradient-to-r from-orange-50 to-yellow-50" id="deliveryAddress" placeholder="Where should we deliver your delicious meals?" rows="3"></textarea>
+</div>
+<!-- Step 1: Choose Plan Type -->
+<div class="transform hover:scale-105 transition-all duration-200">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">🎯</span>
+                                Step 1: Choose Your Plan Type
+                            </label>
+<select class="w-full px-6 py-4 border-4 border-purple-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-bold bg-gradient-to-r from-purple-50 to-pink-50" id="planType" onchange="showMealSelection()" required="">
+<option value="">🌟 Pick your adventure!</option>
+<option value="essential">🌱 Essential - $7-$12 per meal (varies by selection)</option>
+<option value="premium">⭐ Premium - $12-$15 per meal (varies by selection)</option>
+<option value="gourmet">👑 Gourmet - $15-$28 per meal (varies by selection)</option>
+</select>
+</div>
+<!-- Step 2: Choose Number of Meals -->
+<div class="transform hover:scale-105 transition-all duration-200 hidden" id="mealCountSection">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">🍽️</span>
+                                Step 2: How Many Meals Per Week?
+                            </label>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="bg-gradient-to-br from-green-50 to-emerald-50 border-4 border-green-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200" onclick="selectMealCount(6)">
+<input class="hidden" id="meals6" name="mealCount" type="radio" value="6"/>
+<label class="cursor-pointer block text-center" for="meals6">
+<div class="text-3xl mb-2">🌱</div>
+<div class="font-black text-green-700 text-xl">6 Meals</div>
+<div class="text-green-600 font-semibold">Perfect for trying us out!</div>
+<div class="text-2xl font-black text-green-600 mt-2" id="price6">$42-$168</div>
+</label>
+</div>
+<div class="bg-gradient-to-br from-blue-50 to-cyan-50 border-4 border-blue-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200 relative" onclick="selectMealCount(12)">
+<div class="absolute -top-2 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">Most Popular</div>
+<input class="hidden" id="meals12" name="mealCount" type="radio" value="12"/>
+<label class="cursor-pointer block text-center" for="meals12">
+<div class="text-3xl mb-2">⭐</div>
+<div class="font-black text-blue-700 text-xl">12 Meals</div>
+<div class="text-blue-600 font-semibold">Most popular choice!</div>
+<div class="text-2xl font-black text-blue-600 mt-2" id="price12">$84-$336</div>
+</label>
+</div>
+<div class="bg-gradient-to-br from-purple-50 to-pink-50 border-4 border-purple-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200" onclick="selectMealCount(18)">
+<input class="hidden" id="meals18" name="mealCount" type="radio" value="18"/>
+<label class="cursor-pointer block text-center" for="meals18">
+<div class="text-3xl mb-2">👑</div>
+<div class="font-black text-purple-700 text-xl">18 Meals</div>
+<div class="text-purple-600 font-semibold">Family-friendly option!</div>
+<div class="text-2xl font-black text-purple-600 mt-2" id="price18">$126-$504</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Step 3: Select Your Meals -->
+<div class="transform hover:scale-105 transition-all duration-200 hidden" id="mealSelectionSection">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">🍴</span>
+                                Step 3: Select Your Meals
+                            </label>
+<div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-4 border-yellow-300 rounded-2xl p-6">
+<div class="text-center mb-4">
+<div class="text-3xl mb-2">🎯</div>
+<h4 class="text-xl font-black text-orange-700">Choose <span id="selectedMealCount">0</span> meals from your plan</h4>
+<p class="text-orange-600 font-semibold">Selected: <span id="currentSelectionCount">0</span> meals</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableMeals">
+<!-- Meals will be populated here based on plan selection -->
+</div>
+<div class="mt-6 text-center">
+<div class="bg-white rounded-xl p-4 border-2 border-green-300">
+<h4 class="font-black text-green-700 text-lg mb-2">Your Weekly Total</h4>
+<div class="text-3xl font-black text-green-600" id="weeklyTotal">$0.00</div>
+<p class="text-green-600 text-sm font-semibold">(Plus delivery fee if applicable)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Kid Meals Section -->
+<div class="transform hover:scale-105 transition-all duration-200">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">🧒</span>
+                                Add Kid Meals ($7.50 each)
+                            </label>
+<select class="w-full px-6 py-4 border-4 border-yellow-300 rounded-2xl focus:ring-4 focus:ring-yellow-300 focus:border-yellow-500 text-lg font-bold bg-gradient-to-r from-yellow-50 to-orange-50" id="kidMeals" onchange="showKidMealSelection()">
+<option value="0">🎈 No kid meals needed</option>
+<option value="1">1 kid meal per week (+$7.50)</option>
+<option value="2">2 kid meals per week (+$15.00)</option>
+<option value="3">3 kid meals per week (+$22.50)</option>
+<option value="4">4 kid meals per week (+$30.00)</option>
+<option value="5">5 kid meals per week (+$37.50)</option>
+<option value="6">6 kid meals per week (+$45.00)</option>
+<option value="7">7 kid meals per week (+$52.50)</option>
+<option value="8">8 kid meals per week (+$60.00)</option>
+<option value="9">9 kid meals per week (+$67.50)</option>
+<option value="10">10 kid meals per week (+$75.00)</option>
+</select>
+</div>
+<!-- Kid Meal Selection Section -->
+<div class="transform hover:scale-105 transition-all duration-200 hidden" id="kidMealSelectionSection">
+<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+<span class="text-2xl mr-2">🎈</span>
+                                Choose Your Kid Meals
+                            </label>
+<div class="bg-gradient-to-r from-pink-50 to-purple-50 border-4 border-pink-300 rounded-2xl p-6">
+<div class="text-center mb-4">
+<div class="text-3xl mb-2">🎯</div>
+<h4 class="text-xl font-black text-pink-700">Choose <span id="selectedKidMealCount">0</span> kid meals</h4>
+<p class="text-pink-600 font-semibold">Selected: <span id="currentKidSelectionCount">0</span> kid meals</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableKidMeals">
+<!-- Kid meals will be populated here -->
+</div>
+<div class="mt-6 text-center">
+<div class="bg-white rounded-xl p-4 border-2 border-pink-300">
+<h4 class="font-black text-pink-700 text-lg mb-2">Kid Meals Total</h4>
+<div class="text-3xl font-black text-pink-600" id="kidMealTotal">$0.00</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Methods Section -->
+<div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 border-4 border-blue-300 mb-6">
+<div class="text-center mb-4">
+<div class="text-3xl mb-2">💳</div>
+<h3 class="text-2xl font-black text-blue-700 mb-2">We Accept These Payment Methods</h3>
+<p class="text-blue-600 font-semibold">Choose what works best for you!</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white rounded-xl p-4 border-2 border-green-300 text-center">
+<div class="text-3xl mb-2">💳</div>
+<h4 class="font-bold text-green-700">Credit/Debit</h4>
+<p class="text-xs text-green-600">All major cards accepted</p>
+</div>
+<div class="bg-white rounded-xl p-4 border-2 border-blue-300 text-center">
+<div class="text-3xl mb-2">🍎</div>
+<h4 class="font-bold text-blue-700">Apple Pay</h4>
+<p class="text-xs text-blue-600">Secure checkout</p>
+</div>
+<div class="bg-white rounded-xl p-4 border-2 border-yellow-300 text-center">
+<div class="text-3xl mb-2">🤖</div>
+<h4 class="font-bold text-yellow-700">Google Pay</h4>
+<p class="text-xs text-yellow-600">Fast mobile pay</p>
+</div>
+<div class="bg-white rounded-xl p-4 border-2 border-purple-300 text-center">
+<div class="text-3xl mb-2">⚡</div>
+<h4 class="font-bold text-purple-700">Stripe Link</h4>
+<p class="text-xs text-purple-600">1-click checkout</p>
+</div>
+<div class="bg-white rounded-xl p-4 border-2 border-gray-300 text-center">
+<div class="text-3xl mb-2">💵</div>
+<h4 class="font-bold text-gray-700">Cash at Pickup</h4>
+<p class="text-xs text-gray-600">Pay in person</p>
+</div>
+</div>
+</div>
+<div class="text-center pt-6">
+<button onclick="handleStripeCheckout()" 
+        class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 hover:from-green-500 hover:via-blue-600 hover:to-purple-700 text-white font-black text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
+  🎉 Let's Start Cooking! 🎉
+</button>
+
+<p class="text-purple-600 font-bold mt-4 text-lg">✨ Your taste buds will thank you! ✨</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Refer a Friend & Gift Cards Section -->
+<section class="py-16 bg-gradient-to-br from-yellow-400 via-orange-400 to-red-500 relative overflow-hidden">
+<!-- Fun Background Elements -->
+<div class="absolute inset-0 opacity-20">
+<div class="absolute top-10 left-10 w-24 h-24 bg-white rounded-full animate-bounce"></div>
+<div class="absolute top-32 right-20 w-16 h-16 bg-pink-300 rounded-full animate-pulse"></div>
+<div class="absolute bottom-20 left-1/4 w-20 h-20 bg-green-300 rounded-full animate-bounce" style="animation-delay: 0.5s;"></div>
+<div class="absolute bottom-32 right-1/3 w-18 h-18 bg-blue-300 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+</div>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center mb-12">
+<div class="text-6xl mb-4 animate-bounce">🎁</div>
+<h2 class="text-5xl font-black text-white mb-4 drop-shadow-lg">Share the Love, Get Rewarded!</h2>
+<p class="text-2xl text-yellow-100 font-bold">Your friends get amazing meals, you get awesome rewards! 🎉</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-8">
+<!-- Refer a Friend Card -->
+<div class="bg-white rounded-3xl shadow-2xl p-8 border-4 border-yellow-300 transform hover:scale-105 transition-all duration-300">
+<div class="text-center mb-6">
+<div class="text-5xl mb-4 animate-pulse">👥</div>
+<h3 class="text-3xl font-black text-purple-700 mb-2">Refer a Friend!</h3>
+<p class="text-lg text-gray-600 font-semibold">Spread the deliciousness and earn rewards!</p>
+</div>
+<div class="space-y-4 mb-6">
+<div class="bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl p-4 border-2 border-green-300">
+<div class="flex items-center">
+<span class="text-3xl mr-3">1️⃣</span>
+<div>
+<h4 class="font-bold text-green-800">Share Your Love</h4>
+<p class="text-green-700 text-sm">Tell your friends about our amazing meals!</p>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl p-4 border-2 border-blue-300">
+<div class="flex items-center">
+<span class="text-3xl mr-3">2️⃣</span>
+<div>
+<h4 class="font-bold text-blue-800">They Get 5% Off</h4>
+<p class="text-blue-700 text-sm">Your friend saves on their first order!</p>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-4 border-2 border-purple-300">
+<div class="flex items-center">
+<span class="text-3xl mr-3">3️⃣</span>
+<div>
+<h4 class="font-bold text-purple-800">You Get $5 Credit</h4>
+<p class="text-purple-700 text-sm">Applied to your next order automatically!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-4 border-2 border-orange-300 mb-6">
+<div class="text-center">
+<div class="text-2xl mb-2">🏆</div>
+<h4 class="font-bold text-orange-800 mb-1">Super Referrer Bonus!</h4>
+<p class="text-orange-700 text-sm">Refer 5 friends that start a subscription and receive a $5 credit on your account! 🎊</p>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-black text-xl py-4 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        🚀 Start Referring Friends!
+                    </button>
+</div>
+<!-- Gift Cards Card -->
+<div class="bg-white rounded-3xl shadow-2xl p-8 border-4 border-pink-300 transform hover:scale-105 transition-all duration-300">
+<div class="text-center mb-6">
+<div class="text-5xl mb-4 animate-pulse">🎁</div>
+<h3 class="text-3xl font-black text-pink-700 mb-2">Gift the Goodness!</h3>
+<p class="text-lg text-gray-600 font-semibold">Perfect for birthdays, holidays, or just because!</p>
+</div>
+<div class="space-y-4 mb-6">
+<!-- $50 Gift Card -->
+<a class="block bg-gradient-to-r from-pink-100 to-rose-100 rounded-xl p-4 border-2 border-pink-300 hover:scale-105 transition-all duration-200" href="https://buy.stripe.com/test_8x26oH1zdgV5eWA95ycZa09" target="_blank">
+<div class="flex justify-between items-center">
+<div>
+<h4 class="font-bold text-pink-800">Starter Gift</h4>
+<p class="text-pink-700 text-sm">Perfect for trying us out!</p>
+</div>
+<div class="text-2xl font-black text-pink-600">$50</div>
+</div>
+</a>
+<!-- $100 Gift Card -->
+<a class="block bg-gradient-to-r from-purple-100 to-indigo-100 rounded-xl p-4 border-2 border-purple-300 hover:scale-105 transition-all duration-200" href="https://buy.stripe.com/test_bJe5kDfq35cncOs6XqcZa0a" target="_blank">
+<div class="flex justify-between items-center">
+<div>
+<h4 class="font-bold text-purple-800">Popular Choice</h4>
+<p class="text-purple-700 text-sm">A full week of deliciousness!</p>
+</div>
+<div class="text-2xl font-black text-purple-600">$100</div>
+</div>
+</a>
+<!-- $200 Gift Card -->
+<a class="block bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl p-4 border-2 border-yellow-300 hover:scale-105 transition-all duration-200" href="https://buy.stripe.com/test_4gMfZhcdRbAL5m0bdGcZa0b" target="_blank">
+<div class="flex justify-between items-center">
+<div>
+<h4 class="font-bold text-yellow-800">Ultimate Treat</h4>
+<p class="text-yellow-700 text-sm">The full gourmet experience!</p>
+</div>
+<div class="text-2xl font-black text-yellow-600">$200</div>
+</div>
+</a>
+<!-- Custom Amount (informational only) -->
+<div class="bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl p-4 border-2 border-green-300">
+<div class="text-center">
+<h4 class="font-bold text-green-800 mb-1">Custom Amount</h4>
+<p class="text-green-700 text-sm">Available upon request — choose any amount from $25-$500!</p>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 border-2 border-blue-300 mb-6">
+<div class="text-center">
+<div class="text-2xl mb-2">📧</div>
+<h4 class="font-bold text-blue-800 mb-1">Instant Digital Delivery!</h4>
+<p class="text-blue-700 text-sm">Perfect for last-minute gifts - delivered via email instantly! ⚡</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<!-- Bottom CTA -->
+<div class="mt-12 text-center">
+<div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-6 border-2 border-white border-opacity-30">
+<h3 class="text-2xl font-black text-white mb-2">Questions About Referrals or Gift Cards?</h3>
+<p class="text-yellow-100 font-semibold mb-4">We're here to help make sharing the love super easy!</p>
+<p>✉️ Contact us at: <a href="mailto:orders@rationsandrootsmeal.com">orders@rationsandrootsmeal.com</a></p>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-16 bg-gradient-to-br from-gray-800 to-gray-900 text-white" id="contact">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+<p class="text-xl text-gray-300">Ready to start your meal prep journey? We're here to help!</p>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div>
+<h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="text-2xl mr-4">📧</div>
+<div>
+<h4 class="font-semibold">Email</h4>
+<p class="text-gray-300">orders@rationsandrootsmeal.com</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="text-2xl mr-4">🏋️</div>
+<div>
+<h4 class="font-semibold">Pickup Location</h4>
+<p class="text-gray-300">Centerville Gym<br/>Mondays 8am-10am</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="text-2xl mr-4">🚚</div>
+<div>
+<h4 class="font-semibold">Delivery Area</h4>
+<p class="text-gray-300">Centerville &amp; surrounding areas</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+<form action="" class="space-y-4" data-netlify="true" method="POST" name="contact" netlify-honeypot="bot-field" onsubmit="handleContactSubmit(event)"><input name="form-name" type="hidden" value="contact"/>
+<div>
+<input class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-white" placeholder="Your Name" required="" type="text"/>
+</div>
+<div>
+<input class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-white" placeholder="Your Email" required="" type="email"/>
+</div>
+<div>
+<textarea class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-white" placeholder="Your Message" required="" rows="4"></textarea>
+</div>
+<button class="w-full bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-colors font-semibold" type="submit">
+                            Send Message
+                        </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-8">
+<div>
+<div class="flex items-center space-x-3 mb-4">
+<div class="text-3xl">🌱</div>
+<div>
+<h3 class="text-2xl font-bold text-emerald-400">Rations &amp; Roots</h3>
+<p class="text-sm text-gray-400">Premium Meal Prep</p>
+</div>
+</div>
+<p class="text-gray-400">Veteran-crafted meal prep that's fresh, flavorful, and ready in minutes.</p>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a class="hover:text-emerald-400 transition-colors" href="#menu">Menu</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#pricing">Pricing</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#testimonials">Reviews</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#contact">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Support</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a class="hover:text-emerald-400 transition-colors" href="#">FAQ</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#">Nutrition Info</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#">Allergen Guide</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#">Account Help</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+<div class="flex space-x-4">
+<a class="text-gray-400 hover:text-emerald-400 transition-colors text-2xl" href="#">📘</a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+<p>© 2024 Rations &amp; Roots. All rights reserved. Made with ❤️ for healthy living.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Tab functionality for menu
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('[id^="tab-"]');
+            tabs.forEach(tab => {
+                tab.classList.remove('menu-tab-active');
+                tab.classList.add('menu-tab-inactive');
+            });
+            
+            // Show selected tab content
+            document.getElementById(`content-${tabName}`).classList.remove('hidden');
+            
+            // Add active class to selected tab
+            document.getElementById(`tab-${tabName}`).classList.add('menu-tab-active');
+            document.getElementById(`tab-${tabName}`).classList.remove('menu-tab-inactive');
+        }
+
+        // Meal selection functionality
+        let selectedMeals = [];
+        let selectedKidMeals = [];
+        let maxMeals = 0;
+        let maxKidMeals = 0;
+        let currentPlan = '';
+
+        // Meal database
+        const kidMealDatabase = [
+            { name: "Cluck Cluck Cheesy Chicken Bowls", price: 7.50, description: "Brown rice, diced chicken breast, peas and carrots, cheddar cheese" },
+            { name: "Silly Turkey Tumble Roll-Ups", price: 7.50, description: "Deli turkey, cheese slices, baby carrots, grapes" },
+            { name: "Twirly Spaghetti Jar", price: 7.50, description: "Spaghetti noodles, marinara sauce, ground beef/turkey, parmesan cheese" },
+            { name: "Bagel Pizza Party Bites", price: 7.50, description: "Mini bagels, marinara sauce, mozzarella cheese, mini pepperoni" },
+            { name: "Uncrustable-Style PB&J with Apple Slices", price: 7.50, description: "Whole wheat bread, peanut butter, grape or strawberry jam, apple slices" }
+        ];
+
+        const mealDatabase = {
+            essential: [
+                { name: "Classic Peanut Butter Banana Oats", price: 7.00, category: "Overnight Oats" },
+                { name: "Apple Cinnamon Oats", price: 7.00, category: "Overnight Oats" },
+                { name: "Berry Yogurt Oats", price: 7.00, category: "Overnight Oats" },
+                { name: "Power Plate", price: 12.00, category: "High Protein" },
+                { name: "Strength Builder", price: 12.00, category: "High Protein" },
+                { name: "Lean Machine", price: 13.50, category: "High Protein" },
+                { name: "Brown Rice & Steamed Broccoli", price: 7.00, category: "All Veggies" },
+                { name: "Mixed Veggie Medley with Rice", price: 7.50, category: "All Veggies" },
+                { name: "Cauliflower Rice & Roasted Vegetables", price: 8.00, category: "All Veggies" },
+                { name: "Primal Pork Chops", price: 17.99, category: "Carnivore" },
+                { name: "Hunters Chicken Thighs", price: 14.99, category: "Carnivore" },
+                { name: "Apex Ground Beef Bowl", price: 16.99, category: "Carnivore" }
+            ],
+            premium: [
+                { name: "PR Steak Out", price: 15.00, category: "High Protein" },
+                { name: "Omega Gainz", price: 15.00, category: "High Protein" },
+                { name: "Tropical Coconut Mango Oats", price: 8.00, category: "Overnight Oats" },
+                { name: "Quinoa & Roasted Broccoli Bowl", price: 8.50, category: "All Veggies" },
+                { name: "Alpha Ribeye Steak", price: 24.99, category: "Carnivore" },
+                { name: "Beast Mode Beef Brisket", price: 19.99, category: "Carnivore" },
+                { name: "Warrior Salmon Fillet", price: 18.99, category: "Carnivore" },
+                { name: "Muscle-Up Chicken Ranch Jar", price: 11.00, category: "Mason Jar Salads" },
+                { name: "Power Play Buffalo Crunch Jar", price: 11.50, category: "Mason Jar Salads" },
+                { name: "Shred & Spread Caesar Jar", price: 11.00, category: "Mason Jar Salads" }
+            ],
+            gourmet: [
+                { name: "HIIT Fuel", price: 12.00, category: "High Protein" },
+                { name: "Carrot Cake Oats", price: 7.00, category: "Overnight Oats" },
+                { name: "Maple Walnut Oats", price: 7.00, category: "Overnight Oats" },
+                { name: "Roasted Sweet Potatoes & Green Beans", price: 8.00, category: "All Veggies" },
+                { name: "Asian Veggie Fried Rice", price: 8.50, category: "All Veggies" },
+                { name: "Carnivore Power Trio", price: 22.99, category: "Carnivore" },
+                { name: "Land & Sea Warrior Plate", price: 27.99, category: "Carnivore" },
+                { name: "Fiesta Fuel Quinoa Jar", price: 9.50, category: "Mason Jar Salads" },
+                { name: "Twirly Spaghetti Jar", price: 10.00, category: "Kid Friendly" },
+                { name: "Bagel Pizza Party Bites", price: 8.50, category: "Kid Friendly" }
+            ]
+        };
+
+        function showMealSelection() {
+            const planType = document.getElementById('planType').value;
+            const mealCountSection = document.getElementById('mealCountSection');
+            
+            if (planType) {
+                mealCountSection.classList.remove('hidden');
+                currentPlan = planType;
+                updatePricing();
+            } else {
+                mealCountSection.classList.add('hidden');
+                document.getElementById('mealSelectionSection').classList.add('hidden');
+            }
+        }
+
+        function updatePricing() {
+            const planType = currentPlan;
+            let minPrice, maxPrice;
+            
+            switch(planType) {
+                case 'essential':
+                    minPrice = 7.00;
+                    maxPrice = 17.99;
+                    break;
+                case 'premium':
+                    minPrice = 8.00;
+                    maxPrice = 24.99;
+                    break;
+                case 'gourmet':
+                    minPrice = 7.00;
+                    maxPrice = 27.99;
+                    break;
+            }
+            
+            document.getElementById('price6').textContent = `$${(minPrice * 6).toFixed(0)}-$${(maxPrice * 6).toFixed(0)}`;
+            document.getElementById('price12').textContent = `$${(minPrice * 12).toFixed(0)}-$${(maxPrice * 12).toFixed(0)}`;
+            document.getElementById('price18').textContent = `$${(minPrice * 18).toFixed(0)}-$${(maxPrice * 18).toFixed(0)}`;
+        }
+
+        function selectMealCount(count) {
+            maxMeals = count;
+            selectedMeals = [];
+            
+            // Update radio button
+            document.getElementById(`meals${count}`).checked = true;
+            
+            // Update visual selection
+            document.querySelectorAll('[onclick^="selectMealCount"]').forEach(div => {
+                div.classList.remove('ring-4', 'ring-blue-500');
+            });
+            event.currentTarget.classList.add('ring-4', 'ring-blue-500');
+            
+            // Show meal selection section
+            document.getElementById('mealSelectionSection').classList.remove('hidden');
+            document.getElementById('selectedMealCount').textContent = count;
+            
+            populateAvailableMeals();
+            updateSelectionCount();
+        }
+
+        function populateAvailableMeals() {
+            const availableMealsDiv = document.getElementById('availableMeals');
+            let meals = [];
+            
+            // Get meals based on plan type
+            switch(currentPlan) {
+                case 'essential':
+                    meals = mealDatabase.essential;
+                    break;
+                case 'premium':
+                    meals = [...mealDatabase.essential, ...mealDatabase.premium];
+                    break;
+                case 'gourmet':
+                    meals = [...mealDatabase.essential, ...mealDatabase.premium, ...mealDatabase.gourmet];
+                    break;
+            }
+            
+            availableMealsDiv.innerHTML = meals.map((meal, index) => `
+                <div class="bg-white rounded-xl p-4 border-2 border-gray-300 cursor-pointer hover:scale-105 transition-all duration-200" onclick="toggleMealSelection(${index}, '${meal.name}', ${meal.price})">
+                    <div class="text-center">
+                        <div class="text-2xl mb-2">🍽️</div>
+                        <h5 class="font-bold text-gray-800 text-sm mb-1">${meal.name}</h5>
+                        <p class="text-xs text-gray-600 mb-2">${meal.category}</p>
+                        <div class="text-lg font-black text-green-600">$${meal.price.toFixed(2)}</div>
+                        <div id="meal-${index}" class="mt-2 text-xs font-bold text-gray-500">Click to select</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleMealSelection(index, name, price) {
+            const mealDiv = document.querySelector(`[onclick*="toggleMealSelection(${index}"]`);
+            const statusDiv = document.getElementById(`meal-${index}`);
+            
+            const existingIndex = selectedMeals.findIndex(meal => meal.index === index);
+            
+            if (existingIndex >= 0) {
+                // Remove meal
+                selectedMeals.splice(existingIndex, 1);
+                mealDiv.classList.remove('ring-4', 'ring-green-500', 'bg-green-50');
+                mealDiv.classList.add('border-gray-300');
+                statusDiv.textContent = 'Click to select';
+                statusDiv.classList.remove('text-green-600');
+                statusDiv.classList.add('text-gray-500');
+            } else if (selectedMeals.length < maxMeals) {
+                // Add meal
+                selectedMeals.push({ index, name, price });
+                mealDiv.classList.add('ring-4', 'ring-green-500', 'bg-green-50');
+                mealDiv.classList.remove('border-gray-300');
+                statusDiv.textContent = '✓ Selected';
+                statusDiv.classList.add('text-green-600');
+                statusDiv.classList.remove('text-gray-500');
+            }
+            
+            updateSelectionCount();
+            updateTotal();
+        }
+
+        function updateSelectionCount() {
+            document.getElementById('currentSelectionCount').textContent = selectedMeals.length;
+        }
+
+        function showKidMealSelection() {
+            const kidMealCount = parseInt(document.getElementById('kidMeals').value) || 0;
+            const kidMealSection = document.getElementById('kidMealSelectionSection');
+            
+            if (kidMealCount > 0) {
+                maxKidMeals = kidMealCount;
+                selectedKidMeals = [];
+                kidMealSection.classList.remove('hidden');
+                document.getElementById('selectedKidMealCount').textContent = kidMealCount;
+                populateAvailableKidMeals();
+                updateKidSelectionCount();
+            } else {
+                kidMealSection.classList.add('hidden');
+                selectedKidMeals = [];
+            }
+            updateTotal();
+        }
+
+        function populateAvailableKidMeals() {
+            const availableKidMealsDiv = document.getElementById('availableKidMeals');
+            
+            availableKidMealsDiv.innerHTML = kidMealDatabase.map((meal, index) => `
+                <div class="bg-white rounded-xl p-4 border-2 border-gray-300 cursor-pointer hover:scale-105 transition-all duration-200" onclick="toggleKidMealSelection(${index}, '${meal.name}', ${meal.price})">
+                    <div class="text-center">
+                        <div class="text-2xl mb-2">🍽️</div>
+                        <h5 class="font-bold text-gray-800 text-sm mb-1">${meal.name}</h5>
+                        <p class="text-xs text-gray-600 mb-2">${meal.description}</p>
+                        <div class="text-lg font-black text-pink-600">$${meal.price.toFixed(2)}</div>
+                        <div id="kidmeal-${index}" class="mt-2 text-xs font-bold text-gray-500">Click to select</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleKidMealSelection(index, name, price) {
+            const mealDiv = document.querySelector(`[onclick*="toggleKidMealSelection(${index}"]`);
+            const statusDiv = document.getElementById(`kidmeal-${index}`);
+            
+            const existingIndex = selectedKidMeals.findIndex(meal => meal.index === index);
+            
+            if (existingIndex >= 0) {
+                // Remove meal
+                selectedKidMeals.splice(existingIndex, 1);
+                mealDiv.classList.remove('ring-4', 'ring-pink-500', 'bg-pink-50');
+                mealDiv.classList.add('border-gray-300');
+                statusDiv.textContent = 'Click to select';
+                statusDiv.classList.remove('text-pink-600');
+                statusDiv.classList.add('text-gray-500');
+            } else if (selectedKidMeals.length < maxKidMeals) {
+                // Add meal
+                selectedKidMeals.push({ index, name, price });
+                mealDiv.classList.add('ring-4', 'ring-pink-500', 'bg-pink-50');
+                mealDiv.classList.remove('border-gray-300');
+                statusDiv.textContent = '✓ Selected';
+                statusDiv.classList.add('text-pink-600');
+                statusDiv.classList.remove('text-gray-500');
+            }
+            
+            updateKidSelectionCount();
+            updateKidMealTotalDisplay();
+            updateTotal();
+        }
+
+        function updateKidSelectionCount() {
+            document.getElementById('currentKidSelectionCount').textContent = selectedKidMeals.length;
+        }
+
+        function updateKidMealTotalDisplay() {
+            const kidMealTotal = selectedKidMeals.reduce((sum, meal) => sum + meal.price, 0);
+            document.getElementById('kidMealTotal').textContent = `$${kidMealTotal.toFixed(2)}`;
+        }
+
+        function updateTotal() {
+            const mealTotal = selectedMeals.reduce((sum, meal) => sum + meal.price, 0);
+            const kidMealTotal = selectedKidMeals.reduce((sum, meal) => sum + meal.price, 0);
+            const total = mealTotal + kidMealTotal;
+            
+            document.getElementById('weeklyTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Toggle delivery address field
+        function toggleDeliveryAddress() {
+            const deliveryOption = document.getElementById('deliveryOption').value;
+            const addressSection = document.getElementById('deliveryAddressSection');
+            const addressField = document.getElementById('deliveryAddress');
+            
+            if (deliveryOption === 'delivery') {
+                addressSection.classList.remove('hidden');
+                addressField.required = true;
+            } else {
+                addressSection.classList.add('hidden');
+                addressField.required = false;
+            }
+        }
+
+        // Handle order form submission
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+            
+            // Create success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white p-6 rounded-lg shadow-lg z-50 max-w-md';
+            successMessage.innerHTML = `
+                <div class="flex items-center">
+                    <div class="text-2xl mr-3">🎉</div>
+                    <div>
+                        <h4 class="font-bold">Order Submitted Successfully!</h4>
+                        <p class="text-sm">We'll contact you within 24 hours with payment instructions and delivery details!</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(successMessage);
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
+            
+            // Reset form
+            event.target.reset();
+            
+            // Hide delivery address section
+            document.getElementById('deliveryAddressSection').classList.add('hidden');
+        }
+
+        // Handle contact form submission
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            // Create success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-4 right-4 bg-emerald-500 text-white p-6 rounded-lg shadow-lg z-50 max-w-md';
+            successMessage.innerHTML = `
+                <div class="flex items-center">
+                    <div class="text-2xl mr-3">📧</div>
+                    <div>
+                        <h4 class="font-bold">Message Sent!</h4>
+                        <p class="text-sm">Thanks for reaching out! We'll get back to you soon.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(successMessage);
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+	
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sections = [
+      "#content-high-protein",
+      "#content-overnight-oats",
+      "#content-carnivore",
+      "#content-all-veggies",
+      "#content-kid-friendly",
+      "#content-mason-jar-salads"
+    ];
+    const selector = sections.map(s => s + " button").join(",");
+    document.querySelectorAll(selector).forEach(btn => {
+      if (btn.textContent.trim().toLowerCase() === "add to cart") {
+        btn.remove();
+      }
+    });
+  });
+</script>
+<script>
+async function handleStripeCheckout() {
+  const totalText = document.getElementById('weeklyTotal').textContent.replace('$', '');
+  const total = parseFloat(totalText);
+
+  const response = await fetch('/.netlify/functions/create-checkout-session', {
+    method: 'POST',
+    body: JSON.stringify({ amount: total }),
+  });
+
+  const data = await response.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert('Error creating checkout. Please try again.');
+  }
+}
+</script>
+	
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9835bef2b164f056',t:'MTc1ODU4NTQ1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
+<!-- redeploy trigger -->
+</html>
