@@ -1883,7 +1883,8 @@ document.getElementById("checkout-form").addEventListener("submit", async (e) =>
   e.preventDefault();
 
   try {
-    const response = await fetch('/.netlify/functions/create-checkout-session', {
+    const response = await fetch('https://capable-narwhal-ee26c0.netlify.app/.netlify/functions/create-checkout-session', {
+
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1957,7 +1958,8 @@ async function startCheckout() {
   }
 
   try {
-    const response = await fetch('/.netlify/functions/create-checkout-session', {
+    const response = await fetch('https://capable-narwhal-ee26c0.netlify.app/.netlify/functions/create-checkout-session', {
+
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items })
