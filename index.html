@@ -1311,9 +1311,10 @@
 <p class="text-orange-700 text-sm">Refer 5 friends that start a subscription and receive a $5 credit on your account! 🎊</p>
 </div>
 </div>
-<button class="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-black text-xl py-4 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
-                        🚀 Start Referring Friends!
-                    </button>
+<div class="w-full bg-gray-300 text-gray-700 font-bold text-xl py-4 rounded-2xl shadow-inner cursor-not-allowed">
+    🚧 Refer a Friend — Coming Soon! 🚧
+</div>
+
 </div>
 <!-- Gift Cards Card -->
 <div class="bg-white rounded-3xl shadow-2xl p-8 border-4 border-pink-300 transform hover:scale-105 transition-all duration-300">
@@ -1417,8 +1418,7 @@
 </div>
 <div>
 <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
-<form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="order">
+<form id="checkout-form">
 <div>
 <input class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-white" placeholder="Your Name" required="" type="text"/>
 </div>
@@ -1435,51 +1435,73 @@
 </div>
 </div>
 </div>
+<!-- 🌿 About Us Section -->
+<section class="bg-gradient-to-br from-emerald-50 to-green-100 py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      
+      <!-- Photo -->
+      <div class="md:w-1/2 flex justify-center md:justify-end">
+        <img src="images/Freddy-Angel.jpg" 
+             alt="Freddy and Angel Marquis - Founders of Rations & Roots" 
+             class="rounded-2xl shadow-2xl border-4 border-emerald-600 w-full max-w-md object-cover">
+      </div>
+      
+      <!-- Text -->
+      <div class="md:w-1/2 text-gray-800 md:pl-10 text-center md:text-left">
+        <h2 class="text-4xl font-extrabold text-emerald-700 mb-4">Meet the Founders</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          <strong>We’re Freddy &amp; Angel — a Veteran couple with a passion for real food and honest living.</strong><br><br>
+          Rations &amp; Roots began in our own kitchen, born from the need for meals that are as convenient as they are clean.<br><br>
+          What started as cooking for friends and family grew into a mission — to serve our community by providing something everyone needs: convenience.<br><br>
+          There’s no better feeling than knowing we’ve made someone’s day easier, healthier, and a little more fulfilled.
+        </p>
+        <p class="text-lg italic text-emerald-800">
+          Local ingredients. Real flavor. A labor of love that grew into something greater than we ever imagined.
+        </p>
+      </div>
+
+    </div>
+  </div>
 </section>
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-12">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid md:grid-cols-4 gap-8">
-<div>
-<div class="flex items-center space-x-3 mb-4">
-<div class="text-3xl">🌱</div>
-<div>
-<h3 class="text-2xl font-bold text-emerald-400">Rations &amp; Roots</h3>
-<p class="text-sm text-gray-400">Premium Meal Prep</p>
-</div>
-</div>
-<p class="text-gray-400">Veteran-crafted meal prep that's fresh, flavorful, and ready in minutes.</p>
-</div>
-<div>
-<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-<ul class="space-y-2 text-gray-400">
-<li><a class="hover:text-emerald-400 transition-colors" href="#menu">Menu</a></li>
-<li><a class="hover:text-emerald-400 transition-colors" href="#pricing">Pricing</a></li>
-<li><a class="hover:text-emerald-400 transition-colors" href="#testimonials">Reviews</a></li>
-<li><a class="hover:text-emerald-400 transition-colors" href="#contact">Contact</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-lg font-semibold mb-4">Support</h4>
-<ul class="space-y-2 text-gray-400">
-<li><a class="hover:text-emerald-400 transition-colors" href="#">FAQ</a></li>
-<li><a class="hover:text-emerald-400 transition-colors" href="#">Nutrition Info</a></li>
-<li><a class="hover:text-emerald-400 transition-colors" href="#">Allergen Guide</a></li>
-<li><a class="hover:text-emerald-400 transition-colors" href="#">Account Help</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-lg font-semibold mb-4">Follow Us</h4>
-<div class="flex space-x-4">
-<a class="text-gray-400 hover:text-emerald-400 transition-colors text-2xl" href="#">📘</a>
-</div>
-</div>
-</div>
-<div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-<p>© 2024 Rations &amp; Roots. All rights reserved. Made with ❤️ for healthy living.</p>
-</div>
-</div>
+
+<!-- 🌱 Visual Footer: Glowing Sprout + Fading Roots -->
+<footer class="relative bg-gray-900 overflow-hidden">
+  <!-- Centered glowing sprout -->
+  <div class="absolute inset-x-0 top-8 flex justify-center">
+    <div class="text-5xl animate-pulse text-emerald-400">🌱</div>
+  </div>
+
+  <!-- Roots SVG -->
+  <div class="pointer-events-none select-none mt-24">
+    <svg viewBox="0 0 1440 260" preserveAspectRatio="none" class="w-full h-[220px] md:h-[260px]">
+      <defs>
+        <linearGradient id="rootFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.9"/>
+          <stop offset="50%" stop-color="#34d399" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Root paths -->
+      <g fill="none" stroke="url(#rootFade)" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke-width="3" d="M720 10 C720 40, 720 70, 720 95 C720 120, 705 145, 705 165 C705 185, 715 205, 720 225"/>
+        <path stroke-width="2.5" opacity="0.9" d="M720 70 C670 85, 635 95, 600 105 C565 115, 545 135, 530 150 C515 165, 515 185, 520 205"/>
+        <path stroke-width="2.5" opacity="0.9" d="M720 70 C770 85, 805 95, 840 105 C875 115, 895 135, 910 150 C925 165, 925 185, 920 205"/>
+        <path stroke-width="2" opacity="0.8" d="M600 105 C585 120, 575 132, 568 145 C560 160, 562 178, 565 195"/>
+        <path stroke-width="1.8" opacity="0.75" d="M560 150 C540 160, 525 172, 515 185 C505 198, 508 210, 512 222"/>
+        <path stroke-width="2" opacity="0.8" d="M840 105 C855 120, 865 132, 872 145 C880 160, 878 178, 875 195"/>
+        <path stroke-width="1.8" opacity="0.75" d="M880 150 C900 160, 915 172, 925 185 C935 198, 932 210, 928 222"/>
+        <path stroke-width="1.6" opacity="0.6" d="M220 130 C260 155, 300 170, 360 180 C420 190, 480 195, 560 205 C640 215, 740 230, 860 230 C980 230, 1100 215, 1180 205 C1260 195, 1300 182, 1340 170"/>
+        <path stroke-width="1.4" opacity="0.5" d="M80 150 C160 175, 240 190, 320 198 C400 206, 520 214, 640 218 C760 222, 920 220, 1040 212 C1160 204, 1260 190, 1360 175"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Bottom breathing space -->
+  <div class="h-12 md:h-16"></div>
 </footer>
+
 <script>
         // Tab functionality for menu
         function showTab(tabName) {
