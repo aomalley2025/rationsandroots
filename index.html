@@ -1233,22 +1233,23 @@
 <p class="text-xs text-purple-600">1-click checkout</p>
 </div>
 <div class="bg-white rounded-xl p-4 border-2 border-gray-300 text-center">
-<div class="text-3xl mb-2">💵</div>
-<h4 class="font-bold text-gray-700">Cash at Pickup</h4>
-<p class="text-xs text-gray-600">Pay in person</p>
-</div>
-</div>
-</div>
-<div class="text-center pt-6">
-<button onclick="handleStripeCheckout()" 
-        class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 hover:from-green-500 hover:via-blue-600 hover:to-purple-700 text-white font-black text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
-  🎉 Let's Start Cooking! 🎉
-</button>
+  <div class="text-3xl mb-2">💵</div>
+  <h4 class="font-bold text-gray-700">Cash at Pickup</h4>
+  <p class="text-xs text-gray-600">Pay in person</p>
 
-<p class="text-purple-600 font-bold mt-4 text-lg">✨ Your taste buds will thank you! ✨</p>
-</div>
-</form>
-</div>
+  <!-- Checkout Form Starts -->
+  <form id="checkout-form">
+    <div class="text-center pt-6">
+      <button 
+        type="submit"
+        class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 hover:from-green-500 hover:via-blue-600 hover:to-purple-700 text-white font-black text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
+        🎉 Let's Start Cooking! 🎉
+      </button>
+    </div>
+  </form>
+  <!-- Checkout Form Ends -->
+
+  <p class="text-purple-600 font-bold mt-4 text-lg">✨ Your taste buds will thank you! ✨</p>
 </div>
 </div>
 </section>
@@ -1889,27 +1890,38 @@
     });
   });
 </script>
-<script>
-async function handleStripeCheckout() {
-  const totalText = document.getElementById('weeklyTotal').textContent.replace('$', '');
-  const total = parseFloat(totalText);
 
-  const response = await fetch('/.netlify/functions/create-checkout-session', {
-    method: 'POST',
-    body: JSON.stringify({ amount: total }),
-  });
-
-  const data = await response.json();
-
-  if (data.url) {
-    window.location.href = data.url;
-  } else {
-    alert('Error creating checkout. Please try again.');
-  }
-}
-</script>
-	
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9835bef2b164f056',t:'MTc1ODU4NTQ1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>
+document.getElementById("checkout-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch('/.netlify/functions/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: [
+          { id: "premium-meal-plan", quantity: 1 }
+        ]
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.url) {
+      window.location.href = data.url; // ✅ Redirects to Stripe Checkout
+    } else {
+      alert("Something went wrong creating the checkout session.");
+      console.error(data);
+    }
+  } catch (error) {
+    console.error("Checkout error:", error);
+    alert("There was an issue connecting to Stripe.");
+  }
+});
+</script>
+
 </body>
 <!-- redeploy trigger -->
 </html>
