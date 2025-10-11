@@ -1950,10 +1950,12 @@ async function startCheckout() {
       alert('Error creating checkout session: ' + data.error);
       console.error(data);
     }
-  } catch (err) {
+    } catch (err) {
     console.error('Checkout error:', err);
     alert('Something went wrong while connecting to Stripe.');
   }
+}
+</script>
 
 </body>
 <!-- redeploy trigger -->
