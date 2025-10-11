@@ -17,8 +17,8 @@ export async function handler(event) {
         },
         quantity: item.quantity,
       })),
-      success_url: 'https://www.rationsandrootsmeal.com/success',
-      cancel_url: 'https://www.rationsandrootsmeal.com/cancel',
+      success_url: 'https://capable-narwhal-ee26c0.netlify.app/?status=success',
+      cancel_url: 'https://capable-narwhal-ee26c0.netlify.app/?status=cancel',
     });
 
     return {
