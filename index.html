@@ -1029,230 +1029,216 @@
 <div class="absolute bottom-20 right-1/3 w-14 h-14 bg-red-400 rounded-full animate-pulse" style="animation-delay: 1.2s;"></div>
 </div>
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 rounded-3xl shadow-2xl border-4 border-white p-8 md:p-12 transform hover:scale-105 transition-all duration-300">
-<div class="text-center mb-12">
-<div class="text-6xl mb-4 animate-bounce">🚀</div>
-<h2 class="text-5xl font-black text-white mb-4 drop-shadow-lg">Start Your Food Adventure!</h2>
-<p class="text-2xl text-orange-100 font-bold">Ready to transform your meal routine? Let's make it happen! ✨</p>
-</div>
-<div class="bg-white rounded-2xl p-8 border-4 border-yellow-300 shadow-2xl">
-<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="contact">
-
-<div class="grid md:grid-cols-2 gap-6">
-<div class="transform hover:scale-105 transition-all duration-200">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">👋</span>
-                                    First Name
-                                </label>
-<input class="w-full px-6 py-4 border-4 border-pink-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-semibold bg-gradient-to-r from-pink-50 to-purple-50" placeholder="What should we call you?" required="" type="text"/>
-</div>
-<div class="transform hover:scale-105 transition-all duration-200">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">🎯</span>
-                                    Last Name
-                                </label>
-<input class="w-full px-6 py-4 border-4 border-pink-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-semibold bg-gradient-to-r from-pink-50 to-purple-50" placeholder="Your family name!" required="" type="text"/>
-</div>
-</div>
-<div class="transform hover:scale-105 transition-all duration-200">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">📧</span>
-                                Email Address
-                            </label>
-<input class="w-full px-6 py-4 border-4 border-green-300 rounded-2xl focus:ring-4 focus:ring-green-300 focus:border-green-500 text-lg font-semibold bg-gradient-to-r from-green-50 to-emerald-50" placeholder="your.awesome@email.com" required="" type="email"/>
-</div>
-<div class="transform hover:scale-105 transition-all duration-200">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">📱</span>
-                                Phone Number
-                            </label>
-<input class="w-full px-6 py-4 border-4 border-blue-300 rounded-2xl focus:ring-4 focus:ring-blue-300 focus:border-blue-500 text-lg font-semibold bg-gradient-to-r from-blue-50 to-cyan-50" placeholder="(555) 123-4567" required="" type="tel"/>
-</div>
-<div class="transform hover:scale-105 transition-all duration-200">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">🚚</span>
-                                Delivery Option
-                            </label>
-<select class="w-full px-6 py-4 border-4 border-orange-300 rounded-2xl focus:ring-4 focus:ring-orange-300 focus:border-orange-500 text-lg font-bold bg-gradient-to-r from-orange-50 to-yellow-50" id="deliveryOption" onchange="toggleDeliveryAddress()" required="">
-<option value="">🎯 How would you like to get your meals?</option>
-<option value="pickup">🏋️ Pickup at Centerville Gym (Mondays 8am-10am) - FREE!</option>
-<option value="delivery">🏠 Home Delivery (+$9.99 delivery fee)</option>
-</select>
-</div>
-<div class="transform hover:scale-105 transition-all duration-200 hidden" id="deliveryAddressSection">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">🏠</span>
-                                Delivery Address
-                            </label>
-<textarea class="w-full px-6 py-4 border-4 border-orange-300 rounded-2xl focus:ring-4 focus:ring-orange-300 focus:border-orange-500 text-lg font-semibold bg-gradient-to-r from-orange-50 to-yellow-50" id="deliveryAddress" placeholder="Where should we deliver your delicious meals?" rows="3"></textarea>
-</div>
-<!-- Step 1: Choose Plan Type -->
-<div class="transform hover:scale-105 transition-all duration-200">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">🎯</span>
-                                Step 1: Choose Your Plan Type
-                            </label>
-<select class="w-full px-6 py-4 border-4 border-purple-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-bold bg-gradient-to-r from-purple-50 to-pink-50" id="planType" onchange="showMealSelection()" required="">
-<option value="">🌟 Pick your adventure!</option>
-<option value="essential">🌱 Essential - $7-$12 per meal (varies by selection)</option>
-<option value="premium">⭐ Premium - $12-$15 per meal (varies by selection)</option>
-<option value="gourmet">👑 Gourmet - $15-$28 per meal (varies by selection)</option>
-</select>
-</div>
-<!-- Step 2: Choose Number of Meals -->
-<div class="transform hover:scale-105 transition-all duration-200 hidden" id="mealCountSection">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">🍽️</span>
-                                Step 2: How Many Meals Per Week?
-                            </label>
-<div class="grid md:grid-cols-3 gap-4">
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 border-4 border-green-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200" onclick="selectMealCount(6)">
-<input class="hidden" id="meals6" name="mealCount" type="radio" value="6"/>
-<label class="cursor-pointer block text-center" for="meals6">
-<div class="text-3xl mb-2">🌱</div>
-<div class="font-black text-green-700 text-xl">6 Meals</div>
-<div class="text-green-600 font-semibold">Perfect for trying us out!</div>
-<div class="text-2xl font-black text-green-600 mt-2" id="price6">$42-$168</div>
-</label>
-</div>
-<div class="bg-gradient-to-br from-blue-50 to-cyan-50 border-4 border-blue-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200 relative" onclick="selectMealCount(12)">
-<div class="absolute -top-2 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">Most Popular</div>
-<input class="hidden" id="meals12" name="mealCount" type="radio" value="12"/>
-<label class="cursor-pointer block text-center" for="meals12">
-<div class="text-3xl mb-2">⭐</div>
-<div class="font-black text-blue-700 text-xl">12 Meals</div>
-<div class="text-blue-600 font-semibold">Most popular choice!</div>
-<div class="text-2xl font-black text-blue-600 mt-2" id="price12">$84-$336</div>
-</label>
-</div>
-<div class="bg-gradient-to-br from-purple-50 to-pink-50 border-4 border-purple-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200" onclick="selectMealCount(18)">
-<input class="hidden" id="meals18" name="mealCount" type="radio" value="18"/>
-<label class="cursor-pointer block text-center" for="meals18">
-<div class="text-3xl mb-2">👑</div>
-<div class="font-black text-purple-700 text-xl">18 Meals</div>
-<div class="text-purple-600 font-semibold">Family-friendly option!</div>
-<div class="text-2xl font-black text-purple-600 mt-2" id="price18">$126-$504</div>
-</label>
-</div>
-</div>
-</div>
-<!-- Step 3: Select Your Meals -->
-<div class="transform hover:scale-105 transition-all duration-200 hidden" id="mealSelectionSection">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">🍴</span>
-                                Step 3: Select Your Meals
-                            </label>
-<div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-4 border-yellow-300 rounded-2xl p-6">
-<div class="text-center mb-4">
-<div class="text-3xl mb-2">🎯</div>
-<h4 class="text-xl font-black text-orange-700">Choose <span id="selectedMealCount">0</span> meals from your plan</h4>
-<p class="text-orange-600 font-semibold">Selected: <span id="currentSelectionCount">0</span> meals</p>
-</div>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableMeals">
-<!-- Meals will be populated here based on plan selection -->
-</div>
-<div class="mt-6 text-center">
-<div class="bg-white rounded-xl p-4 border-2 border-green-300">
-<h4 class="font-black text-green-700 text-lg mb-2">Your Weekly Total</h4>
-<div class="text-3xl font-black text-green-600" id="weeklyTotal">$0.00</div>
-<p class="text-green-600 text-sm font-semibold">(Plus delivery fee if applicable)</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Kid Meals Section -->
-<div class="transform hover:scale-105 transition-all duration-200">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">🧒</span>
-                                Add Kid Meals ($7.50 each)
-                            </label>
-<select class="w-full px-6 py-4 border-4 border-yellow-300 rounded-2xl focus:ring-4 focus:ring-yellow-300 focus:border-yellow-500 text-lg font-bold bg-gradient-to-r from-yellow-50 to-orange-50" id="kidMeals" onchange="showKidMealSelection()">
-<option value="0">🎈 No kid meals needed</option>
-<option value="1">1 kid meal per week (+$7.50)</option>
-<option value="2">2 kid meals per week (+$15.00)</option>
-<option value="3">3 kid meals per week (+$22.50)</option>
-<option value="4">4 kid meals per week (+$30.00)</option>
-<option value="5">5 kid meals per week (+$37.50)</option>
-<option value="6">6 kid meals per week (+$45.00)</option>
-<option value="7">7 kid meals per week (+$52.50)</option>
-<option value="8">8 kid meals per week (+$60.00)</option>
-<option value="9">9 kid meals per week (+$67.50)</option>
-<option value="10">10 kid meals per week (+$75.00)</option>
-</select>
-</div>
-<!-- Kid Meal Selection Section -->
-<div class="transform hover:scale-105 transition-all duration-200 hidden" id="kidMealSelectionSection">
-<label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-<span class="text-2xl mr-2">🎈</span>
-                                Choose Your Kid Meals
-                            </label>
-<div class="bg-gradient-to-r from-pink-50 to-purple-50 border-4 border-pink-300 rounded-2xl p-6">
-<div class="text-center mb-4">
-<div class="text-3xl mb-2">🎯</div>
-<h4 class="text-xl font-black text-pink-700">Choose <span id="selectedKidMealCount">0</span> kid meals</h4>
-<p class="text-pink-600 font-semibold">Selected: <span id="currentKidSelectionCount">0</span> kid meals</p>
-</div>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableKidMeals">
-<!-- Kid meals will be populated here -->
-</div>
-<div class="mt-6 text-center">
-<div class="bg-white rounded-xl p-4 border-2 border-pink-300">
-<h4 class="font-black text-pink-700 text-lg mb-2">Kid Meals Total</h4>
-<div class="text-3xl font-black text-pink-600" id="kidMealTotal">$0.00</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Payment Methods Section -->
-<div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 border-4 border-blue-300 mb-6">
-<div class="text-center mb-4">
-<div class="text-3xl mb-2">💳</div>
-<h3 class="text-2xl font-black text-blue-700 mb-2">We Accept These Payment Methods</h3>
-<p class="text-blue-600 font-semibold">Choose what works best for you!</p>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="bg-white rounded-xl p-4 border-2 border-green-300 text-center">
-<div class="text-3xl mb-2">💳</div>
-<h4 class="font-bold text-green-700">Credit/Debit</h4>
-<p class="text-xs text-green-600">All major cards accepted</p>
-</div>
-<div class="bg-white rounded-xl p-4 border-2 border-blue-300 text-center">
-<div class="text-3xl mb-2">🍎</div>
-<h4 class="font-bold text-blue-700">Apple Pay</h4>
-<p class="text-xs text-blue-600">Secure checkout</p>
-</div>
-<div class="bg-white rounded-xl p-4 border-2 border-yellow-300 text-center">
-<div class="text-3xl mb-2">🤖</div>
-<h4 class="font-bold text-yellow-700">Google Pay</h4>
-<p class="text-xs text-yellow-600">Fast mobile pay</p>
-</div>
-<div class="bg-white rounded-xl p-4 border-2 border-purple-300 text-center">
-<div class="text-3xl mb-2">⚡</div>
-<h4 class="font-bold text-purple-700">Stripe Link</h4>
-<p class="text-xs text-purple-600">1-click checkout</p>
-</div>
-<div class="bg-white rounded-xl p-4 border-2 border-gray-300 text-center">
-  <div class="text-3xl mb-2">💵</div>
-  <h4 class="font-bold text-gray-700">Cash at Pickup</h4>
-  <p class="text-xs text-gray-600">Pay in person</p>
-
-  <!-- Checkout Form Starts -->
-  <form id="checkout-form">
-    <div class="text-center pt-6">
-      <button 
-        type="submit"
-        class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 hover:from-green-500 hover:via-blue-600 hover:to-purple-700 text-white font-black text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
-        🎉 Let's Start Cooking! 🎉
-      </button>
+  <div class="bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 rounded-3xl shadow-2xl border-4 border-white p-8 md:p-12 transform hover:scale-105 transition-all duration-300">
+    <div class="text-center mb-12">
+      <div class="text-6xl mb-4 animate-bounce">🚀</div>
+      <h2 class="text-5xl font-black text-white mb-4 drop-shadow-lg">Start Your Food Adventure!</h2>
+      <p class="text-2xl text-orange-100 font-bold">Ready to transform your meal routine? Let's make it happen! ✨</p>
     </div>
-  </form>
-  <!-- Checkout Form Ends -->
+    <div class="bg-white rounded-2xl p-8 border-4 border-yellow-300 shadow-2xl">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="transform hover:scale-105 transition-all duration-200">
+            <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+              <span class="text-2xl mr-2">👋</span>
+              First Name
+            </label>
+            <input class="w-full px-6 py-4 border-4 border-pink-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-semibold bg-gradient-to-r from-pink-50 to-purple-50" placeholder="What should we call you?" required type="text">
+          </div>
+          <div class="transform hover:scale-105 transition-all duration-200">
+            <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+              <span class="text-2xl mr-2">🎯</span>
+              Last Name
+            </label>
+            <input class="w-full px-6 py-4 border-4 border-pink-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-semibold bg-gradient-to-r from-pink-50 to-purple-50" placeholder="Your family name!" required type="text">
+          </div>
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">📧</span>
+            Email Address
+          </label>
+          <input class="w-full px-6 py-4 border-4 border-green-300 rounded-2xl focus:ring-4 focus:ring-green-300 focus:border-green-500 text-lg font-semibold bg-gradient-to-r from-green-50 to-emerald-50" placeholder="your.awesome@email.com" required type="email">
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">📱</span>
+            Phone Number
+          </label>
+          <input class="w-full px-6 py-4 border-4 border-blue-300 rounded-2xl focus:ring-4 focus:ring-blue-300 focus:border-blue-500 text-lg font-semibold bg-gradient-to-r from-blue-50 to-cyan-50" placeholder="(555) 123-4567" required type="tel">
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">🚚</span>
+            Delivery Option
+          </label>
+          <select class="w-full px-6 py-4 border-4 border-orange-300 rounded-2xl focus:ring-4 focus:ring-orange-300 focus:border-orange-500 text-lg font-bold bg-gradient-to-r from-orange-50 to-yellow-50" id="deliveryOption" onchange="toggleDeliveryAddress()" required>
+            <option value="">🎯 How would you like to get your meals?</option>
+            <option value="pickup">🏋️ Pickup at Centerville Gym (Mondays 8am-10am) - FREE!</option>
+            <option value="delivery">🏠 Home Delivery (+$9.99 delivery fee)</option>
+          </select>
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200 hidden" id="deliveryAddressSection">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">🏠</span>
+            Delivery Address
+          </label>
+          <textarea class="w-full px-6 py-4 border-4 border-orange-300 rounded-2xl focus:ring-4 focus:ring-orange-300 focus:border-orange-500 text-lg font-semibold bg-gradient-to-r from-orange-50 to-yellow-50" id="deliveryAddress" placeholder="Where should we deliver your delicious meals?" rows="3"></textarea>
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">🎯</span>
+            Step 1: Choose Your Plan Type
+          </label>
+          <select class="w-full px-6 py-4 border-4 border-purple-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-bold bg-gradient-to-r from-purple-50 to-pink-50" id="planType" onchange="showMealSelection()" required>
+            <option value="">🌟 Pick your adventure!</option>
+            <option value="essential">🌱 Essential - $7-$12 per meal (varies by selection)</option>
+            <option value="premium">⭐ Premium - $12-$15 per meal (varies by selection)</option>
+            <option value="gourmet">👑 Gourmet - $15-$28 per meal (varies by selection)</option>
+          </select>
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200 hidden" id="mealCountSection">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">🍽️</span>
+            Step 2: How Many Meals Per Week?
+          </label>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 border-4 border-green-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200" onclick="selectMealCount(6)">
+              <input class="hidden" id="meals6" name="mealCount" type="radio" value="6">
+              <label class="cursor-pointer block text-center" for="meals6">
+                <div class="text-3xl mb-2">🌱</div>
+                <div class="font-black text-green-700 text-xl">6 Meals</div>
+                <div class="text-green-600 font-semibold">Perfect for trying us out!</div>
+                <div class="text-2xl font-black text-green-600 mt-2" id="price6">$42-$168</div>
+              </label>
+            </div>
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 border-4 border-blue-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200 relative" onclick="selectMealCount(12)">
+              <div class="absolute -top-2 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">Most Popular</div>
+              <input class="hidden" id="meals12" name="mealCount" type="radio" value="12">
+              <label class="cursor-pointer block text-center" for="meals12">
+                <div class="text-3xl mb-2">⭐</div>
+                <div class="font-black text-blue-700 text-xl">12 Meals</div>
+                <div class="text-blue-600 font-semibold">Most popular choice!</div>
+                <div class="text-2xl font-black text-blue-600 mt-2" id="price12">$84-$336</div>
+              </label>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 border-4 border-purple-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200" onclick="selectMealCount(18)">
+              <input class="hidden" id="meals18" name="mealCount" type="radio" value="18">
+              <label class="cursor-pointer block text-center" for="meals18">
+                <div class="text-3xl mb-2">👑</div>
+                <div class="font-black text-purple-700 text-xl">18 Meals</div>
+                <div class="text-purple-600 font-semibold">Family-friendly option!</div>
+                <div class="text-2xl font-black text-purple-600 mt-2" id="price18">$126-$504</div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200 hidden" id="mealSelectionSection">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">🍴</span>
+            Step 3: Select Your Meals
+          </label>
+          <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-4 border-yellow-300 rounded-2xl p-6">
+            <div class="text-center mb-4">
+              <div class="text-3xl mb-2">🎯</div>
+              <h4 class="text-xl font-black text-orange-700">Choose <span id="selectedMealCount">0</span> meals from your plan</h4>
+              <p class="text-orange-600 font-semibold">Selected: <span id="currentSelectionCount">0</span> meals</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableMeals"></div>
+            <div class="mt-6 text-center">
+              <div class="bg-white rounded-xl p-4 border-2 border-green-300">
+                <h4 class="font-black text-green-700 text-lg mb-2">Your Weekly Total</h4>
+                <div class="text-3xl font-black text-green-600" id="weeklyTotal">$0.00</div>
+                <p class="text-green-600 text-sm font-semibold">(Plus delivery fee if applicable)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">🧒</span>
+            Add Kid Meals ($7.50 each)
+          </label>
+          <select class="w-full px-6 py-4 border-4 border-yellow-300 rounded-2xl focus:ring-4 focus:ring-yellow-300 focus:border-yellow-500 text-lg font-bold bg-gradient-to-r from-yellow-50 to-orange-50" id="kidMeals" onchange="showKidMealSelection()">
+            <option value="0">🎈 No kid meals needed</option>
+            <option value="1">1 kid meal per week (+$7.50)</option>
+            <option value="2">2 kid meals per week (+$15.00)</option>
+            <option value="3">3 kid meals per week (+$22.50)</option>
+            <option value="4">4 kid meals per week (+$30.00)</option>
+            <option value="5">5 kid meals per week (+$37.50)</option>
+            <option value="6">6 kid meals per week (+$45.00)</option>
+            <option value="7">7 kid meals per week (+$52.50)</option>
+            <option value="8">8 kid meals per week (+$60.00)</option>
+            <option value="9">9 kid meals per week (+$67.50)</option>
+            <option value="10">10 kid meals per week (+$75.00)</option>
+          </select>
+        </div>
+        <div class="transform hover:scale-105 transition-all duration-200 hidden" id="kidMealSelectionSection">
+          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+            <span class="text-2xl mr-2">🎈</span>
+            Choose Your Kid Meals
+          </label>
+          <div class="bg-gradient-to-r from-pink-50 to-purple-50 border-4 border-pink-300 rounded-2xl p-6">
+            <div class="text-center mb-4">
+              <div class="text-3xl mb-2">🎯</div>
+              <h4 class="text-xl font-black text-pink-700">Choose <span id="selectedKidMealCount">0</span> kid meals</h4>
+              <p class="text-pink-600 font-semibold">Selected: <span id="currentKidSelectionCount">0</span> kid meals</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableKidMeals"></div>
+            <div class="mt-6 text-center">
+              <div class="bg-white rounded-xl p-4 border-2 border-pink-300">
+                <h4 class="font-black text-pink-700 text-lg mb-2">Kid Meals Total</h4>
+                <div class="text-3xl font-black text-pink-600" id="kidMealTotal">$0.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 border-4 border-blue-300 mb-6">
+          <div class="text-center mb-4">
+            <div class="text-3xl mb-2">💳</div>
+            <h3 class="text-2xl font-black text-blue-700 mb-2">We Accept These Payment Methods</h3>
+            <p class="text-blue-600 font-semibold">Choose what works best for you!</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white rounded-xl p-4 border-2 border-green-300 text-center">
+              <div class="text-3xl mb-2">💳</div>
+              <h4 class="font-bold text-green-700">Credit/Debit</h4>
+              <p class="text-xs text-green-600">All major cards accepted</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 border-2 border-blue-300 text-center">
+              <div class="text-3xl mb-2">🍎</div>
+              <h4 class="font-bold text-blue-700">Apple Pay</h4>
+              <p class="text-xs text-blue-600">Secure checkout</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 border-2 border-yellow-300 text-center">
+              <div class="text-3xl mb-2">🤖</div>
+              <h4 class="font-bold text-yellow-700">Google Pay</h4>
+              <p class="text-xs text-yellow-600">Fast mobile pay</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 border-2 border-purple-300 text-center">
+              <div class="text-3xl mb-2">⚡</div>
+              <h4 class="font-bold text-purple-700">Stripe Link</h4>
+              <p class="text-xs text-purple-600">1-click checkout</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 border-2 border-gray-300 text-center">
+              <div class="text-3xl mb-2">💵</div>
+              <h4 class="font-bold text-gray-700">Cash at Pickup</h4>
+              <p class="text-xs text-gray-600">Pay in person</p>
+              <div class="text-center pt-6">
+                <a href="https://buy.stripe.com/your-stripe-link-here" target="_blank" class="inline-block bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 hover:from-green-500 hover:via-blue-600 hover:to-purple-700 text-white font-black text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
+                  🎉 Let's Start Cooking! 🎉
+                </a>
+              </div>
+              <p class="text-purple-600 font-bold mt-4 text-lg">✨ Your taste buds will thank you! ✨</p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-  <p class="text-purple-600 font-bold mt-4 text-lg">✨ Your taste buds will thank you! ✨</p>
-</div>
-</div>
-</section>
 <!-- Refer a Friend & Gift Cards Section -->
 <section class="py-16 bg-gradient-to-br from-yellow-400 via-orange-400 to-red-500 relative overflow-hidden">
 <!-- Fun Background Elements -->
@@ -1921,6 +1907,53 @@ document.getElementById("checkout-form").addEventListener("submit", async (e) =>
   }
 });
 </script>
+<script>
+async function startCheckout() {
+  const planType = document.getElementById('planType').value;
+  const mealCount = document.querySelector('input[name="mealCount"]:checked')?.value || 0;
+  const kidMeals = parseInt(document.getElementById('kidMeals').value || 0);
+  const deliveryOption = document.getElementById('deliveryOption').value;
+
+  if (!planType || mealCount == 0) {
+    alert('Please select your plan and meal count before checking out.');
+    return;
+  }
+
+  // Base meal prices by plan
+  const prices = {
+    essential: 10,
+    premium: 14,
+    gourmet: 20
+  };
+
+  const basePricePerMeal = prices[planType] || 0;
+  const mealTotal = basePricePerMeal * mealCount;
+  const kidMealTotal = kidMeals * 7.5;
+  const deliveryFee = deliveryOption === 'delivery' ? 9.99 : 0;
+  const total = mealTotal + kidMealTotal + deliveryFee;
+
+  try {
+    const response = await fetch('/.netlify/functions/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        planName: `${planType.toUpperCase()} Plan`,
+        description: `${mealCount} meals + ${kidMeals} kid meals (${deliveryOption})`,
+        total: total
+      })
+    });
+
+    const data = await response.json();
+    if (data.url) {
+      window.location.href = data.url; // Redirect to Stripe checkout
+    } else {
+      alert('Error creating checkout session: ' + data.error);
+      console.error(data);
+    }
+  } catch (err) {
+    console.error('Checkout error:', err);
+    alert('Something went wrong while connecting to Stripe.');
+  }
 
 </body>
 <!-- redeploy trigger -->
