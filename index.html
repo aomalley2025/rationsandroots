@@ -1910,11 +1910,11 @@ document.getElementById("checkout-form").addEventListener("submit", async (e) =>
 <script>
 async function startCheckout() {
   const planType = document.getElementById('planType').value;
-  const mealCount = document.querySelector('input[name="mealCount"]:checked')?.value || 0;
+  const mealCount = parseInt(document.querySelector('input[name="mealCount"]:checked')?.value || 0);
   const kidMeals = parseInt(document.getElementById('kidMeals').value || 0);
   const deliveryOption = document.getElementById('deliveryOption').value;
 
-  if (!planType || mealCount == 0) {
+  if (!planType || mealCount === 0) {
     alert('Please select your plan and meal count before checking out.');
     return;
   }
@@ -1927,35 +1927,56 @@ async function startCheckout() {
   };
 
   const basePricePerMeal = prices[planType] || 0;
-  const mealTotal = basePricePerMeal * mealCount;
-  const kidMealTotal = kidMeals * 7.5;
-  const deliveryFee = deliveryOption === 'delivery' ? 9.99 : 0;
-  const total = mealTotal + kidMealTotal + deliveryFee;
+  const items = [];
+
+  // Main meal item
+  if (mealCount > 0 && basePricePerMeal > 0) {
+    items.push({
+      name: `${planType.toUpperCase()} Meals`,
+      price: basePricePerMeal,
+      quantity: mealCount
+    });
+  }
+
+  // Kid meals (optional)
+  if (kidMeals > 0) {
+    items.push({
+      name: 'Kid Meal',
+      price: 7.5,
+      quantity: kidMeals
+    });
+  }
+
+  // Delivery (optional)
+  if (deliveryOption === 'delivery') {
+    items.push({
+      name: 'Delivery Fee',
+      price: 9.99,
+      quantity: 1
+    });
+  }
 
   try {
     const response = await fetch('/.netlify/functions/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        planName: `${planType.toUpperCase()} Plan`,
-        description: `${mealCount} meals + ${kidMeals} kid meals (${deliveryOption})`,
-        total: total
-      })
+      body: JSON.stringify({ items })
     });
 
     const data = await response.json();
     if (data.url) {
       window.location.href = data.url; // Redirect to Stripe checkout
     } else {
-      alert('Error creating checkout session: ' + data.error);
+      alert('Error creating checkout session: ' + (data.error || 'Unknown error'));
       console.error(data);
     }
-    } catch (err) {
+  } catch (err) {
     console.error('Checkout error:', err);
     alert('Something went wrong while connecting to Stripe.');
   }
 }
 </script>
+
 
 </body>
 <!-- redeploy trigger -->
