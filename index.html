@@ -1225,14 +1225,22 @@
               <div class="text-3xl mb-2">💵</div>
               <h4 class="font-bold text-gray-700">Cash at Pickup</h4>
               <p class="text-xs text-gray-600">Pay in person</p>
-              <div class="text-center pt-6">
-                <a href="https://buy.stripe.com/your-stripe-link-here" target="_blank" class="inline-block bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 hover:from-green-500 hover:via-blue-600 hover:to-purple-700 text-white font-black text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
-                  🎉 Let's Start Cooking! 🎉
-                </a>
-              </div>
-              <p class="text-purple-600 font-bold mt-4 text-lg">✨ Your taste buds will thank you! ✨</p>
-            </div>
-          </div>
+              <!-- ✅ Final Checkout Button -->
+<div class="text-center pt-6">
+  <button 
+    type="button"
+    onclick="startCheckout()"
+    class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 
+           hover:from-green-500 hover:via-blue-600 hover:to-purple-700 
+           text-white font-black text-2xl px-12 py-6 rounded-full 
+           shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
+    🎉 Let's Start Cooking! 🎉
+  </button>
+  <p class="text-purple-600 font-bold mt-4 text-lg">
+    ✨ Your taste buds will thank you! ✨
+  </p>
+</div>
+
         </div>
       </form>
     </div>
@@ -1907,7 +1915,6 @@ document.getElementById("checkout-form").addEventListener("submit", async (e) =>
     alert("There was an issue connecting to Stripe.");
   }
 });
-</script>
 <script>
 async function startCheckout() {
   const planType = document.getElementById('planType').value;
@@ -1920,7 +1927,7 @@ async function startCheckout() {
     return;
   }
 
-  // Base meal prices by plan
+  // ✅ Base meal prices by plan
   const prices = {
     essential: 10,
     premium: 14,
@@ -1928,48 +1935,27 @@ async function startCheckout() {
   };
 
   const basePricePerMeal = prices[planType] || 0;
-  const items = [];
-
-  // Main meal item
-  if (mealCount > 0 && basePricePerMeal > 0) {
-    items.push({
-      name: `${planType.toUpperCase()} Meals`,
-      price: basePricePerMeal,
-      quantity: mealCount
-    });
-  }
-
-  // Kid meals (optional)
-  if (kidMeals > 0) {
-    items.push({
-      name: 'Kid Meal',
-      price: 7.5,
-      quantity: kidMeals
-    });
-  }
-
-  // Delivery (optional)
-  if (deliveryOption === 'delivery') {
-    items.push({
-      name: 'Delivery Fee',
-      price: 9.99,
-      quantity: 1
-    });
-  }
+  const mealTotal = basePricePerMeal * mealCount;
+  const kidMealTotal = kidMeals * 7.5;
+  const deliveryFee = deliveryOption === 'delivery' ? 9.99 : 0;
+  const total = mealTotal + kidMealTotal + deliveryFee;
 
   try {
-    const response = await fetch('https://www.rationsandrootsmeal.com/.netlify/functions/create-checkout-session', {
-
+    const response = await fetch('/.netlify/functions/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items })
+      body: JSON.stringify({
+        planName: `${planType.toUpperCase()} Plan`,
+        description: `${mealCount} meals + ${kidMeals} kid meals (${deliveryOption})`,
+        total
+      })
     });
 
     const data = await response.json();
     if (data.url) {
-      window.location.href = data.url; // Redirect to Stripe checkout
+      window.location.href = data.url; // ✅ Redirect to Stripe checkout
     } else {
-      alert('Error creating checkout session: ' + (data.error || 'Unknown error'));
+      alert('Error creating checkout session: ' + data.error);
       console.error(data);
     }
   } catch (err) {
@@ -1978,8 +1964,6 @@ async function startCheckout() {
   }
 }
 </script>
-
-
 </body>
-<!-- redeploy trigger -->
 </html>
+

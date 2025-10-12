@@ -1,10 +1,16 @@
 import Stripe from 'stripe';
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function handler(event) {
   try {
     const { planName, description, total } = JSON.parse(event.body);
+
+    if (!total || total <= 0) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Invalid total amount' }),
+      };
+    }
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -17,7 +23,7 @@ export async function handler(event) {
               name: planName,
               description: description,
             },
-            unit_amount: Math.round(total * 100),
+            unit_amount: Math.round(total * 100), // convert dollars → cents
           },
           quantity: 1,
         },
@@ -38,5 +44,3 @@ export async function handler(event) {
     };
   }
 }
-
-
