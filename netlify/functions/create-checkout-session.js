@@ -13,7 +13,10 @@ export async function handler(event) {
         {
           price_data: {
             currency: 'usd',
-            product_data: { name: planName, description },
+            product_data: {
+              name: planName,
+              description: description,
+            },
             unit_amount: Math.round(total * 100),
           },
           quantity: 1,
@@ -35,3 +38,5 @@ export async function handler(event) {
     };
   }
 }
+
+
