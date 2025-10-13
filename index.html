@@ -1704,7 +1704,16 @@ function updateMealSelectionCount() {
     }
 
     const prices = { essential: 10, premium: 14, gourmet: 20 };
-    const total = (prices[planType] * mealCount) + (kidMeals * 7.5) + (deliveryOption === 'delivery' ? 9.99 : 0);
+    // pull the already-calculated on-screen total so Stripe matches the display
+const displayedTotal = parseFloat(
+  document.getElementById('weeklyTotal').textContent.replace('$', '')
+);
+
+// build the final total (add kid meals + delivery once)
+const total = displayedTotal
+  + (kidMeals * 7.5)
+  + (deliveryOption === 'delivery' ? 9.99 : 0);
+
 
     try {
       console.log("Sending checkout request:", { planType, mealCount, kidMeals, deliveryOption, total });
