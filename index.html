@@ -1497,6 +1497,81 @@
   <div class="h-12 md:h-16"></div>
 </footer>
 <script>
+// --- Dynamic Meal Selection (Restored) ---
+
+const mealDatabase = [
+  { name: "PR Steak Out", price: 15.00, tier: "premium", description: "Lean sirloin steak with brown rice & roasted vegetables" },
+  { name: "Lean Machine", price: 13.50, tier: "essential", description: "Grilled lemon herb chicken with quinoa & roasted broccoli" },
+  { name: "Power Plate", price: 12.00, tier: "essential", description: "Chicken, brown rice & steamed broccoli" },
+  { name: "Strength Builder", price: 12.00, tier: "essential", description: "Chicken & veggie skillet with brown rice" },
+  { name: "Omega Gainz", price: 15.00, tier: "premium", description: "Baked salmon with roasted sweet potatoes & green beans" }
+];
+
+let selectedMeals = [];
+let maxMeals = 0;
+
+function showMealSelection() {
+  const planType = document.getElementById("planType").value;
+  const mealCountSection = document.getElementById("mealCountSection");
+  const mealSelectionSection = document.getElementById("mealSelectionSection");
+  const availableMeals = document.getElementById("availableMeals");
+
+  if (!planType) {
+    mealCountSection.classList.add("hidden");
+    mealSelectionSection.classList.add("hidden");
+    return;
+  }
+
+  mealCountSection.classList.remove("hidden");
+  mealSelectionSection.classList.remove("hidden");
+
+  const filteredMeals = mealDatabase.filter(meal => meal.tier === planType);
+  availableMeals.innerHTML = filteredMeals.map((meal, i) => `
+    <div onclick="toggleMealSelection(${i}, '${meal.name}', ${meal.price})"
+      class="p-4 border rounded-lg cursor-pointer hover:bg-emerald-50 transition">
+      <h4 class="font-bold text-gray-800">${meal.name}</h4>
+      <p class="text-sm text-gray-500 mb-2">${meal.description}</p>
+      <div class="font-semibold text-emerald-600">$${meal.price.toFixed(2)}</div>
+      <div id="meal-${i}" class="text-xs text-gray-400">Click to select</div>
+    </div>
+  `).join('');
+}
+
+function selectMealCount(count) {
+  maxMeals = count;
+  selectedMeals = [];
+  document.getElementById("selectedMealCount").textContent = count;
+  document.querySelectorAll('input[name="mealCount"]').forEach(i => i.checked = false);
+  document.getElementById(`meals${count}`).checked = true;
+  updateMealSelectionCount();
+}
+
+function toggleMealSelection(index, name, price) {
+  const mealDiv = document.querySelector(`[onclick*="toggleMealSelection(${index}"]`);
+  const statusDiv = document.getElementById(`meal-${index}`);
+  const already = selectedMeals.findIndex(m => m.index === index);
+
+  if (already >= 0) {
+    selectedMeals.splice(already, 1);
+    mealDiv.classList.remove("ring-4", "ring-emerald-500", "bg-emerald-50");
+    statusDiv.textContent = "Click to select";
+    statusDiv.classList.replace("text-emerald-600", "text-gray-400");
+  } else if (selectedMeals.length < maxMeals) {
+    selectedMeals.push({ index, name, price });
+    mealDiv.classList.add("ring-4", "ring-emerald-500", "bg-emerald-50");
+    statusDiv.textContent = "✓ Selected";
+    statusDiv.classList.replace("text-gray-400", "text-emerald-600");
+  }
+
+  updateMealSelectionCount();
+}
+
+function updateMealSelectionCount() {
+  document.getElementById("currentSelectionCount").textContent = selectedMeals.length;
+}
+</script>
+
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     const startButton = document.getElementById("start-cooking-button");
     if (startButton) {
@@ -1547,9 +1622,6 @@
 </body>
 </html>
 
-
-</body>
-</html>
 
 
 
