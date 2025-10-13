@@ -1146,6 +1146,119 @@
               <p class="text-orange-600 font-semibold">Selected: <span id="currentSelectionCount">0</span> meals</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableMeals"></div>
+
+<script>
+// 🌱💎👑 All Meals by Tier
+const meals = {
+  essential: [
+    {emoji:"🍽️", name:"Classic Peanut Butter Banana Oats", desc:"Overnight Oats", price:7.00},
+    {emoji:"🍽️", name:"Apple Cinnamon Oats", desc:"Overnight Oats", price:7.00},
+    {emoji:"🍽️", name:"Berry Yogurt Oats", desc:"Overnight Oats", price:7.00},
+    {emoji:"🍽️", name:"Power Plate", desc:"High Protein", price:12.00},
+    {emoji:"🍽️", name:"Strength Builder", desc:"High Protein", price:12.00},
+    {emoji:"🍽️", name:"Lean Machine", desc:"High Protein", price:13.50},
+    {emoji:"🍽️", name:"Brown Rice & Steamed Broccoli", desc:"All Veggies", price:7.00},
+    {emoji:"🍽️", name:"Mixed Veggie Medley with Rice", desc:"All Veggies", price:7.50},
+    {emoji:"🍽️", name:"Cauliflower Rice & Roasted Vegetables", desc:"All Veggies", price:8.00},
+    {emoji:"🍽️", name:"Primal Pork Chops", desc:"Carnivore", price:17.99},
+    {emoji:"🍽️", name:"Hunters Chicken Thighs", desc:"Carnivore", price:14.99},
+    {emoji:"🍽️", name:"Apex Ground Beef Bowl", desc:"Carnivore", price:16.99},
+  ],
+  premium: [
+    {emoji:"💎", name:"Tropical Coconut Mango", desc:"Rolled oats, coconut milk, yogurt, mango, shredded coconut, honey", price:9.00},
+    {emoji:"💎", name:"Alpha Ribeye Steak", desc:"8oz premium ribeye steak, seasoned with salt and pepper", price:24.99},
+    {emoji:"💎", name:"Beast Mode Beef Brisket", desc:"6oz slow-cooked beef brisket, tender and juicy", price:19.99},
+    {emoji:"💎", name:"Warrior Salmon Fillet", desc:"7oz wild-caught salmon fillet, grilled with minimal seasoning", price:18.99},
+    {emoji:"💎", name:"Quinoa & Roasted Broccoli Bowl", desc:"Fluffy quinoa, roasted broccoli, lemon, Italian herbs", price:8.50},
+    {emoji:"💎", name:"Muscle-Up Chicken Ranch Jar", desc:"Chicken, romaine, tomatoes, carrots, Greek yogurt ranch, cheddar", price:11.00},
+    {emoji:"💎", name:"Power Play Buffalo Crunch Jar", desc:"Buffalo chicken, romaine, carrots, celery, Greek yogurt blue cheese", price:11.50},
+    {emoji:"💎", name:"Shred & Spread Caesar Jar", desc:"Chicken, romaine, tomatoes, parmesan, Greek yogurt Caesar", price:11.00},
+  ],
+  gourmet: [
+    {emoji:"👑", name:"HIIT Fuel", desc:"Chicken fried rice with broccoli and carrots", price:12.00},
+    {emoji:"👑", name:"Carrot Cake", desc:"Rolled oats, milk, yogurt, grated carrot, raisins, honey, cinnamon", price:7.00},
+    {emoji:"👑", name:"Maple Walnut", desc:"Rolled oats, milk, yogurt, maple syrup, walnuts, vanilla, cinnamon", price:7.00},
+    {emoji:"👑", name:"Carnivore Power Trio", desc:"3oz ground beef, 2oz pork tenderloin, 3oz chicken thigh blend", price:22.99},
+    {emoji:"👑", name:"Land & Sea Warrior Plate", desc:"4oz sirloin steak strips with 4oz salmon fillet", price:27.99},
+    {emoji:"👑", name:"Roasted Sweet Potatoes & Green Beans", desc:"Cubed sweet potatoes, green beans, lemon juice, herbs", price:8.00},
+    {emoji:"👑", name:"Asian Veggie Fried Rice", desc:"Rice, broccoli, carrots, soy sauce, sesame oil, onions", price:8.50},
+    {emoji:"👑", name:"Twirly Spaghetti Jar", desc:"Spaghetti, marinara, ground beef/turkey, parmesan", price:10.00},
+    {emoji:"👑", name:"Bagel Pizza Party Bites", desc:"Mini bagels, marinara, mozzarella, mini pepperoni", price:8.50},
+    {emoji:"👑", name:"Fiesta Fuel Quinoa Jar", desc:"Quinoa, black beans, corn, red bell pepper, salsa", price:9.50},
+  ]
+};
+
+let selectedMeals = [];
+
+function renderMeals(tier) {
+  const container = document.getElementById('availableMeals');
+  container.innerHTML = '';
+  meals[tier].forEach(meal => {
+    const card = document.createElement('div');
+    card.className = 'p-4 bg-white border-4 border-yellow-300 rounded-2xl shadow-lg cursor-pointer text-center hover:scale-105 transition-all duration-300';
+    card.innerHTML = `
+      <div class="text-4xl mb-2">${meal.emoji}</div>
+      <h4 class="font-black text-lg text-purple-700">${meal.name}</h4>
+      <p class="text-gray-700 text-sm mb-2">${meal.desc}</p>
+      <div class="text-green-600 font-black text-xl">$${meal.price.toFixed(2)}</div>
+    `;
+    card.onclick = () => toggleMeal(meal, card);
+    container.appendChild(card);
+  });
+}
+
+function toggleMeal(meal, card) {
+  const index = selectedMeals.findIndex(m => m.name === meal.name);
+  if (index > -1) {
+    selectedMeals.splice(index, 1);
+    card.classList.remove('ring-4', 'ring-green-400', 'scale-105');
+  } else {
+    selectedMeals.push(meal);
+    card.classList.add('ring-4', 'ring-green-400', 'scale-105');
+  }
+  updateTotal();
+}
+
+function updateTotal() {
+  const total = selectedMeals.reduce((sum, m) => sum + m.price, 0);
+  document.getElementById('weeklyTotal').innerText = `$${total.toFixed(2)}`;
+  document.getElementById('currentSelectionCount').innerText = selectedMeals.length;
+}
+
+// when plan type selected
+// when plan type selected
+function showMealSelection() {
+  const plan = document.getElementById('planType').value;
+  const step2 = document.getElementById('mealCountSection');
+  const step3 = document.getElementById('mealSelectionSection');
+
+  // Hide both until something is chosen
+  step2.classList.add('hidden');
+  step3.classList.add('hidden');
+
+  // If a plan is picked, reveal Step 2
+  if (plan) {
+    step2.classList.remove('hidden');
+    // Reset selected meals and totals
+    selectedMeals = [];
+    document.getElementById('weeklyTotal').innerText = "$0.00";
+    document.getElementById('currentSelectionCount').innerText = "0";
+  }
+}
+
+// when meal count is selected
+function selectMealCount(count) {
+  const plan = document.getElementById('planType').value;
+  const step3 = document.getElementById('mealSelectionSection');
+
+  if (plan && meals[plan]) {
+    step3.classList.remove('hidden');
+    renderMeals(plan);
+  }
+}
+
+</script>
+
             <div class="mt-6 text-center">
               <div class="bg-white rounded-xl p-4 border-2 border-green-300">
                 <h4 class="font-black text-green-700 text-lg mb-2">Your Weekly Total</h4>
