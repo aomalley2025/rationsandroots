@@ -1221,8 +1221,16 @@ function toggleMeal(meal, card) {
 
 function updateTotal() {
   const total = selectedMeals.reduce((sum, m) => sum + m.price, 0);
+
+  // Update on-screen meal subtotal
   document.getElementById('weeklyTotal').innerText = `$${total.toFixed(2)}`;
   document.getElementById('currentSelectionCount').innerText = selectedMeals.length;
+
+  // Save meal subtotal as base total
+  document.getElementById('weeklyTotal').setAttribute('data-base-total', total.toFixed(2));
+
+  // Instantly refresh visible total (adds kid meals + delivery if selected)
+  updateDisplayedTotal();
 }
 
 // when plan type selected
