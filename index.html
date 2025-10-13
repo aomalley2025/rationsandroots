@@ -1687,11 +1687,33 @@ function updateMealSelectionCount() {
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const startButton = document.getElementById("start-cooking-button");
-    if (startButton) {
-      startButton.addEventListener("click", startCheckout);
-    }
+    if (startButton) startButton.addEventListener("click", startCheckout);
+
+    // make sure totals refresh live when these change
+    document.getElementById('kidMeals').addEventListener('change', updateDisplayedTotal);
+    document.getElementById('deliveryOption').addEventListener('change', updateDisplayedTotal);
   });
 
+  // 🔄 Update visible total whenever kid meals or delivery change
+  function updateDisplayedTotal() {
+    const totalElement = document.getElementById('weeklyTotal');
+    const base = parseFloat(totalElement.getAttribute('data-base-total') || 0);
+    const kidMeals = parseInt(document.getElementById('kidMeals').value || 0);
+    const deliveryOption = document.getElementById('deliveryOption').value;
+
+    const newTotal = base
+      + (kidMeals * 7.5)
+      + (deliveryOption === 'delivery' ? 9.99 : 0);
+
+    totalElement.textContent = `$${newTotal.toFixed(2)}`;
+  }
+
+  // 🧮 Called whenever the main meal total is calculated
+  // (insert this line inside your existing total-update logic)
+  // document.getElementById('weeklyTotal').setAttribute('data-base-total', total.toFixed(2));
+  // updateDisplayedTotal();
+
+  // 🚀 Stripe checkout
   async function startCheckout() {
     const planType = document.getElementById('planType').value;
     const mealCount = parseInt(document.querySelector('input[name="mealCount"]:checked')?.value || 0);
@@ -1703,17 +1725,11 @@ function updateMealSelectionCount() {
       return;
     }
 
-    const prices = { essential: 10, premium: 14, gourmet: 20 };
-    // pull the already-calculated on-screen total so Stripe matches the display
-const displayedTotal = parseFloat(
-  document.getElementById('weeklyTotal').textContent.replace('$', '')
-);
-
-// build the final total (add kid meals + delivery once)
-const total = displayedTotal
-  + (kidMeals * 7.5)
-  + (deliveryOption === 'delivery' ? 9.99 : 0);
-
+    // Use the number shown to the customer
+    const displayedTotal = parseFloat(
+      document.getElementById('weeklyTotal').textContent.replace('$', '')
+    );
+    const total = displayedTotal; // already includes kid & delivery from updateDisplayedTotal
 
     try {
       console.log("Sending checkout request:", { planType, mealCount, kidMeals, deliveryOption, total });
@@ -1723,7 +1739,7 @@ const total = displayedTotal
         body: JSON.stringify({
           planName: `${planType.toUpperCase()} Plan`,
           description: `${mealCount} meals + ${kidMeals} kid meals (${deliveryOption})`,
-          total: total
+          total: parseFloat(total.toFixed(2))
         })
       });
 
@@ -1741,6 +1757,7 @@ const total = displayedTotal
     }
   }
 </script>
+
 </body>
 </html>
 
