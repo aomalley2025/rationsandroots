@@ -6,9 +6,8 @@
   node_bundler = "esbuild"
   external_node_modules = ["stripe"]
 
-# ✅ Safe redirect that only affects root Netlify domain
+# ✅ Simplified redirect to your custom domain
 [[redirects]]
-  from = "https://rationsandrootsmeal.netlify.app/*"
+  from = "/*"
   to = "https://www.rationsandrootsmeal.com/:splat"
   status = 301
-  force = true
