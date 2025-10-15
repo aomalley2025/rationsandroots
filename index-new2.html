@@ -6,8 +6,6 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Rations &amp; Roots - Fresh Meal Delivery</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="icon" type="image/png" href="images/rooted-in-purpose-badge.png">
-
 <style>
         .hero-bg {
             background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
@@ -100,36 +98,32 @@
 <h2 class="text-4xl font-bold text-white mb-4">Our Menu</h2>
 <p class="text-xl text-emerald-100">Choose from our variety of fresh, nutritious meal options</p>
 </div>
-<!-- ✅ Fixed Clickable Tab Buttons -->
+<!-- Tab Navigation -->
 <div class="flex flex-wrap justify-center gap-2 mb-12">
-  <button class="menu-tab-active px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors" id="tab-high-protein" onclick="showTab('high-protein')">
-    High Protein
-  </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-overnight-oats" onclick="showTab('overnight-oats')">
-    Overnight Oats
-  </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-carnivore" onclick="showTab('carnivore')">
-    Carnivore
-  </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-all-veggies" onclick="showTab('all-veggies')">
-    All Veggies
-  </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-kid-friendly" onclick="showTab('kid-friendly')">
-    Kid Friendly
-  </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-mason-jar-salads" onclick="showTab('mason-jar-salads')">
-    Mason Jar Salads
-  </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-family-meals" onclick="showTab('family-meals')">
-    Family Meals
-  </button>
+<button class="menu-tab-active px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors" id="tab-high-protein" onclick="showTab('high-protein')">
+                    High Protein
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-overnight-oats" onclick="showTab('overnight-oats')">
+                    Overnight Oats
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-carnivore" onclick="showTab('carnivore')">
+                    Carnivore
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-all-veggies" onclick="showTab('all-veggies')">
+                    All Veggies
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-kid-friendly" onclick="showTab('kid-friendly')">
+                    Kid Friendly
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-mason-jar-salads" onclick="showTab('mason-jar-salads')">
+                    Mason Jar Salads
+                </button>
+<button class="menu-tab-inactive px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-family-meals" onclick="showTab('family-meals')">
+                    Family Meals
+                </button>
 </div>
-
-<!-- Tab Navigation -->
-<!-- Tab Navigation -->
-
 <!-- Tab Content -->
-<div class="tab-content" id="high-protein">
+<div class="tab-content" id="content-high-protein">
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 <div class="meal-card bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
 <div class="flex items-center justify-between mb-4">
@@ -144,10 +138,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-red-600">$15.00</div>
-<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-l-4 border-green-500 transform hover:scale-105 transition-all duration-300">
@@ -163,10 +154,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-green-600">$13.50</div>
-<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-blue-500 transform hover:scale-105 transition-all duration-300">
@@ -182,10 +170,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-blue-600">$12.00</div>
-<button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
@@ -201,10 +186,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-purple-600">$12.00</div>
-<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
@@ -220,10 +202,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-orange-600">$15.00</div>
-<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl shadow-lg p-6 border-l-4 border-teal-500 transform hover:scale-105 transition-all duration-300">
@@ -239,15 +218,12 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-teal-600">$12.00</div>
-<button class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 </div>
 </div>
-<div class="tab-content hidden" id="overnight-oats">
+<div class="tab-content hidden" id="content-overnight-oats">
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
 <div class="flex items-center justify-between mb-4">
@@ -262,10 +238,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-yellow-600">$7.00</div>
-<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-red-50 to-pink-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
@@ -281,10 +254,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-red-600">$7.00</div>
-<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
@@ -300,11 +270,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-purple-600">$7.00</div>
-<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-
-</button>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
@@ -320,10 +286,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-orange-600">$7.00</div>
-<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-amber-500 transform hover:scale-105 transition-all duration-300">
@@ -339,10 +302,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-amber-600">$7.00</div>
-<button class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-lg p-6 border-l-4 border-emerald-500 transform hover:scale-105 transition-all duration-300">
@@ -358,15 +318,12 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-emerald-600">$8.00</div>
-<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 </div>
 </div>
-<div class="tab-content hidden" id="carnivore">
+<div class="tab-content hidden" id="content-carnivore">
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 <div class="meal-card bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
 <div class="flex items-center justify-between mb-4">
@@ -381,10 +338,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-red-600">$24.99</div>
-<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
@@ -400,10 +354,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-orange-600">$19.99</div>
-<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-pink-50 to-red-50 rounded-xl shadow-lg p-6 border-l-4 border-pink-500 transform hover:scale-105 transition-all duration-300">
@@ -419,10 +370,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-pink-600">$18.99</div>
-<button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
@@ -438,10 +386,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-purple-600">$17.99</div>
-<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
@@ -457,10 +402,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-yellow-600">$14.99</div>
-<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl shadow-lg p-6 border-l-4 border-gray-500 transform hover:scale-105 transition-all duration-300">
@@ -476,10 +418,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-gray-600">$16.99</div>
-<button class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-lg p-6 border-l-4 border-emerald-500 transform hover:scale-105 transition-all duration-300">
@@ -495,10 +434,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-emerald-600">$22.99</div>
-<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-blue-500 transform hover:scale-105 transition-all duration-300">
@@ -514,15 +450,12 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-blue-600">$27.99</div>
-<button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 </div>
 </div>
-<div class="tab-content hidden" id="all-veggies">
+<div class="tab-content hidden" id="content-all-veggies">
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 <div class="meal-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-l-4 border-green-500 transform hover:scale-105 transition-all duration-300">
 <div class="flex items-center justify-between mb-4">
@@ -537,10 +470,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-green-600">$8.00</div>
-<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-lg p-6 border-l-4 border-emerald-500 transform hover:scale-105 transition-all duration-300">
@@ -556,10 +486,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-emerald-600">$8.50</div>
-<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-lime-50 to-green-50 rounded-xl shadow-lg p-6 border-l-4 border-lime-500 transform hover:scale-105 transition-all duration-300">
@@ -575,10 +502,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-lime-600">$7.00</div>
-<button class="bg-lime-500 text-white px-4 py-2 rounded-lg hover:bg-lime-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-lime-500 text-white px-4 py-2 rounded-lg hover:bg-lime-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
@@ -594,10 +518,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-yellow-600">$7.50</div>
-<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-orange-50 to-red-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
@@ -613,10 +534,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-orange-600">$8.00</div>
-<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl shadow-lg p-6 border-l-4 border-teal-500 transform hover:scale-105 transition-all duration-300">
@@ -632,15 +550,12 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-teal-600">$8.50</div>
-<button class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 </div>
 </div>
-<div class="tab-content hidden" id="kid-friendly">
+<div class="tab-content hidden" id="content-kid-friendly">
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
 <div class="flex items-center justify-between mb-4">
@@ -655,10 +570,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-yellow-600">$9.00</div>
-<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl shadow-lg p-6 border-l-4 border-pink-500 transform hover:scale-105 transition-all duration-300">
@@ -674,10 +586,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-pink-600">$8.00</div>
-<button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
@@ -693,10 +602,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-red-600">$10.00</div>
-<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
@@ -712,10 +618,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-orange-600">$8.50</div>
-<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
@@ -731,15 +634,12 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-purple-600">$7.50</div>
-<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 </div>
 </div>
-<div class="tab-content hidden" id="mason-jar-salads">
+<div class="tab-content hidden" id="content-mason-jar-salads">
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 <div class="meal-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-l-4 border-green-500 transform hover:scale-105 transition-all duration-300">
 <div class="flex items-center justify-between mb-4">
@@ -754,10 +654,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-green-600">$11.00</div>
-<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-orange-50 to-red-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
@@ -773,10 +670,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-orange-600">$11.50</div>
-<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
@@ -792,10 +686,7 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-yellow-600">$9.50</div>
-<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 <div class="meal-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-purple-500 transform hover:scale-105 transition-all duration-300">
@@ -811,17 +702,14 @@
 </div>
 <div class="flex justify-between items-center">
 <div class="text-2xl font-bold text-purple-600">$11.00</div>
-<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold"><!-- <button class="mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-2 rounded-full font-bold shadow hover:scale-105 transition-transform">
-  Add to Cart
-</button> -->
-</button>
+<button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors text-sm font-semibold">Add to Cart</button>
 </div>
 </div>
 </div>
 </div>
-<div class="tab-content hidden" id="family-meals">
+<div class="tab-content hidden" id="content-family-meals">
   <div class="mb-8 text-center">
-    <div class="text-4xl mb-4">🍽️</div>f
+    <div class="text-4xl mb-4">🍽️</div>
     <h3 class="text-2xl font-bold mb-4">Family Adventure Meals</h3>
     <p class="text-gray-600 mb-6">Complete dinner experiences that bring everyone to the table</p>
     <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
@@ -919,33 +807,6 @@
     </div>
   </div>
 </div>
-<script>
-function showTab(tabId) {
-  console.log("Switching to tab:", tabId);
-
-  // hide all tab content sections
-document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
-
-  // remove active style from all tab buttons
-  document.querySelectorAll('[id^="tab-"]').forEach(btn => {
-    btn.classList.remove('bg-emerald-600', 'text-white');
-    btn.classList.add('bg-gray-200', 'text-gray-700');
-  });
-
-  // show the selected tab
-  document.getElementById(tabId).classList.remove('hidden');
-
-  // highlight the active button
-  const activeBtn = document.getElementById('tab-' + tabId);
-  activeBtn.classList.add('bg-emerald-600', 'text-white');
-  activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
-}
-
-// default tab on page load
-document.addEventListener('DOMContentLoaded', () => {
-  showTab('high-protein');
-});
-</script>
 
 </section>
 <!-- Testimonials -->
@@ -1230,8 +1091,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="text-2xl mr-2">🎯</span>
             Step 1: Choose Your Plan Type
           </label>
-		  <select id="planType" onchange="showMealSelection()" 
-                  class="w-full px-6 py-4 border-4 border-purple-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-bold bg-gradient-to-r from-purple-50 to-pink-50" id="planType" onchange="showMealSelection()" required>
+          <select class="w-full px-6 py-4 border-4 border-purple-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-bold bg-gradient-to-r from-purple-50 to-pink-50" id="planType" onchange="showMealSelection()" required>
             <option value="">🌟 Pick your adventure!</option>
             <option value="essential">🌱 Essential - $7-$12 per meal (varies by selection)</option>
             <option value="premium">⭐ Premium - $12-$15 per meal (varies by selection)</option>
@@ -1330,36 +1190,6 @@ const meals = {
 
 let selectedMeals = [];
 
-// ====== STEP 1: SHOW MEAL SELECTION ======
-function showMealSelection() {
-  const plan = document.getElementById('planType').value;
-  const step2 = document.getElementById('mealCountSection');
-  const step3 = document.getElementById('mealSelectionSection');
-
-  step2.classList.add('hidden');
-  step3.classList.add('hidden');
-
-  if (plan) {
-    step2.classList.remove('hidden');
-    selectedMeals = [];
-    document.getElementById('weeklyTotal').innerText = '$0.00';
-    document.getElementById('currentSelectionCount').innerText = '0';
-  }
-}
-
-// ====== STEP 2: SELECT MEAL COUNT ======
-function selectMealCount(count) {
-  const plan = document.getElementById('planType').value;
-  const step3 = document.getElementById('mealSelectionSection');
-
-  if (plan && meals[plan]) {
-    document.getElementById('selectedMealCount').innerText = count;
-    step3.classList.remove('hidden');
-    renderMeals(plan);
-  }
-}
-
-// ====== RENDER MEALS ======
 function renderMeals(tier) {
   const container = document.getElementById('availableMeals');
   container.innerHTML = '';
@@ -1377,7 +1207,6 @@ function renderMeals(tier) {
   });
 }
 
-// ====== TOGGLE MEAL SELECTION ======
 function toggleMeal(meal, card) {
   const index = selectedMeals.findIndex(m => m.name === meal.name);
   if (index > -1) {
@@ -1390,48 +1219,53 @@ function toggleMeal(meal, card) {
   updateTotal();
 }
 
-// ====== UPDATE TOTALS ======
 function updateTotal() {
   const total = selectedMeals.reduce((sum, m) => sum + m.price, 0);
+
+  // Update on-screen meal subtotal
   document.getElementById('weeklyTotal').innerText = `$${total.toFixed(2)}`;
   document.getElementById('currentSelectionCount').innerText = selectedMeals.length;
+
+  // Save meal subtotal as base total
   document.getElementById('weeklyTotal').setAttribute('data-base-total', total.toFixed(2));
+
+  // Instantly refresh visible total (adds kid meals + delivery if selected)
   updateDisplayedTotal();
 }
 
-// ====== KID MEALS ======
-function showKidMealSelection() {
-  const count = parseInt(document.getElementById('kidMeals').value) || 0;
-  const total = count * 7.5;
-  document.getElementById('kidMealTotal').innerText = `$${total.toFixed(2)}`;
-  updateDisplayedTotal();
-}
+// when plan type selected
+// when plan type selected
+function showMealSelection() {
+  const plan = document.getElementById('planType').value;
+  const step2 = document.getElementById('mealCountSection');
+  const step3 = document.getElementById('mealSelectionSection');
 
-// ====== DISPLAYED TOTAL ======
-function updateDisplayedTotal() {
-  const base = parseFloat(document.getElementById('weeklyTotal').getAttribute('data-base-total')) || 0;
-  const kid = parseFloat(document.getElementById('kidMealTotal').innerText.replace('$', '')) || 0;
-  const delivery = document.getElementById('deliveryOption')?.value === 'delivery' ? 9.99 : 0;
-  const grand = base + kid + delivery;
-  document.getElementById('weeklyTotal').innerText = `$${grand.toFixed(2)}`;
-}
-// ====== DELIVERY ADDRESS + TOTAL ======
-function toggleDeliveryAddress() {
-  const option = document.getElementById('deliveryOption').value;
-  const addressSection = document.getElementById('deliveryAddressSection');
+  // Hide both until something is chosen
+  step2.classList.add('hidden');
+  step3.classList.add('hidden');
 
-  if (option === 'delivery') {
-    addressSection.classList.remove('hidden');
-  } else {
-    addressSection.classList.add('hidden');
+  // If a plan is picked, reveal Step 2
+  if (plan) {
+    step2.classList.remove('hidden');
+    // Reset selected meals and totals
+    selectedMeals = [];
+    document.getElementById('weeklyTotal').innerText = "$0.00";
+    document.getElementById('currentSelectionCount').innerText = "0";
   }
+}
 
-  // Update total when user changes delivery option
-  updateDisplayedTotal();
+// when meal count is selected
+function selectMealCount(count) {
+  const plan = document.getElementById('planType').value;
+  const step3 = document.getElementById('mealSelectionSection');
+
+  if (plan && meals[plan]) {
+    step3.classList.remove('hidden');
+    renderMeals(plan);
+  }
 }
 
 </script>
-
 
             <div class="mt-6 text-center">
               <div class="bg-white rounded-xl p-4 border-2 border-green-300">
@@ -1512,22 +1346,18 @@ function toggleDeliveryAddress() {
               <div class="text-3xl mb-2">💵</div>
               <h4 class="font-bold text-gray-700">Cash at Pickup</h4>
               <p class="text-xs text-gray-600">Pay in person</p>
-			  </div>
-			</div>
-             
-<div class="text-center mt-8">
+              <!-- ✅ Final Checkout Button -->
+<div class="text-center pt-6">
   <button 
-  id="start-cooking-button"
-  type="button"
-  onclick="startCheckout()"
-  class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 
-         hover:from-green-500 hover:via-blue-600 hover:to-purple-700 
-         text-white font-black text-2xl px-12 py-6 rounded-full 
-         shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
-  🎉 Let's Start Cooking! 🎉
-</button>
-
-  <p class="text-purple-700 font-extrabold mt-4 text-lg">
+    type="button"
+    onclick="startCheckout()"
+    class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 
+           hover:from-green-500 hover:via-blue-600 hover:to-purple-700 
+           text-white font-black text-2xl px-12 py-6 rounded-full 
+           shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
+    🎉 Let's Start Cooking! 🎉
+  </button>
+  <p class="text-purple-600 font-bold mt-4 text-lg">
     ✨ Your taste buds will thank you! ✨
   </p>
 </div>
@@ -1768,6 +1598,8 @@ function toggleDeliveryAddress() {
           <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
         </linearGradient>
       </defs>
+
+      <!-- Root paths -->
       <g fill="none" stroke="url(#rootFade)" stroke-linecap="round" stroke-linejoin="round">
         <path stroke-width="3" d="M720 10 C720 40, 720 70, 720 95 C720 120, 705 145, 705 165 C705 185, 715 205, 720 225"/>
         <path stroke-width="2.5" opacity="0.9" d="M720 70 C670 85, 635 95, 600 105 C565 115, 545 135, 530 150 C515 165, 515 185, 520 205"/>
@@ -1782,80 +1614,161 @@ function toggleDeliveryAddress() {
     </svg>
   </div>
 
+  <!-- Bottom breathing space -->
   <div class="h-12 md:h-16"></div>
 </footer>
-
-<!-- ✅ Cleaned dynamic Stripe checkout logic -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const startButton = document.getElementById("start-cooking-button");
-  if (startButton) startButton.addEventListener("click", startCheckout);
+// --- Dynamic Meal Selection (Restored) ---
 
-  // make totals update when user changes delivery or kid meals
-  document.getElementById("kidMeals")?.addEventListener("change", updateDisplayedTotal);
-  document.getElementById("deliveryOption")?.addEventListener("change", updateDisplayedTotal);
-});
+const mealDatabase = [
+  { name: "PR Steak Out", price: 15.00, tier: "premium", description: "Lean sirloin steak with brown rice & roasted vegetables" },
+  { name: "Lean Machine", price: 13.50, tier: "essential", description: "Grilled lemon herb chicken with quinoa & roasted broccoli" },
+  { name: "Power Plate", price: 12.00, tier: "essential", description: "Chicken, brown rice & steamed broccoli" },
+  { name: "Strength Builder", price: 12.00, tier: "essential", description: "Chicken & veggie skillet with brown rice" },
+  { name: "Omega Gainz", price: 15.00, tier: "premium", description: "Baked salmon with roasted sweet potatoes & green beans" }
+];
 
-// 🧮 Update displayed total (base + kid + delivery)
-function updateDisplayedTotal() {
-  const base = parseFloat(document.getElementById("weeklyTotal")?.getAttribute("data-base-total")) || 0;
-  const kid = parseFloat(document.getElementById("kidMealTotal")?.innerText.replace("$", "")) || 0;
-  const delivery = document.getElementById("deliveryOption")?.value === "delivery" ? 9.99 : 0;
-  const grand = base + kid + delivery;
-  document.getElementById("weeklyTotal").innerText = `$${grand.toFixed(2)}`;
-}
+let selectedMeals = [];
+let maxMeals = 0;
 
-// 🚀 Send the live total to your Netlify Function → Stripe checkout
-async function startCheckout() {
+function showMealSelection() {
   const planType = document.getElementById("planType").value;
-  const mealCount = parseInt(document.querySelector('input[name="mealCount"]:checked')?.value || 0);
-  const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
-  const deliveryOption = document.getElementById("deliveryOption")?.value || "pickup";
+  const mealCountSection = document.getElementById("mealCountSection");
+  const mealSelectionSection = document.getElementById("mealSelectionSection");
+  const availableMeals = document.getElementById("availableMeals");
 
-  if (!planType || mealCount === 0) {
-    alert("Please select your plan and meal count before checking out.");
+  if (!planType) {
+    mealCountSection.classList.add("hidden");
+    mealSelectionSection.classList.add("hidden");
     return;
   }
 
-  // total displayed to user (includes kids + delivery)
-  const displayedTotal = parseFloat(document.getElementById("weeklyTotal").textContent.replace("$", ""));
-  const total = parseFloat(displayedTotal.toFixed(2));
+  mealCountSection.classList.remove("hidden");
+  mealSelectionSection.classList.remove("hidden");
 
-  try {
-    console.log("Sending checkout request:", { planType, mealCount, kidMeals, deliveryOption, total });
-    const response = await fetch("/.netlify/functions/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        planName: `${planType.toUpperCase()} Plan`,
-        description: `${mealCount} meals + ${kidMeals} kid meals (${deliveryOption})`,
-        total
-      })
-    });
-
-    if (!response.ok) throw new Error("Network response was not ok");
-
-    const data = await response.json();
-    if (data.url) {
-      window.location.href = data.url; // ✅ redirect to Stripe checkout
-    } else {
-      throw new Error("Stripe URL not returned");
-    }
-  } catch (err) {
-    console.error("Checkout error:", err);
-    alert("There was an issue connecting to Stripe. Please try again.");
-  }
+  const filteredMeals = mealDatabase.filter(meal => meal.tier === planType);
+  availableMeals.innerHTML = filteredMeals.map((meal, i) => `
+    <div onclick="toggleMealSelection(${i}, '${meal.name}', ${meal.price})"
+      class="p-4 border rounded-lg cursor-pointer hover:bg-emerald-50 transition">
+      <h4 class="font-bold text-gray-800">${meal.name}</h4>
+      <p class="text-sm text-gray-500 mb-2">${meal.description}</p>
+      <div class="font-semibold text-emerald-600">$${meal.price.toFixed(2)}</div>
+      <div id="meal-${i}" class="text-xs text-gray-400">Click to select</div>
+    </div>
+  `).join('');
 }
+
+function selectMealCount(count) {
+  maxMeals = count;
+  selectedMeals = [];
+  document.getElementById("selectedMealCount").textContent = count;
+  document.querySelectorAll('input[name="mealCount"]').forEach(i => i.checked = false);
+  document.getElementById(`meals${count}`).checked = true;
+  updateMealSelectionCount();
+}
+
+function toggleMealSelection(index, name, price) {
+  const mealDiv = document.querySelector(`[onclick*="toggleMealSelection(${index}"]`);
+  const statusDiv = document.getElementById(`meal-${index}`);
+  const already = selectedMeals.findIndex(m => m.index === index);
+
+  if (already >= 0) {
+    selectedMeals.splice(already, 1);
+    mealDiv.classList.remove("ring-4", "ring-emerald-500", "bg-emerald-50");
+    statusDiv.textContent = "Click to select";
+    statusDiv.classList.replace("text-emerald-600", "text-gray-400");
+  } else if (selectedMeals.length < maxMeals) {
+    selectedMeals.push({ index, name, price });
+    mealDiv.classList.add("ring-4", "ring-emerald-500", "bg-emerald-50");
+    statusDiv.textContent = "✓ Selected";
+    statusDiv.classList.replace("text-gray-400", "text-emerald-600");
+  }
+
+  updateMealSelectionCount();
+}
+
+function updateMealSelectionCount() {
+  document.getElementById("currentSelectionCount").textContent = selectedMeals.length;
+}
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const startButton = document.getElementById("start-cooking-button");
+    if (startButton) startButton.addEventListener("click", startCheckout);
+
+    // make sure totals refresh live when these change
+    document.getElementById('kidMeals').addEventListener('change', updateDisplayedTotal);
+    document.getElementById('deliveryOption').addEventListener('change', updateDisplayedTotal);
+  });
+
+  // 🔄 Update visible total whenever kid meals or delivery change
+  function updateDisplayedTotal() {
+    const totalElement = document.getElementById('weeklyTotal');
+    const base = parseFloat(totalElement.getAttribute('data-base-total') || 0);
+    const kidMeals = parseInt(document.getElementById('kidMeals').value || 0);
+    const deliveryOption = document.getElementById('deliveryOption').value;
+
+    const newTotal = base
+      + (kidMeals * 7.5)
+      + (deliveryOption === 'delivery' ? 9.99 : 0);
+
+    totalElement.textContent = `$${newTotal.toFixed(2)}`;
+  }
+
+  // 🧮 Called whenever the main meal total is calculated
+  // (insert this line inside your existing total-update logic)
+  // document.getElementById('weeklyTotal').setAttribute('data-base-total', total.toFixed(2));
+     updateDisplayedTotal();
+
+  // 🚀 Stripe checkout
+  async function startCheckout() {
+    const planType = document.getElementById('planType').value;
+    const mealCount = parseInt(document.querySelector('input[name="mealCount"]:checked')?.value || 0);
+    const kidMeals = parseInt(document.getElementById('kidMeals').value || 0);
+    const deliveryOption = document.getElementById('deliveryOption').value;
+
+    if (!planType || mealCount === 0) {
+      alert("Please select your plan and meal count before checking out.");
+      return;
+    }
+
+    // Use the number shown to the customer
+    const displayedTotal = parseFloat(
+      document.getElementById('weeklyTotal').textContent.replace('$', '')
+    );
+    const total = displayedTotal; // already includes kid & delivery from updateDisplayedTotal
+
+    try {
+      console.log("Sending checkout request:", { planType, mealCount, kidMeals, deliveryOption, total });
+      const response = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          planName: `${planType.toUpperCase()} Plan`,
+          description: `${mealCount} meals + ${kidMeals} kid meals (${deliveryOption})`,
+          total: parseFloat(total.toFixed(2))
+        })
+      });
+
+      const data = await response.json();
+      console.log("Stripe response:", data);
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Something went wrong creating your checkout session.");
+      }
+    } catch (err) {
+      console.error("Checkout error:", err);
+      alert("There was an issue connecting to Stripe.");
+    }
+  }
 </script>
 
 </body>
 </html>
 
-
-
-
-
-  
 
 
 
