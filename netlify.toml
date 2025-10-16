@@ -4,7 +4,7 @@
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["stripe"]
+  external_node_modules = ["stripe", "node-fetch"]
 
 # ✅ Simplified redirect to your custom domain
 [[redirects]]
