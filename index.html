@@ -5,6 +5,16 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Rations &amp; Roots - Fresh Meal Delivery</title>
+<!-- 🌱 SEO & Social Meta Tags -->
+<meta name="description" content="Veteran-owned meal prep company serving chef-crafted, high-protein meals. Fuel your body. Fork the rest. Pickup or delivery every Monday!">
+<meta name="keywords" content="meal prep, healthy meals, veteran owned, fitness food, Rations and Roots, chef crafted, local meal delivery, healthy eating Texas">
+<meta name="author" content="Rations & Roots Meal Co.">
+<meta property="og:title" content="Rations & Roots Meal Co. 🌱 Fuel Your Body. Fork the Rest.">
+<meta property="og:description" content="Chef-crafted, locally sourced meal prep. Order by Wednesday, pickup Monday — powered by Rations & Roots Meal Co.">
+<meta property="og:image" content="https://www.rationsandrootsmeal.com/images/rooted-in-purpose-badge.png">
+<meta property="og:url" content="https://www.rationsandrootsmeal.com">
+<meta name="twitter:card" content="summary_large_image">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="icon" type="image/png" href="images/rooted-in-purpose-badge.png">
 
@@ -132,29 +142,43 @@
 <h2 class="text-4xl font-bold text-white mb-4">Our Menu</h2>
 <p class="text-xl text-emerald-100">Choose from our variety of fresh, nutritious meal options</p>
 </div>
-<!-- ✅ Fixed Clickable Tab Buttons -->
-<div class="flex flex-wrap justify-center gap-2 mb-12">
-  <button class="menu-tab-active px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors" id="tab-high-protein" onclick="showTab('high-protein')">
-    High Protein
-  </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-overnight-oats" onclick="showTab('overnight-oats')">
+> <div class="flex flex-wrap justify-center gap-4 mb-8">
+  <button class="menu-filter-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          id="tab-overnight-oats" onclick="showTab('overnight-oats')">
     Overnight Oats
   </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-carnivore" onclick="showTab('carnivore')">
+
+  <button class="menu-filter-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          id="tab-high-protein" onclick="showTab('high-protein')">
+    High Protein
+  </button>
+
+  <button class="menu-filter-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          id="tab-carnivore" onclick="showTab('carnivore')">
     Carnivore
   </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-all-veggies" onclick="showTab('all-veggies')">
+
+  <button class="menu-filter-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          id="tab-all-veggies" onclick="showTab('all-veggies')">
     All Veggies
   </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-kid-friendly" onclick="showTab('kid-friendly')">
+
+  <button class="menu-filter-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          id="tab-kid-friendly" onclick="showTab('kid-friendly')">
     Kid Friendly
   </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-mason-jar-salads" onclick="showTab('mason-jar-salads')">
+
+  <button class="menu-filter-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          id="tab-mason-jar-salads" onclick="showTab('mason-jar-salads')">
     Mason Jar Salads
   </button>
-  <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="tab-family-meals" onclick="showTab('family-meals')">
+
+  <button class="menu-filter-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          id="tab-family-meals" onclick="showTab('family-meals')">
     Family Meals
   </button>
+</div>
+
 </div>
 
 <!-- Tab Navigation -->
@@ -1467,17 +1491,22 @@ function toggleDeliveryAddress() {
 
 
             <div class="mt-6 text-center">
-              <div class="bg-white rounded-xl p-4 border-2 border-green-300">
-                <h4 class="font-black text-green-700 text-lg mb-2">Your Weekly Total</h4>
-                <div class="text-3xl font-black text-green-600" id="weeklyTotal">$0.00</div>
-                <p class="text-green-600 text-sm font-semibold">(Plus delivery fee if applicable)</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="transform hover:scale-105 transition-all duration-200">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">🧒</span>
+  <div class="bg-white rounded-xl p-4 border-2 border-green-300">
+    <h4 class="font-black text-green-700 text-lg mb-2">Your Weekly Total</h4>
+    <div class="text-3xl font-black text-green-600" id="weeklyTotal">$0.00</div>
+    <p class="text-green-600 text-sm font-semibold">(Plus delivery fee if applicable)</p>
+  </div>
+</div>
+
+<!-- 🚫 Alert placeholder for min meal message -->
+<div id="minMealAlert" class="hidden mt-4 text-center font-bold bg-red-100 border-2 border-red-400 text-red-800 rounded-xl py-3 px-4 shadow-inner">
+  ⚠️ Please select at least 6 meals to start your food adventure!
+</div>
+
+<div class="transform hover:scale-105 transition-all duration-200">
+  <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
+    <span class="text-2xl mr-2">🧒</span>
+
             Add Kid Meals ($7.50 each)
           </label>
           <select class="w-full px-6 py-4 border-4 border-yellow-300 rounded-2xl focus:ring-4 focus:ring-yellow-300 focus:border-yellow-500 text-lg font-bold bg-gradient-to-r from-yellow-50 to-orange-50" id="kidMeals" onchange="showKidMealSelection()">
@@ -1842,6 +1871,29 @@ function updateDisplayedTotal() {
 async function startCheckout() {
   const planType = document.getElementById("planType").value;
   const mealCount = parseInt(document.querySelector('input[name="mealCount"]:checked')?.value || 0);
+// ✅ Prevent checkout unless 6, 12, or 18 meals selected
+if (![6, 12, 18].includes(mealCount)) {
+  const alertBox = document.getElementById('minMealAlert');
+  if (alertBox) {
+    alertBox.classList.remove('hidden');
+    alertBox.classList.add('animate-bounce');
+    alertBox.style.backgroundColor = '#fee2e2';  // light red
+    alertBox.style.borderColor = '#ef4444';      // red border
+    alertBox.style.color = '#b91c1c';            // dark red text
+    alertBox.style.transition = 'opacity 0.5s ease';
+
+    // fade it out after 4 seconds
+    setTimeout(() => {
+      alertBox.style.opacity = '0';
+      setTimeout(() => {
+        alertBox.classList.add('hidden');
+        alertBox.style.opacity = '1';
+      }, 500);
+    }, 4000);
+  }
+  return;
+}
+
   const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
   const deliveryOption = document.getElementById("deliveryOption")?.value || "pickup";
 
@@ -1879,7 +1931,30 @@ async function startCheckout() {
     alert("There was an issue connecting to Stripe. Please try again.");
   }
 }
+<script>
+function showTab(tabId) {
+  // Hide all tab contents
+  document.querySelectorAll('[id^="tab-content-"]').forEach(tab => tab.classList.add('hidden'));
+
+  // Remove active styling from all buttons
+  document.querySelectorAll('.menu-filter-btn').forEach(btn => {
+    btn.classList.remove('bg-green-700', 'text-white');
+    btn.classList.add('bg-gray-200', 'text-gray-700');
+  });
+
+  // Show selected tab content
+  const content = document.getElementById(`tab-content-${tabId}`);
+  if (content) content.classList.remove('hidden');
+
+  // Highlight the active tab
+  const activeButton = document.getElementById(`tab-${tabId}`);
+  if (activeButton) {
+    activeButton.classList.remove('bg-gray-200', 'text-gray-700');
+    activeButton.classList.add('bg-green-700', 'text-white');
+  }
+}
 </script>
+
 
 </body>
 </html>
