@@ -1731,8 +1731,6 @@ function updateDisplayedTotal() {
   orderTotalEl.setAttribute("data-base-total", grandTotal);
 }
 
-}
-
 // ✅ Add kid meals into Stripe checkout
 document.getElementById("checkoutNowBtn")?.addEventListener("click", async () => {
   const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
