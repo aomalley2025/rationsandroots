@@ -1215,390 +1215,216 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 </section>
-<!-- Order Form -->
-<section class="py-16 bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-100 relative overflow-hidden">
-<!-- Fun Background Elements -->
-<div class="absolute inset-0 opacity-10">
-<div class="absolute top-20 left-10 w-16 h-16 bg-orange-400 rounded-full animate-bounce"></div>
-<div class="absolute top-40 right-20 w-12 h-12 bg-green-400 rounded-full animate-pulse"></div>
-<div class="absolute bottom-32 left-1/4 w-20 h-20 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.7s;"></div>
-<div class="absolute bottom-20 right-1/3 w-14 h-14 bg-red-400 rounded-full animate-pulse" style="animation-delay: 1.2s;"></div>
-</div>
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-  <div class="bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 rounded-3xl shadow-2xl border-4 border-white p-8 md:p-12 transform hover:scale-105 transition-all duration-300">
-    <div class="text-center mb-12">
-      <div class="text-6xl mb-4 animate-bounce">🚀</div>
-      <h2 class="text-5xl font-black text-white mb-4 drop-shadow-lg">Start Your Food Adventure!</h2>
-      <p class="text-2xl text-orange-100 font-bold">Ready to transform your meal routine? Let's make it happen! ✨</p>
+<!-- Order Form (Final Version with Real Stripe Integration) -->
+<section id="order-now" class="py-16 bg-gradient-to-br from-emerald-800 to-green-700 text-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-4xl font-extrabold">Start Your Week Fresh 🌱</h2>
+      <p class="text-emerald-100 mt-2 text-lg">Choose your plan, pick your meals, and checkout securely.</p>
     </div>
-    <div class="bg-white rounded-2xl p-8 border-4 border-yellow-300 shadow-2xl">
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="transform hover:scale-105 transition-all duration-200">
-            <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-              <span class="text-2xl mr-2">👋</span>
-              First Name
-            </label>
-            <input class="w-full px-6 py-4 border-4 border-pink-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-semibold bg-gradient-to-r from-pink-50 to-purple-50" placeholder="What should we call you?" required type="text">
-          </div>
-          <div class="transform hover:scale-105 transition-all duration-200">
-            <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-              <span class="text-2xl mr-2">🎯</span>
-              Last Name
-            </label>
-            <input class="w-full px-6 py-4 border-4 border-pink-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-semibold bg-gradient-to-r from-pink-50 to-purple-50" placeholder="Your family name!" required type="text">
-          </div>
-        </div>
-        <div class="transform hover:scale-105 transition-all duration-200">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">📧</span>
-            Email Address
-          </label>
-          <input class="w-full px-6 py-4 border-4 border-green-300 rounded-2xl focus:ring-4 focus:ring-green-300 focus:border-green-500 text-lg font-semibold bg-gradient-to-r from-green-50 to-emerald-50" placeholder="your.awesome@email.com" required type="email">
-        </div>
-        <div class="transform hover:scale-105 transition-all duration-200">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">📱</span>
-            Phone Number
-          </label>
-          <input class="w-full px-6 py-4 border-4 border-blue-300 rounded-2xl focus:ring-4 focus:ring-blue-300 focus:border-blue-500 text-lg font-semibold bg-gradient-to-r from-blue-50 to-cyan-50" placeholder="(555) 123-4567" required type="tel">
-        </div>
-        <div class="transform hover:scale-105 transition-all duration-200">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">🚚</span>
-            Delivery Option
-          </label>
-          <select class="w-full px-6 py-4 border-4 border-orange-300 rounded-2xl focus:ring-4 focus:ring-orange-300 focus:border-orange-500 text-lg font-bold bg-gradient-to-r from-orange-50 to-yellow-50" id="deliveryOption" onchange="toggleDeliveryAddress()" required>
-            <option value="">🎯 How would you like to get your meals?</option>
-            <option value="pickup">🏋️ Pickup at Centerville Gym (Mondays 8am-10am) - FREE!</option>
-            <option value="delivery">🏠 Home Delivery (+$9.99 delivery fee)</option>
+
+    <div class="bg-white text-gray-800 rounded-2xl shadow-2xl p-8">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-bold text-lg mb-2 text-emerald-700">Choose Your Plan</label>
+          <select id="orderPlanType" class="w-full border-2 border-emerald-400 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600">
+            <option value="">Select...</option>
+            <option value="essential">Essential</option>
+            <option value="premium">Premium</option>
+            <option value="gourmet">Gourmet</option>
           </select>
         </div>
-        <div class="transform hover:scale-105 transition-all duration-200 hidden" id="deliveryAddressSection">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">🏠</span>
-            Delivery Address
-          </label>
-          <textarea class="w-full px-6 py-4 border-4 border-orange-300 rounded-2xl focus:ring-4 focus:ring-orange-300 focus:border-orange-500 text-lg font-semibold bg-gradient-to-r from-orange-50 to-yellow-50" id="deliveryAddress" placeholder="Where should we deliver your delicious meals?" rows="3"></textarea>
-        </div>
-        <div class="transform hover:scale-105 transition-all duration-200">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">🎯</span>
-            Step 1: Choose Your Plan Type
-          </label>
-		  <select id="planType" onchange="showMealSelection()" 
-                  class="w-full px-6 py-4 border-4 border-purple-300 rounded-2xl focus:ring-4 focus:ring-purple-300 focus:border-purple-500 text-lg font-bold bg-gradient-to-r from-purple-50 to-pink-50" id="planType" onchange="showMealSelection()" required>
-            <option value="">🌟 Pick your adventure!</option>
-            <option value="essential">🌱 Essential - $7-$12 per meal (varies by selection)</option>
-            <option value="premium">⭐ Premium - $12-$15 per meal (varies by selection)</option>
-            <option value="gourmet">👑 Gourmet - $15-$28 per meal (varies by selection)</option>
-          </select>
-        </div>
-        <div class="transform hover:scale-105 transition-all duration-200 hidden" id="mealCountSection">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">🍽️</span>
-            Step 2: How Many Meals Per Week?
-          </label>
-          <div class="grid md:grid-cols-3 gap-4">
-            <div class="bg-gradient-to-br from-green-50 to-emerald-50 border-4 border-green-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200" onclick="selectMealCount(6)">
-              <input class="hidden" id="meals6" name="mealCount" type="radio" value="6">
-              <label class="cursor-pointer block text-center" for="meals6">
-                <div class="text-3xl mb-2">🌱</div>
-                <div class="font-black text-green-700 text-xl">6 Meals</div>
-                <div class="text-green-600 font-semibold">Perfect for trying us out!</div>
-                <div class="text-2xl font-black text-green-600 mt-2" id="price6">$42-$168</div>
-              </label>
-            </div>
-            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 border-4 border-blue-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200 relative" onclick="selectMealCount(12)">
-              <div class="absolute -top-2 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">Most Popular</div>
-              <input class="hidden" id="meals12" name="mealCount" type="radio" value="12">
-              <label class="cursor-pointer block text-center" for="meals12">
-                <div class="text-3xl mb-2">⭐</div>
-                <div class="font-black text-blue-700 text-xl">12 Meals</div>
-                <div class="text-blue-600 font-semibold">Most popular choice!</div>
-                <div class="text-2xl font-black text-blue-600 mt-2" id="price12">$84-$336</div>
-              </label>
-            </div>
-            <div class="bg-gradient-to-br from-purple-50 to-pink-50 border-4 border-purple-300 rounded-2xl p-4 cursor-pointer hover:scale-105 transition-all duration-200" onclick="selectMealCount(18)">
-              <input class="hidden" id="meals18" name="mealCount" type="radio" value="18">
-              <label class="cursor-pointer block text-center" for="meals18">
-                <div class="text-3xl mb-2">👑</div>
-                <div class="font-black text-purple-700 text-xl">18 Meals</div>
-                <div class="text-purple-600 font-semibold">Family-friendly option!</div>
-                <div class="text-2xl font-black text-purple-600 mt-2" id="price18">$126-$504</div>
-              </label>
-            </div>
+
+        <div>
+          <label class="block font-bold text-lg mb-2 text-emerald-700">Meals Per Week</label>
+          <div class="flex flex-wrap gap-4">
+            <label class="inline-flex items-center gap-2"><input type="radio" name="orderMealCount" value="6"> <span>6 Meals</span></label>
+            <label class="inline-flex items-center gap-2"><input type="radio" name="orderMealCount" value="12"> <span>12 Meals</span></label>
+            <label class="inline-flex items-center gap-2"><input type="radio" name="orderMealCount" value="18"> <span>18 Meals</span></label>
           </div>
         </div>
-        <div class="transform hover:scale-105 transition-all duration-200 hidden" id="mealSelectionSection">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">🍴</span>
-            Step 3: Select Your Meals
-          </label>
-          <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-4 border-yellow-300 rounded-2xl p-6">
-            <div class="text-center mb-4">
-              <div class="text-3xl mb-2">🎯</div>
-              <h4 class="text-xl font-black text-orange-700">Choose <span id="selectedMealCount">0</span> meals from your plan</h4>
-              <p class="text-orange-600 font-semibold">Selected: <span id="currentSelectionCount">0</span> meals</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableMeals"></div>
+
+        <div class="md:col-span-2">
+          <label class="block font-bold text-lg mb-2 text-emerald-700">Pickup or Delivery</label>
+          <select id="deliveryOptionOrder" class="w-full border-2 border-emerald-400 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600">
+            <option value="pickup">🏋️ Pickup at Centerville Gym (Mondays 8am–10am) — FREE</option>
+            <option value="delivery">🚚 Home Delivery (+$9.99)</option>
+          </select>
+        </div>
+
+        <div id="deliveryAddressBlock" class="hidden md:col-span-2">
+          <label for="deliveryAddressOrder" class="block font-bold text-lg mb-2 text-emerald-700">Delivery Address</label>
+          <textarea id="deliveryAddressOrder" rows="3" class="w-full border-2 border-emerald-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600" placeholder="Street, city, zip"></textarea>
+        </div>
+      </div>
+
+      <div id="orderAlert" class="hidden mt-6 text-center font-semibold border-2 rounded-xl px-4 py-3 bg-red-100 border-red-400 text-red-700"></div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-4 items-center">
+        <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4">
+          <h4 class="font-black text-emerald-700 text-lg mb-1">Order Total</h4>
+          <div id="orderTotal" data-base-total="0" class="text-3xl font-black text-emerald-600">$0.00</div>
+          <p class="text-emerald-700 text-sm">(Includes delivery if selected)</p>
+        </div>
+        <div class="flex flex-col md:items-end gap-3">
+          <button id="openMealPickerBtn" class="w-full md:w-auto bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-lg px-6 py-3 rounded-xl shadow hover:scale-[1.02] transition">🍽️ Select My Meals</button>
+          <button id="checkoutNowBtn" class="w-full md:w-auto bg-gray-900 text-white font-extrabold text-lg px-6 py-3 rounded-xl shadow hover:bg-black transition">🚀 Checkout Now</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-6 text-emerald-100 text-center text-sm">Orders close every Wednesday • Fresh meals ready Monday</p>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="mealPickerModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50">
+  <div class="bg-white w-[95%] max-w-5xl max-h-[85vh] overflow-hidden rounded-2xl shadow-2xl">
+    <div class="flex items-center justify-between px-6 py-4 border-b">
+      <h3 id="mealPickerTitle" class="text-xl font-bold text-gray-800">Select Your Meals</h3>
+      <button id="closeMealPickerBtn" class="px-3 py-1 rounded-md border text-sm hover:bg-gray-50">Close</button>
+    </div>
+    <div class="p-6 overflow-y-auto" style="max-height: calc(85vh - 120px);">
+      <p id="mealPickerNote" class="text-sm text-gray-600 mb-4"></p>
+      <div id="mealGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+    <div class="px-6 py-4 border-t flex items-center justify-between">
+      <div class="text-sm text-gray-700">Selected: <span id="selectedCount" class="font-bold">0</span>/<span id="requiredCount">0</span> • Base Total: <span id="baseTotal" class="font-bold">$0.00</span></div>
+      <button id="saveMealsBtn" class="bg-emerald-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-emerald-700 disabled:opacity-40">Save Selections</button>
+    </div>
+  </div>
+</div>
 
 <script>
-// 🌱💎👑 All Meals by Tier
-const meals = {
-  essential: [
-    {emoji:"🍽️", name:"Classic Peanut Butter Banana Oats", desc:"Overnight Oats", price:7.00},
-    {emoji:"🍽️", name:"Apple Cinnamon Oats", desc:"Overnight Oats", price:7.00},
-    {emoji:"🍽️", name:"Berry Yogurt Oats", desc:"Overnight Oats", price:7.00},
-    {emoji:"🍽️", name:"Power Plate", desc:"High Protein", price:12.00},
-    {emoji:"🍽️", name:"Strength Builder", desc:"High Protein", price:12.00},
-    {emoji:"🍽️", name:"Lean Machine", desc:"High Protein", price:13.50},
-    {emoji:"🍽️", name:"Brown Rice & Steamed Broccoli", desc:"All Veggies", price:7.00},
-    {emoji:"🍽️", name:"Mixed Veggie Medley with Rice", desc:"All Veggies", price:7.50},
-    {emoji:"🍽️", name:"Cauliflower Rice & Roasted Vegetables", desc:"All Veggies", price:8.00},
-    {emoji:"🍽️", name:"Primal Pork Chops", desc:"Carnivore", price:17.99},
-    {emoji:"🍽️", name:"Hunters Chicken Thighs", desc:"Carnivore", price:14.99},
-    {emoji:"🍽️", name:"Apex Ground Beef Bowl", desc:"Carnivore", price:16.99},
-  ],
-  premium: [
-    {emoji:"💎", name:"Tropical Coconut Mango", desc:"Rolled oats, coconut milk, yogurt, mango, shredded coconut, honey", price:9.00},
-    {emoji:"💎", name:"Alpha Ribeye Steak", desc:"8oz premium ribeye steak, seasoned with salt and pepper", price:24.99},
-    {emoji:"💎", name:"Beast Mode Beef Brisket", desc:"6oz slow-cooked beef brisket, tender and juicy", price:19.99},
-    {emoji:"💎", name:"Warrior Salmon Fillet", desc:"7oz wild-caught salmon fillet, grilled with minimal seasoning", price:18.99},
-    {emoji:"💎", name:"Quinoa & Roasted Broccoli Bowl", desc:"Fluffy quinoa, roasted broccoli, lemon, Italian herbs", price:8.50},
-    {emoji:"💎", name:"Muscle-Up Chicken Ranch Jar", desc:"Chicken, romaine, tomatoes, carrots, Greek yogurt ranch, cheddar", price:11.00},
-    {emoji:"💎", name:"Power Play Buffalo Crunch Jar", desc:"Buffalo chicken, romaine, carrots, celery, Greek yogurt blue cheese", price:11.50},
-    {emoji:"💎", name:"Shred & Spread Caesar Jar", desc:"Chicken, romaine, tomatoes, parmesan, Greek yogurt Caesar", price:11.00},
-  ],
-  gourmet: [
-    {emoji:"👑", name:"HIIT Fuel", desc:"Chicken fried rice with broccoli and carrots", price:12.00},
-    {emoji:"👑", name:"Carrot Cake", desc:"Rolled oats, milk, yogurt, grated carrot, raisins, honey, cinnamon", price:7.00},
-    {emoji:"👑", name:"Maple Walnut", desc:"Rolled oats, milk, yogurt, maple syrup, walnuts, vanilla, cinnamon", price:7.00},
-    {emoji:"👑", name:"Carnivore Power Trio", desc:"3oz ground beef, 2oz pork tenderloin, 3oz chicken thigh blend", price:22.99},
-    {emoji:"👑", name:"Land & Sea Warrior Plate", desc:"4oz sirloin steak strips with 4oz salmon fillet", price:27.99},
-    {emoji:"👑", name:"Roasted Sweet Potatoes & Green Beans", desc:"Cubed sweet potatoes, green beans, lemon juice, herbs", price:8.00},
-    {emoji:"👑", name:"Asian Veggie Fried Rice", desc:"Rice, broccoli, carrots, soy sauce, sesame oil, onions", price:8.50},
-    {emoji:"👑", name:"Twirly Spaghetti Jar", desc:"Spaghetti, marinara, ground beef/turkey, parmesan", price:10.00},
-    {emoji:"👑", name:"Bagel Pizza Party Bites", desc:"Mini bagels, marinara, mozzarella, mini pepperoni", price:8.50},
-    {emoji:"👑", name:"Fiesta Fuel Quinoa Jar", desc:"Quinoa, black beans, corn, red bell pepper, salsa", price:9.50},
-  ]
-};
+(() => {
+  const MEALS = {
+    essential: [ {emoji:"🍽️",name:"Classic Peanut Butter Banana Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Apple Cinnamon Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Berry Yogurt Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Power Plate",desc:"High Protein",price:12.00},{emoji:"🍽️",name:"Strength Builder",desc:"High Protein",price:12.00},{emoji:"🍽️",name:"Lean Machine",desc:"High Protein",price:13.50},{emoji:"🍽️",name:"Brown Rice & Steamed Broccoli",desc:"All Veggies",price:7.00},{emoji:"🍽️",name:"Mixed Veggie Medley with Rice",desc:"All Veggies",price:7.50},{emoji:"🍽️",name:"Cauliflower Rice & Roasted Vegetables",desc:"All Veggies",price:8.00},{emoji:"🍽️",name:"Primal Pork Chops",desc:"Carnivore",price:17.99},{emoji:"🍽️",name:"Hunters Chicken Thighs",desc:"Carnivore",price:14.99},{emoji:"🍽️",name:"Apex Ground Beef Bowl",desc:"Carnivore",price:16.99} ],
+    premium: [ {emoji:"💎",name:"Tropical Coconut Mango",desc:"Rolled oats, coconut milk, yogurt, mango, coconut, honey",price:9.00},{emoji:"💎",name:"Alpha Ribeye Steak",desc:"8oz premium ribeye",price:24.99},{emoji:"💎",name:"Beast Mode Beef Brisket",desc:"6oz slow-cooked brisket",price:19.99},{emoji:"💎",name:"Warrior Salmon Fillet",desc:"7oz wild-caught salmon",price:18.99},{emoji:"💎",name:"Quinoa & Roasted Broccoli Bowl",desc:"Quinoa, broccoli, lemon, herbs",price:8.50},{emoji:"💎",name:"Muscle-Up Chicken Ranch Jar",desc:"Chicken, romaine, carrots, ranch, cheddar",price:11.00},{emoji:"💎",name:"Power Play Buffalo Crunch Jar",desc:"Buffalo chicken, romaine, celery",price:11.50},{emoji:"💎",name:"Shred & Spread Caesar Jar",desc:"Chicken, romaine, tomatoes, parmesan",price:11.00} ],
+    gourmet: [ {emoji:"👑",name:"HIIT Fuel",desc:"Chicken fried rice with veggies",price:12.00},{emoji:"👑",name:"Carrot Cake",desc:"Oats with carrot, raisins, cinnamon",price:7.00},{emoji:"👑",name:"Maple Walnut",desc:"Oats with maple & walnuts",price:7.00},{emoji:"👑",name:"Carnivore Power Trio",desc:"Beef, pork tenderloin, chicken thigh",price:22.99},{emoji:"👑",name:"Land & Sea Warrior Plate",desc:"Sirloin + salmon",price:27.99},{emoji:"👑",name:"Roasted Sweet Potatoes & Green Beans",desc:"Lemon & herbs",price:8.00},{emoji:"👑",name:"Asian Veggie Fried Rice",desc:"Rice, broccoli, carrots, soy",price:8.50},{emoji:"👑",name:"Twirly Spaghetti Jar",desc:"Spaghetti with marinara",price:10.00},{emoji:"👑",name:"Bagel Pizza Party Bites",desc:"Mini bagel pizzas",price:8.50},{emoji:"👑",name:"Fiesta Fuel Quinoa Jar",desc:"Quinoa, beans, corn, salsa",price:9.50} ],
+  };
 
-let selectedMeals = [];
+  const state = { plan:"", count:0, delivery:"pickup", address:"", selections:[] };
 
-// ====== STEP 1: SHOW MEAL SELECTION ======
-function showMealSelection() {
-  const plan = document.getElementById('planType').value;
-  const step2 = document.getElementById('mealCountSection');
-  const step3 = document.getElementById('mealSelectionSection');
+  const fmt = n => `$${(+n).toFixed(2)}`;
+  const showAlert = msg => { const el=document.getElementById("orderAlert"); el.textContent=msg; el.classList.remove("hidden"); setTimeout(()=>el.classList.add("hidden"),4000); };
+  const computeBaseTotal = () => state.selections.reduce((s,m)=>s+(m.price||0),0);
 
-  step2.classList.add('hidden');
-  step3.classList.add('hidden');
+  const updateDisplayTotal = () => {
+    const base = computeBaseTotal();
+    const delivery = state.delivery === "delivery" ? 9.99 : 0;
+    const total = base + delivery;
+    document.getElementById("orderTotal").textContent = fmt(total);
+    document.getElementById("orderTotal").setAttribute("data-base-total", base);
+  };
 
-  if (plan) {
-    step2.classList.remove('hidden');
-    selectedMeals = [];
-    document.getElementById('weeklyTotal').innerText = '$0.00';
-    document.getElementById('currentSelectionCount').innerText = '0';
-  }
-}
+  // Meal picker elements
+  const mealGrid = document.getElementById("mealGrid");
+  const openBtn = document.getElementById("openMealPickerBtn");
+  const closeBtn = document.getElementById("closeMealPickerBtn");
+  const saveBtn = document.getElementById("saveMealsBtn");
+  const requiredCountEl = document.getElementById("requiredCount");
+  const selectedCountEl = document.getElementById("selectedCount");
+  const baseTotalEl = document.getElementById("baseTotal");
+  const titleEl = document.getElementById("mealPickerTitle");
+  const noteEl = document.getElementById("mealPickerNote");
+  const modal = document.getElementById("mealPickerModal");
 
-// ====== STEP 2: SELECT MEAL COUNT ======
-function selectMealCount(count) {
-  const plan = document.getElementById('planType').value;
-  const step3 = document.getElementById('mealSelectionSection');
+  const renderMeals = () => {
+    mealGrid.innerHTML = "";
+    const list = MEALS[state.plan] || [];
+    list.forEach(meal => {
+      const selected = state.selections.find(m => m.name === meal.name);
+      const div = document.createElement("div");
+      div.className = `border rounded-xl p-4 cursor-pointer hover:bg-emerald-50 transition ${selected ? "ring-4 ring-emerald-400" : ""}`;
+      div.innerHTML = `
+        <div class="text-3xl">${meal.emoji}</div>
+        <h4 class="font-bold text-lg mt-1">${meal.name}</h4>
+        <p class="text-sm text-gray-600">${meal.desc}</p>
+        <div class="text-emerald-700 font-bold mt-2">${fmt(meal.price)}</div>
+      `;
+      div.onclick = () => {
+        const isSelected = !!state.selections.find(m => m.name === meal.name);
+        if (!isSelected) {
+          if (state.selections.length >= state.count) {
+            showAlert("You’ve reached your meal limit!");
+            return;
+          }
+          state.selections.push(meal);
+        } else {
+          state.selections = state.selections.filter(m => m.name !== meal.name);
+        }
+        renderMeals();
+        selectedCountEl.textContent = state.selections.length;
+        baseTotalEl.textContent = fmt(computeBaseTotal());
+      };
+      mealGrid.appendChild(div);
+    });
+  };
 
-  if (plan && meals[plan]) {
-    document.getElementById('selectedMealCount').innerText = count;
-    step3.classList.remove('hidden');
-    renderMeals(plan);
-  }
-}
+  // Open modal
+  openBtn.onclick = () => {
+    state.plan = document.getElementById("orderPlanType").value;
+    state.count = parseInt(document.querySelector('input[name="orderMealCount"]:checked')?.value || 0);
+    if (!state.plan || !state.count) return showAlert("Please choose a plan and number of meals first.");
+    titleEl.textContent = `Select Your ${state.plan.charAt(0).toUpperCase() + state.plan.slice(1)} Meals`;
+    noteEl.textContent = `Pick ${state.count} meal${state.count > 1 ? "s" : ""}.`;
+    requiredCountEl.textContent = state.count;
+    selectedCountEl.textContent = state.selections.length;
+    baseTotalEl.textContent = fmt(computeBaseTotal());
+    renderMeals();
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  };
 
-// ====== RENDER MEALS ======
-function renderMeals(tier) {
-  const container = document.getElementById('availableMeals');
-  container.innerHTML = '';
-  meals[tier].forEach(meal => {
-    const card = document.createElement('div');
-    card.className = 'p-4 bg-white border-4 border-yellow-300 rounded-2xl shadow-lg cursor-pointer text-center hover:scale-105 transition-all duration-300';
-    card.innerHTML = `
-      <div class="text-4xl mb-2">${meal.emoji}</div>
-      <h4 class="font-black text-lg text-purple-700">${meal.name}</h4>
-      <p class="text-gray-700 text-sm mb-2">${meal.desc}</p>
-      <div class="text-green-600 font-black text-xl">$${meal.price.toFixed(2)}</div>
-    `;
-    card.onclick = () => toggleMeal(meal, card);
-    container.appendChild(card);
-  });
-}
+  closeBtn.onclick = () => modal.classList.add("hidden");
 
-// ====== TOGGLE MEAL SELECTION ======
-function toggleMeal(meal, card) {
-  const index = selectedMeals.findIndex(m => m.name === meal.name);
-  if (index > -1) {
-    selectedMeals.splice(index, 1);
-    card.classList.remove('ring-4', 'ring-green-400', 'scale-105');
-  } else {
-    selectedMeals.push(meal);
-    card.classList.add('ring-4', 'ring-green-400', 'scale-105');
-  }
-  updateTotal();
-}
+  saveBtn.onclick = () => {
+    if (state.selections.length < state.count) return showAlert("Please select all your meals first!");
+    modal.classList.add("hidden");
+    updateDisplayTotal();
+  };
 
-// ====== UPDATE TOTALS ======
-function updateTotal() {
-  const total = selectedMeals.reduce((sum, m) => sum + m.price, 0);
-  document.getElementById('weeklyTotal').innerText = `$${total.toFixed(2)}`;
-  document.getElementById('currentSelectionCount').innerText = selectedMeals.length;
-  document.getElementById('weeklyTotal').setAttribute('data-base-total', total.toFixed(2));
-  updateDisplayedTotal();
-}
+  // Delivery toggle
+  document.getElementById("deliveryOptionOrder").onchange = e => {
+    state.delivery = e.target.value;
+    document.getElementById("deliveryAddressBlock").classList.toggle("hidden", state.delivery !== "delivery");
+    updateDisplayTotal();
+  };
 
-// ====== KID MEALS ======
-function showKidMealSelection() {
-  const count = parseInt(document.getElementById('kidMeals').value) || 0;
-  const total = count * 7.5;
-  document.getElementById('kidMealTotal').innerText = `$${total.toFixed(2)}`;
-  updateDisplayedTotal();
-}
+  document.getElementById("deliveryAddressOrder").oninput = e => {
+    state.address = e.target.value;
+  };
 
-// ====== DISPLAYED TOTAL ======
-function updateDisplayedTotal() {
-  const base = parseFloat(document.getElementById('weeklyTotal').getAttribute('data-base-total')) || 0;
-  const kid = parseFloat(document.getElementById('kidMealTotal').innerText.replace('$', '')) || 0;
-  const delivery = document.getElementById('deliveryOption')?.value === 'delivery' ? 9.99 : 0;
-  const grand = base + kid + delivery;
-  document.getElementById('weeklyTotal').innerText = `$${grand.toFixed(2)}`;
-}
-// ====== DELIVERY ADDRESS + TOTAL ======
-function toggleDeliveryAddress() {
-  const option = document.getElementById('deliveryOption').value;
-  const addressSection = document.getElementById('deliveryAddressSection');
+  // Stripe checkout
+  document.getElementById("checkoutNowBtn").onclick = async () => {
+    if (!state.plan || !state.count) return showAlert("Please choose your plan and meal count first!");
+    if (state.selections.length < state.count) return showAlert("Please select all your meals first!");
 
-  if (option === 'delivery') {
-    addressSection.classList.remove('hidden');
-  } else {
-    addressSection.classList.add('hidden');
-  }
+    const base = computeBaseTotal();
+    const delivery = state.delivery === "delivery" ? 9.99 : 0;
+    const total = base + delivery;
 
-  // Update total when user changes delivery option
-  updateDisplayedTotal();
-}
-
+    try {
+      const response = await fetch("/.netlify/functions/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          planName: `${state.plan.toUpperCase()} Plan`,
+          description: `${state.count} meals (${state.delivery}${state.address ? " to " + state.address : ""})`,
+          total
+        })
+      });
+      const data = await response.json();
+      if (data.url) window.location.href = data.url;
+      else showAlert("Checkout failed — please try again.");
+    } catch (err) {
+      console.error(err);
+      showAlert("Error connecting to Stripe. Please try again.");
+    }
+  };
+})();
 </script>
 
-
-            <div class="mt-6 text-center">
-  <div class="bg-white rounded-xl p-4 border-2 border-green-300">
-    <h4 class="font-black text-green-700 text-lg mb-2">Your Weekly Total</h4>
-    <div class="text-3xl font-black text-green-600" id="weeklyTotal">$0.00</div>
-    <p class="text-green-600 text-sm font-semibold">(Plus delivery fee if applicable)</p>
-  </div>
-</div>
-
-<!-- 🚫 Alert placeholder for min meal message -->
-<div id="minMealAlert" class="hidden mt-4 text-center font-bold bg-red-100 border-2 border-red-400 text-red-800 rounded-xl py-3 px-4 shadow-inner">
-  ⚠️ Please select at least 6 meals to start your food adventure!
-</div>
-
-<div class="transform hover:scale-105 transition-all duration-200">
-  <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-    <span class="text-2xl mr-2">🧒</span>
-
-            Add Kid Meals ($7.50 each)
-          </label>
-          <select class="w-full px-6 py-4 border-4 border-yellow-300 rounded-2xl focus:ring-4 focus:ring-yellow-300 focus:border-yellow-500 text-lg font-bold bg-gradient-to-r from-yellow-50 to-orange-50" id="kidMeals" onchange="showKidMealSelection()">
-            <option value="0">🎈 No kid meals needed</option>
-            <option value="1">1 kid meal per week (+$7.50)</option>
-            <option value="2">2 kid meals per week (+$15.00)</option>
-            <option value="3">3 kid meals per week (+$22.50)</option>
-            <option value="4">4 kid meals per week (+$30.00)</option>
-            <option value="5">5 kid meals per week (+$37.50)</option>
-            <option value="6">6 kid meals per week (+$45.00)</option>
-            <option value="7">7 kid meals per week (+$52.50)</option>
-            <option value="8">8 kid meals per week (+$60.00)</option>
-            <option value="9">9 kid meals per week (+$67.50)</option>
-            <option value="10">10 kid meals per week (+$75.00)</option>
-          </select>
-        </div>
-        <div class="transform hover:scale-105 transition-all duration-200 hidden" id="kidMealSelectionSection">
-          <label class="block text-lg font-black text-purple-700 mb-3 flex items-center">
-            <span class="text-2xl mr-2">🎈</span>
-            Choose Your Kid Meals
-          </label>
-          <div class="bg-gradient-to-r from-pink-50 to-purple-50 border-4 border-pink-300 rounded-2xl p-6">
-            <div class="text-center mb-4">
-              <div class="text-3xl mb-2">🎯</div>
-              <h4 class="text-xl font-black text-pink-700">Choose <span id="selectedKidMealCount">0</span> kid meals</h4>
-              <p class="text-pink-600 font-semibold">Selected: <span id="currentKidSelectionCount">0</span> kid meals</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="availableKidMeals"></div>
-            <div class="mt-6 text-center">
-              <div class="bg-white rounded-xl p-4 border-2 border-pink-300">
-                <h4 class="font-black text-pink-700 text-lg mb-2">Kid Meals Total</h4>
-                <div class="text-3xl font-black text-pink-600" id="kidMealTotal">$0.00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 border-4 border-blue-300 mb-6">
-          <div class="text-center mb-4">
-            <div class="text-3xl mb-2">💳</div>
-            <h3 class="text-2xl font-black text-blue-700 mb-2">We Accept These Payment Methods</h3>
-            <p class="text-blue-600 font-semibold">Choose what works best for you!</p>
-          </div>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white rounded-xl p-4 border-2 border-green-300 text-center">
-              <div class="text-3xl mb-2">💳</div>
-              <h4 class="font-bold text-green-700">Credit/Debit</h4>
-              <p class="text-xs text-green-600">All major cards accepted</p>
-            </div>
-            <div class="bg-white rounded-xl p-4 border-2 border-blue-300 text-center">
-              <div class="text-3xl mb-2">🍎</div>
-              <h4 class="font-bold text-blue-700">Apple Pay</h4>
-              <p class="text-xs text-blue-600">Secure checkout</p>
-            </div>
-            <div class="bg-white rounded-xl p-4 border-2 border-yellow-300 text-center">
-              <div class="text-3xl mb-2">🤖</div>
-              <h4 class="font-bold text-yellow-700">Google Pay</h4>
-              <p class="text-xs text-yellow-600">Fast mobile pay</p>
-            </div>
-            <div class="bg-white rounded-xl p-4 border-2 border-purple-300 text-center">
-              <div class="text-3xl mb-2">⚡</div>
-              <h4 class="font-bold text-purple-700">Stripe Link</h4>
-              <p class="text-xs text-purple-600">1-click checkout</p>
-            </div>
-            <div class="bg-white rounded-xl p-4 border-2 border-gray-300 text-center">
-              <div class="text-3xl mb-2">💵</div>
-              <h4 class="font-bold text-gray-700">Cash at Pickup</h4>
-              <p class="text-xs text-gray-600">Pay in person</p>
-			  </div>
-			</div>
-             
-<div class="text-center mt-8">
-  <button 
-  id="start-cooking-button"
-  type="button"
-  onclick="startCheckout()"
-  class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 
-         hover:from-green-500 hover:via-blue-600 hover:to-purple-700 
-         text-white font-black text-2xl px-12 py-6 rounded-full 
-         shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white">
-  🎉 Let's Start Cooking! 🎉
-</button>
-
-  <p class="text-purple-700 font-extrabold mt-4 text-lg">
-    ✨ Your taste buds will thank you! ✨
-  </p>
-</div>
-
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 
 <!-- Refer a Friend & Gift Cards Section -->
 <section class="py-16 bg-gradient-to-br from-yellow-400 via-orange-400 to-red-500 relative overflow-hidden">
@@ -1847,117 +1673,10 @@ function toggleDeliveryAddress() {
   <div class="h-12 md:h-16"></div>
 </footer>
 
-<!-- ✅ Cleaned dynamic Stripe checkout logic -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const startButton = document.getElementById("start-cooking-button");
-  if (startButton) startButton.addEventListener("click", startCheckout);
-
-  // make totals update when user changes delivery or kid meals
-  document.getElementById("kidMeals")?.addEventListener("change", updateDisplayedTotal);
-  document.getElementById("deliveryOption")?.addEventListener("change", updateDisplayedTotal);
-});
-
-// 🧮 Update displayed total (base + kid + delivery)
-function updateDisplayedTotal() {
-  const base = parseFloat(document.getElementById("weeklyTotal")?.getAttribute("data-base-total")) || 0;
-  const kid = parseFloat(document.getElementById("kidMealTotal")?.innerText.replace("$", "")) || 0;
-  const delivery = document.getElementById("deliveryOption")?.value === "delivery" ? 9.99 : 0;
-  const grand = base + kid + delivery;
-  document.getElementById("weeklyTotal").innerText = `$${grand.toFixed(2)}`;
-}
-
-// 🚀 Send the live total to your Netlify Function → Stripe checkout
-async function startCheckout() {
-  const planType = document.getElementById("planType").value;
-  const mealCount = parseInt(document.querySelector('input[name="mealCount"]:checked')?.value || 0);
-// ✅ Prevent checkout unless 6, 12, or 18 meals selected
-if (![6, 12, 18].includes(mealCount)) {
-  const alertBox = document.getElementById('minMealAlert');
-  if (alertBox) {
-    alertBox.classList.remove('hidden');
-    alertBox.classList.add('animate-bounce');
-    alertBox.style.backgroundColor = '#fee2e2';  // light red
-    alertBox.style.borderColor = '#ef4444';      // red border
-    alertBox.style.color = '#b91c1c';            // dark red text
-    alertBox.style.transition = 'opacity 0.5s ease';
-
-    // fade it out after 4 seconds
-    setTimeout(() => {
-      alertBox.style.opacity = '0';
-      setTimeout(() => {
-        alertBox.classList.add('hidden');
-        alertBox.style.opacity = '1';
-      }, 500);
-    }, 4000);
-  }
-  return;
-}
-
-  const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
-  const deliveryOption = document.getElementById("deliveryOption")?.value || "pickup";
-
-  if (!planType || mealCount === 0) {
-    alert("Please select your plan and meal count before checking out.");
-    return;
-  }
-
-  // total displayed to user (includes kids + delivery)
-  const displayedTotal = parseFloat(document.getElementById("weeklyTotal").textContent.replace("$", ""));
-  const total = parseFloat(displayedTotal.toFixed(2));
-
-  try {
-    console.log("Sending checkout request:", { planType, mealCount, kidMeals, deliveryOption, total });
-    const response = await fetch("/.netlify/functions/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        planName: `${planType.toUpperCase()} Plan`,
-        description: `${mealCount} meals + ${kidMeals} kid meals (${deliveryOption})`,
-        total
-      })
-    });
-
-    if (!response.ok) throw new Error("Network response was not ok");
-
-    const data = await response.json();
-    if (data.url) {
-      window.location.href = data.url; // ✅ redirect to Stripe checkout
-    } else {
-      throw new Error("Stripe URL not returned");
-    }
-  } catch (err) {
-    console.error("Checkout error:", err);
-    alert("There was an issue connecting to Stripe. Please try again.");
-  }
-}
-<script>
-function showTab(tabId) {
-  // Hide all tab contents
-  document.querySelectorAll('[id^="tab-content-"]').forEach(tab => tab.classList.add('hidden'));
-
-  // Remove active styling from all buttons
-  document.querySelectorAll('.menu-filter-btn').forEach(btn => {
-    btn.classList.remove('bg-green-700', 'text-white');
-    btn.classList.add('bg-gray-200', 'text-gray-700');
-  });
-
-  // Show selected tab content
-  const content = document.getElementById(`tab-content-${tabId}`);
-  if (content) content.classList.remove('hidden');
-
-  // Highlight the active tab
-  const activeButton = document.getElementById(`tab-${tabId}`);
-  if (activeButton) {
-    activeButton.classList.remove('bg-gray-200', 'text-gray-700');
-    activeButton.classList.add('bg-green-700', 'text-white');
-  }
-}
-</script>
-
-
-</body>
+  <!-- ✅ Final Clean Ending -->
+  </body>
 </html>
+
 
 
 
