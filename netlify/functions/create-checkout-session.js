@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -39,13 +38,13 @@ export async function handler(event) {
       cancel_url: "https://www.rationsandrootsmeal.com/cancel",
     });
 
-    // ✅ Trigger confirmation email to customer & business
+    // ✅ Optional: trigger confirmation email
     try {
-      await fetch(`${process.env.URL}/.netlify/functions/send-confirmation-email`, {
+      await fetch(`${process.env.URL || 'https://www.rationsandrootsmeal.com'}/.netlify/functions/send-confirmation-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          customerEmail: 'orders@rationsandrootsmeal.com', // Replace later with customer input
+          customerEmail: 'orders@rationsandrootsmeal.com', // can replace with real customer email
           planName,
           description,
           total,
