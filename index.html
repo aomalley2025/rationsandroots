@@ -1326,14 +1326,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const computeBaseTotal = () => state.selections.reduce((s,m)=>s+(m.price||0),0);
 
   const updateDisplayTotal = () => {
-    const base = computeBaseTotal();
-    const delivery = state.delivery === "delivery" ? 9.99 : 0;
-    const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
-    const kidTotal = kidMeals * 7.5;
-    const total = base + delivery + kidTotal;
-    document.getElementById("orderTotal").textContent = fmt(total);
-    document.getElementById("orderTotal").setAttribute("data-base-total", base);
-  };
+  const hasPlan = !!state.plan;
+  const hasMeals = state.selections.length > 0;
+
+  // Don’t show a total until both plan and meals are picked
+  if (!hasPlan || !hasMeals) {
+    document.getElementById("orderTotal").textContent = "$0.00";
+    document.getElementById("orderTotal").setAttribute("data-base-total", 0);
+    return;
+  }
+
+  const base = computeBaseTotal();
+  const delivery = state.delivery === "delivery" ? 9.99 : 0;
+  const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
+  const kidTotal = kidMeals * 7.5;
+  const total = base + delivery + kidTotal;
+
+  document.getElementById("orderTotal").textContent = fmt(total);
+  document.getElementById("orderTotal").setAttribute("data-base-total", base);
+};
+
 
   // Meal picker elements
   const mealGrid = document.getElementById("mealGrid");
@@ -1698,14 +1710,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById("kidMeals")?.addEventListener("change", updateDisplayedTotal);
 
 function updateDisplayedTotal() {
-  const mealCount = parseInt(
-    document.querySelector('input[name="orderMealCount"]:checked')?.value || 0
-  );
-  const planPrice =
-    mealCount === 6 ? 10 :
-    mealCount === 12 ? 9 :
-    mealCount === 18 ? 8.5 : 0;
-  const baseTotal = planPrice * mealCount;
+  const mealCount = parseInt(document.querySelector('input[name="orderMealCount"]:checked')?.value || 0);
+  const planPrice = mealCount === 6 ? 10 : mealCount === 12 ? 9 : mealCount === 18 ? 8.5 : 0;
+
+  // If meals haven't been selected yet, show $0.00
+  const baseTotal = state.selections && state.selections.length > 0
+    ? state.selections.reduce((sum, m) => sum + (m.price || 0), 0)
+    : 0;
 
   const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
   const kidTotal = kidMeals * 7.5;
@@ -1716,10 +1727,10 @@ function updateDisplayedTotal() {
   const grandTotal = baseTotal + kidTotal + deliveryFee;
 
   const orderTotalEl = document.getElementById("orderTotal");
-  if (orderTotalEl) {
-    orderTotalEl.textContent = `$${grandTotal.toFixed(2)}`;
-    orderTotalEl.setAttribute("data-base-total", grandTotal);
-  }
+  orderTotalEl.textContent = `$${grandTotal.toFixed(2)}`;
+  orderTotalEl.setAttribute("data-base-total", grandTotal);
+}
+
 }
 
 // ✅ Add kid meals into Stripe checkout
