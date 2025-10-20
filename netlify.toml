@@ -5,6 +5,7 @@
 [functions]
   node_bundler = "esbuild"
   external_node_modules = ["stripe", "node-fetch"]
+  node_version = "18"
 
 # ✅ Redirect only after deploy (keep internal routes working)
 [[redirects]]
