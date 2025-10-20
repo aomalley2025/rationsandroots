@@ -6,8 +6,8 @@
   node_bundler = "esbuild"
   external_node_modules = ["stripe", "node-fetch"]
 
-# ✅ Simplified redirect to your custom domain
+# ✅ Redirect only after deploy (keep internal routes working)
 [[redirects]]
   from = "/*"
-  to = "https://www.rationsandrootsmeal.com/:splat"
-  status = 301
+  to = "/index.html"
+  status = 200
