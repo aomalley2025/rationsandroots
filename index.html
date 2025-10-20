@@ -1092,11 +1092,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <li class="flex items-center"><span class="mr-2">⏸️</span>Skip or cancel anytime</li>
 </ul>
 </div>
-<div class="mb-6 p-3 bg-yellow-50 rounded-lg">
-<p class="text-sm"><span class="mr-1">🍝</span><strong>Add Kid Meals:</strong> $7.50 each</p>
-</div>
 
-</div>
 <!-- Premium Tier -->
 <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-blue-300 relative">
 <div class="flex items-center mb-4">
@@ -1214,17 +1210,18 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </div>
 
-</section>
 <!-- Order Form (Final Version with Real Stripe Integration) -->
 <section id="order-now" class="py-16 bg-gradient-to-br from-emerald-800 to-green-700 text-white">
   <div class="max-w-4xl mx-auto px-6">
     <div class="text-center mb-8">
       <h2 class="text-4xl font-extrabold">Start Your Week Fresh 🌱</h2>
       <p class="text-emerald-100 mt-2 text-lg">Choose your plan, pick your meals, and checkout securely.</p>
+
     </div>
 
     <div class="bg-white text-gray-800 rounded-2xl shadow-2xl p-8">
       <div class="grid md:grid-cols-2 gap-6">
+        <!-- Choose Plan -->
         <div>
           <label class="block font-bold text-lg mb-2 text-emerald-700">Choose Your Plan</label>
           <select id="orderPlanType" class="w-full border-2 border-emerald-400 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600">
@@ -1235,6 +1232,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </select>
         </div>
 
+        <!-- Meal Count -->
         <div>
           <label class="block font-bold text-lg mb-2 text-emerald-700">Meals Per Week</label>
           <div class="flex flex-wrap gap-4">
@@ -1244,6 +1242,22 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
+        <!-- ✅ Add Kid Meals Dropdown -->
+        <div class="md:col-span-2">
+          <label for="kidMeals" class="block font-bold text-lg mb-2 text-emerald-700">
+            🍝 Add Kid Meals (optional) — $7.50 each
+          </label>
+          <select id="kidMeals" class="w-full border-2 border-emerald-400 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600">
+            <option value="0">No Kid Meals</option>
+            <option value="1">1 Kid Meal (+$7.50)</option>
+            <option value="2">2 Kid Meals (+$15.00)</option>
+            <option value="3">3 Kid Meals (+$22.50)</option>
+            <option value="4">4 Kid Meals (+$30.00)</option>
+            <option value="5">5 Kid Meals (+$37.50)</option>
+          </select>
+        </div>
+
+        <!-- Pickup or Delivery -->
         <div class="md:col-span-2">
           <label class="block font-bold text-lg mb-2 text-emerald-700">Pickup or Delivery</label>
           <select id="deliveryOptionOrder" class="w-full border-2 border-emerald-400 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600">
@@ -1252,14 +1266,17 @@ document.addEventListener('DOMContentLoaded', () => {
           </select>
         </div>
 
+        <!-- Delivery Address -->
         <div id="deliveryAddressBlock" class="hidden md:col-span-2">
           <label for="deliveryAddressOrder" class="block font-bold text-lg mb-2 text-emerald-700">Delivery Address</label>
           <textarea id="deliveryAddressOrder" rows="3" class="w-full border-2 border-emerald-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600" placeholder="Street, city, zip"></textarea>
         </div>
       </div>
 
+      <!-- Alert -->
       <div id="orderAlert" class="hidden mt-6 text-center font-semibold border-2 rounded-xl px-4 py-3 bg-red-100 border-red-400 text-red-700"></div>
 
+      <!-- Totals and Buttons -->
       <div class="mt-6 grid md:grid-cols-2 gap-4 items-center">
         <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4">
           <h4 class="font-black text-emerald-700 text-lg mb-1">Order Total</h4>
@@ -1277,7 +1294,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </section>
 
-<!-- Modal -->
+<!-- Modal (unchanged) -->
 <div id="mealPickerModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50">
   <div class="bg-white w-[95%] max-w-5xl max-h-[85vh] overflow-hidden rounded-2xl shadow-2xl">
     <div class="flex items-center justify-between px-6 py-4 border-b">
@@ -1298,13 +1315,12 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 (() => {
   const MEALS = {
-    essential: [ {emoji:"🍽️",name:"Classic Peanut Butter Banana Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Apple Cinnamon Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Berry Yogurt Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Power Plate",desc:"High Protein",price:12.00},{emoji:"🍽️",name:"Strength Builder",desc:"High Protein",price:12.00},{emoji:"🍽️",name:"Lean Machine",desc:"High Protein",price:13.50},{emoji:"🍽️",name:"Brown Rice & Steamed Broccoli",desc:"All Veggies",price:7.00},{emoji:"🍽️",name:"Mixed Veggie Medley with Rice",desc:"All Veggies",price:7.50},{emoji:"🍽️",name:"Cauliflower Rice & Roasted Vegetables",desc:"All Veggies",price:8.00},{emoji:"🍽️",name:"Primal Pork Chops",desc:"Carnivore",price:17.99},{emoji:"🍽️",name:"Hunters Chicken Thighs",desc:"Carnivore",price:14.99},{emoji:"🍽️",name:"Apex Ground Beef Bowl",desc:"Carnivore",price:16.99} ],
-    premium: [ {emoji:"💎",name:"Tropical Coconut Mango",desc:"Rolled oats, coconut milk, yogurt, mango, coconut, honey",price:9.00},{emoji:"💎",name:"Alpha Ribeye Steak",desc:"8oz premium ribeye",price:24.99},{emoji:"💎",name:"Beast Mode Beef Brisket",desc:"6oz slow-cooked brisket",price:19.99},{emoji:"💎",name:"Warrior Salmon Fillet",desc:"7oz wild-caught salmon",price:18.99},{emoji:"💎",name:"Quinoa & Roasted Broccoli Bowl",desc:"Quinoa, broccoli, lemon, herbs",price:8.50},{emoji:"💎",name:"Muscle-Up Chicken Ranch Jar",desc:"Chicken, romaine, carrots, ranch, cheddar",price:11.00},{emoji:"💎",name:"Power Play Buffalo Crunch Jar",desc:"Buffalo chicken, romaine, celery",price:11.50},{emoji:"💎",name:"Shred & Spread Caesar Jar",desc:"Chicken, romaine, tomatoes, parmesan",price:11.00} ],
-    gourmet: [ {emoji:"👑",name:"HIIT Fuel",desc:"Chicken fried rice with veggies",price:12.00},{emoji:"👑",name:"Carrot Cake",desc:"Oats with carrot, raisins, cinnamon",price:7.00},{emoji:"👑",name:"Maple Walnut",desc:"Oats with maple & walnuts",price:7.00},{emoji:"👑",name:"Carnivore Power Trio",desc:"Beef, pork tenderloin, chicken thigh",price:22.99},{emoji:"👑",name:"Land & Sea Warrior Plate",desc:"Sirloin + salmon",price:27.99},{emoji:"👑",name:"Roasted Sweet Potatoes & Green Beans",desc:"Lemon & herbs",price:8.00},{emoji:"👑",name:"Asian Veggie Fried Rice",desc:"Rice, broccoli, carrots, soy",price:8.50},{emoji:"👑",name:"Twirly Spaghetti Jar",desc:"Spaghetti with marinara",price:10.00},{emoji:"👑",name:"Bagel Pizza Party Bites",desc:"Mini bagel pizzas",price:8.50},{emoji:"👑",name:"Fiesta Fuel Quinoa Jar",desc:"Quinoa, beans, corn, salsa",price:9.50} ],
+    essential: [ {emoji:"🍽️",name:"Classic Peanut Butter Banana Oats",desc:"Overnight Oats",price:7.00}, {emoji:"🍽️",name:"Apple Cinnamon Oats",desc:"Overnight Oats",price:7.00}, {emoji:"🍽️",name:"Berry Yogurt Oats",desc:"Overnight Oats",price:7.00}, {emoji:"🍽️",name:"Power Plate",desc:"High Protein",price:12.00}, {emoji:"🍽️",name:"Strength Builder",desc:"High Protein",price:12.00}, {emoji:"🍽️",name:"Lean Machine",desc:"High Protein",price:13.50}, {emoji:"🍽️",name:"Brown Rice & Steamed Broccoli",desc:"All Veggies",price:7.00}, {emoji:"🍽️",name:"Mixed Veggie Medley with Rice",desc:"All Veggies",price:7.50}, {emoji:"🍽️",name:"Cauliflower Rice & Roasted Vegetables",desc:"All Veggies",price:8.00}, {emoji:"🍽️",name:"Primal Pork Chops",desc:"Carnivore",price:17.99}, {emoji:"🍽️",name:"Hunters Chicken Thighs",desc:"Carnivore",price:14.99}, {emoji:"🍽️",name:"Apex Ground Beef Bowl",desc:"Carnivore",price:16.99} ],
+    premium: [ {emoji:"💎",name:"Tropical Coconut Mango",desc:"Rolled oats, coconut milk, yogurt, mango, coconut, honey",price:9.00}, {emoji:"💎",name:"Alpha Ribeye Steak",desc:"8oz premium ribeye",price:24.99}, {emoji:"💎",name:"Beast Mode Beef Brisket",desc:"6oz slow-cooked brisket",price:19.99}, {emoji:"💎",name:"Warrior Salmon Fillet",desc:"7oz wild-caught salmon",price:18.99}, {emoji:"💎",name:"Quinoa & Roasted Broccoli Bowl",desc:"Quinoa, broccoli, lemon, herbs",price:8.50}, {emoji:"💎",name:"Muscle-Up Chicken Ranch Jar",desc:"Chicken, romaine, carrots, ranch, cheddar",price:11.00}, {emoji:"💎",name:"Power Play Buffalo Crunch Jar",desc:"Buffalo chicken, romaine, celery",price:11.50}, {emoji:"💎",name:"Shred & Spread Caesar Jar",desc:"Chicken, romaine, tomatoes, parmesan",price:11.00} ],
+    gourmet: [ {emoji:"👑",name:"HIIT Fuel",desc:"Chicken fried rice with veggies",price:12.00}, {emoji:"👑",name:"Carrot Cake",desc:"Oats with carrot, raisins, cinnamon",price:7.00}, {emoji:"👑",name:"Maple Walnut",desc:"Oats with maple & walnuts",price:7.00}, {emoji:"👑",name:"Carnivore Power Trio",desc:"Beef, pork tenderloin, chicken thigh",price:22.99}, {emoji:"👑",name:"Land & Sea Warrior Plate",desc:"Sirloin + salmon",price:27.99}, {emoji:"👑",name:"Roasted Sweet Potatoes & Green Beans",desc:"Lemon & herbs",price:8.00}, {emoji:"👑",name:"Asian Veggie Fried Rice",desc:"Rice, broccoli, carrots, soy",price:8.50}, {emoji:"👑",name:"Twirly Spaghetti Jar",desc:"Spaghetti with marinara",price:10.00}, {emoji:"👑",name:"Bagel Pizza Party Bites",desc:"Mini bagel pizzas",price:8.50}, {emoji:"👑",name:"Fiesta Fuel Quinoa Jar",desc:"Quinoa, beans, corn, salsa",price:9.50} ]
   };
 
   const state = { plan:"", count:0, delivery:"pickup", address:"", selections:[] };
-
   const fmt = n => `$${(+n).toFixed(2)}`;
   const showAlert = msg => { const el=document.getElementById("orderAlert"); el.textContent=msg; el.classList.remove("hidden"); setTimeout(()=>el.classList.add("hidden"),4000); };
   const computeBaseTotal = () => state.selections.reduce((s,m)=>s+(m.price||0),0);
@@ -1312,7 +1328,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateDisplayTotal = () => {
     const base = computeBaseTotal();
     const delivery = state.delivery === "delivery" ? 9.99 : 0;
-    const total = base + delivery;
+    const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
+    const kidTotal = kidMeals * 7.5;
+    const total = base + delivery + kidTotal;
     document.getElementById("orderTotal").textContent = fmt(total);
     document.getElementById("orderTotal").setAttribute("data-base-total", base);
   };
@@ -1361,7 +1379,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // Open modal
+  // ✅ OPEN MEAL PICKER
   openBtn.onclick = () => {
     state.plan = document.getElementById("orderPlanType").value;
     state.count = parseInt(document.querySelector('input[name="orderMealCount"]:checked')?.value || 0);
@@ -1395,22 +1413,25 @@ document.addEventListener('DOMContentLoaded', () => {
     state.address = e.target.value;
   };
 
-  // Stripe checkout
+  // Kid meals live update
+  document.getElementById("kidMeals")?.addEventListener("change", updateDisplayTotal);
+
+  // ✅ STRIPE CHECKOUT
   document.getElementById("checkoutNowBtn").onclick = async () => {
     if (!state.plan || !state.count) return showAlert("Please choose your plan and meal count first!");
     if (state.selections.length < state.count) return showAlert("Please select all your meals first!");
-
     const base = computeBaseTotal();
     const delivery = state.delivery === "delivery" ? 9.99 : 0;
-    const total = base + delivery;
-
+    const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
+    const kidTotal = kidMeals * 7.5;
+    const total = base + delivery + kidTotal;
     try {
       const response = await fetch("/.netlify/functions/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           planName: `${state.plan.toUpperCase()} Plan`,
-          description: `${state.count} meals (${state.delivery}${state.address ? " to " + state.address : ""})`,
+          description: `${state.count} meals${kidMeals ? " + " + kidMeals + " kid meal" + (kidMeals > 1 ? "s" : "") : ""} (${state.delivery}${state.address ? " to " + state.address : ""})`,
           total
         })
       });
@@ -1672,8 +1693,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <div class="h-12 md:h-16"></div>
 </footer>
+<!-- ✅ Kid Meals Total + Stripe Integration -->
+<script>
+document.getElementById("kidMeals")?.addEventListener("change", updateDisplayedTotal);
 
-  <!-- ✅ Final Clean Ending -->
+function updateDisplayedTotal() {
+  const mealCount = parseInt(
+    document.querySelector('input[name="orderMealCount"]:checked')?.value || 0
+  );
+  const planPrice =
+    mealCount === 6 ? 10 :
+    mealCount === 12 ? 9 :
+    mealCount === 18 ? 8.5 : 0;
+  const baseTotal = planPrice * mealCount;
+
+  const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
+  const kidTotal = kidMeals * 7.5;
+
+  const deliveryOption = document.getElementById("deliveryOptionOrder")?.value;
+  const deliveryFee = deliveryOption === "delivery" ? 9.99 : 0;
+
+  const grandTotal = baseTotal + kidTotal + deliveryFee;
+
+  const orderTotalEl = document.getElementById("orderTotal");
+  if (orderTotalEl) {
+    orderTotalEl.textContent = `$${grandTotal.toFixed(2)}`;
+    orderTotalEl.setAttribute("data-base-total", grandTotal);
+  }
+}
+
+// ✅ Add kid meals into Stripe checkout
+document.getElementById("checkoutNowBtn")?.addEventListener("click", async () => {
+  const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
+  const kidTotal = kidMeals * 7.5;
+  const delivery = state.delivery === "delivery" ? 9.99 : 0;
+  const base = computeBaseTotal();
+  const total = base + delivery + kidTotal;
+
+  try {
+    const response = await fetch("/.netlify/functions/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        planName: `${state.plan.toUpperCase()} Plan`,
+        description: `${state.count} meals${
+          kidMeals
+            ? " + " + kidMeals + " kid meal" + (kidMeals > 1 ? "s" : "")
+            : ""
+        } (${state.delivery}${state.address ? " to " + state.address : ""})`,
+        total,
+      }),
+    });
+
+    const data = await response.json();
+    if (data.url) window.location.href = data.url;
+    else showAlert("Checkout failed — please try again.");
+  } catch (err) {
+    console.error(err);
+    showAlert("Error connecting to Stripe. Please try again.");
+  }
+});
+</script>
+  
   </body>
 </html>
 
@@ -1683,6 +1764,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   
-
 
 
