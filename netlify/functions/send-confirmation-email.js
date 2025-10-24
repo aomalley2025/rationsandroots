@@ -1,53 +1,78 @@
+// netlify/functions/send-confirmation-email.js
+const sgMail = require("@sendgrid/mail");
 
-import sgMail from '@sendgrid/mail';
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-export async function handler(event) {
+exports.handler = async (event) => {
   try {
-    const { customerEmail, planName, description, total } = JSON.parse(event.body);
+    const data = JSON.parse(event.body || "{}");
 
-    const businessEmail = 'orders@rationsandrootsmeal.com';
-    const logoURL = 'https://www.rationsandrootsmeal.com/images/rooted-in-purpose-badge.png';
+    // Expecting: { email, total, mealsSelected, delivery, kids, address }
+    const {
+      email,
+      total,
+      mealsSelected,
+      delivery,
+      kids,
+      address
+    } = data;
 
-    const htmlContent = `
-      <div style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
-        <img src="${logoURL}" alt="Rations & Roots Logo" style="width: 160px; margin-bottom: 20px;">
-        <h1 style="color: #2e7d32;">Thank You for Your Order!</h1>
-        <p style="font-size: 16px; color: #555;">
-          We’ve received your order and it’s being prepared with love and fresh ingredients. 💚
-        </p>
-        <div style="background-color: #f0f0f0; padding: 15px; border-radius: 8px; display: inline-block; text-align: left;">
-          <p><strong>Plan:</strong> ${planName}</p>
-          <p><strong>Details:</strong> ${description}</p>
-          <p><strong>Total:</strong> $${total.toFixed(2)}</p>
-        </div>
-        <p style="margin-top: 20px; color: #444;">
-          Questions? Reach us anytime at <a href="mailto:orders@rationsandrootsmeal.com">orders@rationsandrootsmeal.com</a>
-        </p>
-        <p style="font-weight: bold; color: #388e3c;">🌱 Fuel Your Body. Fork the Rest.</p>
-      </div>
+    // Set SendGrid API key
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+    // Create the shared HTML summary
+    const summaryHTML = `
+      <h2>Rations & Roots Meal Prep Order</h2>
+      <p><strong>Meals Selected:</strong> ${mealsSelected}</p>
+      <p><strong>Kids Meals:</strong> ${kids}</p>
+      <p><strong>Delivery Option:</strong> ${delivery}</p>
+      ${
+        delivery === "delivery"
+          ? `<p><strong>Delivery Address:</strong> ${address}</p>`
+          : ""
+      }
+      <p><strong>Total:</strong> $${total}</p>
+      <br>
+      <p>Thank you for choosing <strong>Rations & Roots</strong> 🌱<br>
+      <em>Fuel Your Body. Fork the Rest.</em></p>
     `;
 
-    // Send to both the customer and business
-    const msg = {
-      to: [customerEmail, businessEmail],
-      from: businessEmail,
-      subject: `Rations & Roots Order Confirmation — ${planName}`,
-      html: htmlContent,
+    // Send email to you (the business)
+    const ownerMsg = {
+      to: "orders@rationsandrootsmeal.com",
+      from: "orders@rationsandrootsmeal.com",
+      subject: "📦 New Meal Prep Order Received!",
+      html: summaryHTML,
     };
 
-    await sgMail.sendMultiple(msg);
+    // Send confirmation to customer (if they included their email)
+    const customerMsg = email
+      ? {
+          to: email,
+          from: "orders@rationsandrootsmeal.com",
+          subject: "🌱 Your Rations & Roots Order Confirmation",
+          html: `
+            <p>Hi there!</p>
+            <p>Thank you for your order with <strong>Rations & Roots</strong>!</p>
+            ${summaryHTML}
+            <p>We'll reach out soon with delivery/pickup details.</p>
+          `,
+        }
+      : null;
+
+    // Send both messages
+    const sends = [sgMail.send(ownerMsg)];
+    if (customerMsg) sends.push(sgMail.send(customerMsg));
+
+    await Promise.all(sends);
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true }),
+      body: JSON.stringify({ message: "Emails sent successfully" }),
     };
   } catch (err) {
-    console.error('Email send error:', err);
+    console.error("❌ SendGrid email error:", err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: err.message }),
     };
   }
-}
+};
