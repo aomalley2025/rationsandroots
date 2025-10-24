@@ -42,6 +42,7 @@
         }
     </style>
 </head>
+<Body>
 <!-- 🌿 ORDER NOTICE BAR (Sticky, Smooth Fade-In) -->
 <div class="fixed top-0 left-0 w-full z-[9999] bg-gradient-to-r from-green-700/90 via-lime-500/90 to-amber-500/90 text-white py-4 shadow-2xl border-b-4 border-white animate-fade-in backdrop-blur-sm">
 	<div class="max-w-5xl mx-auto text-center px-4">
@@ -130,7 +131,7 @@
 <div class="text-center">
 <div class="text-4xl mb-4">⚡</div>
 <h3 class="text-xl font-bold mb-3 text-gray-800">Lightning Fast</h3>
-<p class="text-gray-600">Same-day delivery available with our network of local kitchens and delivery partners.</p>
+<p class="text-gray-600">Delivery available with our network of local kitchens and delivery partners.</p>
 </div>
 </div>
 </div>
@@ -142,7 +143,7 @@
 <h2 class="text-4xl font-bold text-white mb-4">Our Menu</h2>
 <p class="text-xl text-emerald-100">Choose from our variety of fresh, nutritious meal options</p>
 </div>
-> <div class="flex flex-wrap justify-center gap-4 mb-8">
+<div class="flex flex-wrap justify-center gap-4 mb-8">
   <button class="menu-filter-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
           id="tab-overnight-oats" onclick="showTab('overnight-oats')">
     Overnight Oats
@@ -876,105 +877,101 @@
 </div>
 </div>
 <div class="tab-content hidden" id="family-meals">
-  <div class="mb-8 text-center">
-    <div class="text-4xl mb-4">🍽️</div>f
-    <h3 class="text-2xl font-bold mb-4">Family Adventure Meals</h3>
-    <p class="text-gray-600 mb-6">Complete dinner experiences that bring everyone to the table</p>
-    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
-      <div class="text-2xl mb-2">🎲</div>
-      <h4 class="font-bold text-lg mb-2">Monthly Menu Magic!</h4>
-      <p class="text-gray-700">
-        Our family meals rotate every month with new themes and flavors. From "Taco Tuesday Takeover" to "Pizza Palace Night" – there's always something exciting coming to your dinner table!
-      </p>
-    </div>
-  </div>
+  <!-- 🌟 Family Adventure Meals Section -->
+<div class="bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl shadow-lg p-8 text-center mt-8">
+  <h3 class="text-3xl font-extrabold text-emerald-800 mb-3 flex items-center justify-center gap-2">
+    Family Adventure Meals
+    <span class="text-3xl">🎲</span>
+  </h3>
 
-  <div class="grid md:grid-cols-2 gap-8">
-    <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-6 border-l-4 border-yellow-500 transform hover:scale-105 transition-all duration-300">
-      <div class="flex items-center justify-between mb-4">
-        <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">👑 FAMILY FAVORITE</span>
-        <div class="text-3xl">🍗</div>
-      </div>
-      <h3 class="font-bold text-xl mb-3 text-gray-800">The Cozy Crew Chicken Feast</h3>
-      <p class="text-gray-600 mb-3 text-sm">Complete family dinner for 4–6 people with starter and main course</p>
-      <div class="bg-white rounded-lg p-3 mb-4">
-        <div class="text-xs text-gray-500 mb-1">INCLUDES</div>
-        <div class="text-sm font-semibold text-gray-700">
-          Garden salad + Herb-roasted chicken thighs + Garlic mashed potatoes + Green beans
-        </div>
-      </div>
-      <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold text-yellow-600">$39.99</div>
-        <a href="https://buy.stripe.com/8x2dR90yP75k0Mz3hWgrS0g" target="_blank" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-semibold">
-          Buy Now
-        </a>
-      </div>
-    </div>
+  <p class="text-lg text-emerald-700 mb-4 font-medium">
+    Complete dinner experiences that bring everyone to the table.
+  </p>
 
-    <div class="meal-card bg-gradient-to-br from-red-50 to-pink-50 rounded-xl shadow-lg p-6 border-l-4 border-red-500 transform hover:scale-105 transition-all duration-300">
-      <div class="flex items-center justify-between mb-4">
-        <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">🇮🇹 ITALIAN NIGHT</span>
-        <div class="text-3xl">🍝</div>
-      </div>
-      <h3 class="font-bold text-xl mb-3 text-gray-800">Family Pasta Bake</h3>
-      <p class="text-gray-600 mb-3 text-sm">Authentic Italian family dinner experience for 4–6 people</p>
-      <div class="bg-white rounded-lg p-3 mb-4">
-        <div class="text-xs text-gray-500 mb-1">INCLUDES</div>
-        <div class="text-sm font-semibold text-gray-700">
-          Caesar salad + Baked spaghetti &amp; meatballs + Garlic breadsticks
-        </div>
-      </div>
-      <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold text-red-600">$39.99</div>
-        <a href="https://buy.stripe.com/8x25kDgxN9ds9j5g4IgrS0h" target="_blank" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold">
-          Buy Now
-        </a>
-      </div>
-    </div>
-
-    <div class="meal-card bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl shadow-lg p-6 border-l-4 border-orange-500 transform hover:scale-105 transition-all duration-300">
-      <div class="flex items-center justify-between mb-4">
-        <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">🔥 BBQ BASH</span>
-        <div class="text-3xl">🍔</div>
-      </div>
-      <h3 class="font-bold text-xl mb-3 text-gray-800">The Backyard Bash Box</h3>
-      <p class="text-gray-600 mb-3 text-sm">Summer BBQ vibes brought to your dinner table for 4–6 people</p>
-      <div class="bg-white rounded-lg p-3 mb-4">
-        <div class="text-xs text-gray-500 mb-1">INCLUDES</div>
-        <div class="text-sm font-semibold text-gray-700">
-          Veggie sticks &amp; ranch + BBQ chicken sliders + Sweet corn on the cob
-        </div>
-      </div>
-      <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold text-orange-600">$39.99</div>
-        <a href="https://buy.stripe.com/cNi28rftJ9ds8f1f0EgrS0f" target="_blank" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">
-          Buy Now
-        </a>
-      </div>
-    </div>
-
-    <div class="meal-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 border-l-4 border-blue-500 transform hover:scale-105 transition-all duration-300">
-      <div class="flex items-center justify-between mb-4">
-        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">⚡ ONE-PAN WONDER</span>
-        <div class="text-3xl">🍚</div>
-      </div>
-      <h3 class="font-bold text-xl mb-3 text-gray-800">The All-in-One Adventure Tray</h3>
-      <p class="text-gray-600 mb-3 text-sm">Easy cleanup, maximum flavor family meal for 4–6 people</p>
-      <div class="bg-white rounded-lg p-3 mb-4">
-        <div class="text-xs text-gray-500 mb-1">INCLUDES</div>
-        <div class="text-sm font-semibold text-gray-700">
-          Cucumber tomato salad + Herb chicken &amp; rice + Mixed vegetables
-        </div>
-      </div>
-      <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold text-blue-600">$39.99</div>
-        <a href="https://buy.stripe.com/5kQ14n5T961g1QDbOsgrS0e" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold">
-          Buy Now
-        </a>
-      </div>
-    </div>
+  <div class="bg-white border border-emerald-300 rounded-xl shadow-inner p-6 max-w-2xl mx-auto">
+    <h4 class="text-2xl font-bold text-emerald-700 mb-2">Monthly Menu Magic!</h4>
+    <p class="text-emerald-600 leading-relaxed text-base">
+      Our family meals rotate each month with new themes and flavors — from
+      <span class="font-semibold text-emerald-800">“Taco Tuesday Takeover”</span>
+      to
+      <span class="font-semibold text-emerald-800">“Pizza Palace Night”</span>.
+      There's always something exciting coming to your dinner table!
+    </p>
   </div>
 </div>
+
+  <!-- 🌿 Soft Background Wrapper for Family Meals -->
+<div class="bg-gradient-to-br from-emerald-50 to-green-100 rounded-2xl border border-emerald-200 shadow-inner p-6 mt-8">
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- 🍗 Family Meal 1 -->
+    <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-md border border-emerald-200 hover:border-emerald-400 hover:shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300">
+      <h4 class="text-2xl font-bold text-emerald-800 mb-2">🍗 The Cozy Crew Chicken Feast</h4>
+      <p class="text-emerald-700 leading-relaxed">
+        Complete family dinner for 4–6 people — garden salad, herb-roasted chicken thighs,
+        garlic mashed potatoes, and green beans.
+      </p>
+      <div class="flex justify-between items-center mt-4">
+        <div class="text-2xl font-bold text-emerald-700">$39.99</div>
+        <a href="https://buy.stripe.com/8x2dR90yP75k0Mz3hWgrS0g"
+           target="_blank"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition text-sm font-semibold">
+          Buy Now
+        </a>
+      </div>
+    </div>
+
+    <!-- 🍝 Family Meal 2 -->
+    <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-md border border-emerald-200 hover:border-emerald-400 hover:shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300">
+      <h4 class="text-2xl font-bold text-emerald-800 mb-2">🍝 Family Pasta Bake</h4>
+      <p class="text-emerald-700 leading-relaxed">
+        Authentic Italian night — Caesar salad, baked spaghetti with meatballs, and garlic breadsticks.
+      </p>
+      <div class="flex justify-between items-center mt-4">
+        <div class="text-2xl font-bold text-emerald-700">$39.99</div>
+        <a href="https://buy.stripe.com/8x25kDgxN9ds9j5g4IgrS0h"
+           target="_blank"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition text-sm font-semibold">
+          Buy Now
+        </a>
+      </div>
+    </div>
+
+    <!-- 🍔 Family Meal 3 -->
+    <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-md border border-emerald-200 hover:border-emerald-400 hover:shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300">
+      <h4 class="text-2xl font-bold text-emerald-800 mb-2">🍔 The Backyard Bash Box</h4>
+      <p class="text-emerald-700 leading-relaxed">
+        Summer BBQ fun — veggie sticks with ranch, BBQ chicken sliders, and sweet corn on the cob.
+      </p>
+      <div class="flex justify-between items-center mt-4">
+        <div class="text-2xl font-bold text-emerald-700">$39.99</div>
+        <a href="https://buy.stripe.com/cNi28rftJ9ds8f1f0EgrS0f"
+           target="_blank"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition text-sm font-semibold">
+          Buy Now
+        </a>
+      </div>
+    </div>
+
+    <!-- 🍚 Family Meal 4 -->
+    <div class="meal-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-md border border-emerald-200 hover:border-emerald-400 hover:shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300">
+      <h4 class="text-2xl font-bold text-emerald-800 mb-2">🍚 The All-in-One Adventure Tray</h4>
+      <p class="text-emerald-700 leading-relaxed">
+        Easy cleanup, maximum flavor — cucumber tomato salad, herb chicken & rice, and mixed vegetables.
+      </p>
+      <div class="flex justify-between items-center mt-4">
+        <div class="text-2xl font-bold text-emerald-700">$39.99</div>
+        <a href="https://buy.stripe.com/5kQ14n5T961g1QDbOsgrS0e"
+           target="_blank"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition text-sm font-semibold">
+          Buy Now
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
 function showTab(tabId) {
   console.log("Switching to tab:", tabId);
@@ -1092,7 +1089,11 @@ document.addEventListener('DOMContentLoaded', () => {
 <li class="flex items-center"><span class="mr-2">⏸️</span>Skip or cancel anytime</li>
 </ul>
 </div>
+<div class="mb-6 p-3 bg-yellow-50 rounded-lg">
+<p class="text-sm"><span class="mr-1">🍝</span><strong>Add Kid Meals:</strong> $7.50 each</p>
+</div>
 
+</div>
 <!-- Premium Tier -->
 <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-blue-300 relative">
 <div class="flex items-center mb-4">
@@ -1210,91 +1211,269 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </div>
 
-<!-- Order Form (Final Version with Real Stripe Integration) -->
-<section id="order-now" class="py-16 bg-gradient-to-br from-emerald-800 to-green-700 text-white">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-8">
-      <h2 class="text-4xl font-extrabold">Start Your Week Fresh 🌱</h2>
-      <p class="text-emerald-100 mt-2 text-lg">Choose your plan, pick your meals, and checkout securely.</p>
+</section>
+<!-- 🌱 Fan-Favorites Gallery -->
+<section id="fan-favorites" class="py-12 bg-gray-50">
+  <h2 class="text-3xl font-bold text-center text-emerald-700 mb-8">
+    Fan-Favorites This Week
+  </h2>
 
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
+    <!-- 1 -->
+    <div class="relative group overflow-hidden rounded-2xl shadow-md">
+      <img src="images/PRSteakout_1.jpg" alt="PR Steak" class="w-full h-64 object-cover group-hover:scale-110 duration-300" />
+      <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+        <span class="text-white text-xl font-semibold">PR Steak</span>
+      </div>
     </div>
 
-    <div class="bg-white text-gray-800 rounded-2xl shadow-2xl p-8">
-      <div class="grid md:grid-cols-2 gap-6">
-        <!-- Choose Plan -->
-        <div>
-          <label class="block font-bold text-lg mb-2 text-emerald-700">Choose Your Plan</label>
-          <select id="orderPlanType" class="w-full border-2 border-emerald-400 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600">
-            <option value="">Select...</option>
-            <option value="essential">Essential</option>
-            <option value="premium">Premium</option>
-            <option value="gourmet">Gourmet</option>
-          </select>
-        </div>
+    <!-- 2 -->
+    <div class="relative group overflow-hidden rounded-2xl shadow-md">
+      <img src="images/alpharibeye.jpg" alt="Alpha Ribeye" class="w-full h-64 object-cover group-hover:scale-110 duration-300" />
+      <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+        <span class="text-white text-xl font-semibold">Alpha Ribeye</span>
+      </div>
+    </div>
 
-        <!-- Meal Count -->
-        <div>
-          <label class="block font-bold text-lg mb-2 text-emerald-700">Meals Per Week</label>
-          <div class="flex flex-wrap gap-4">
-            <label class="inline-flex items-center gap-2"><input type="radio" name="orderMealCount" value="6"> <span>6 Meals</span></label>
-            <label class="inline-flex items-center gap-2"><input type="radio" name="orderMealCount" value="12"> <span>12 Meals</span></label>
-            <label class="inline-flex items-center gap-2"><input type="radio" name="orderMealCount" value="18"> <span>18 Meals</span></label>
+    <!-- 3 -->
+    <div class="relative group overflow-hidden rounded-2xl shadow-md">
+      <img src="images/peanutbutterbanana_3.jpg" alt="Peanut Butter Overnight Oats" class="w-full h-64 object-cover group-hover:scale-110 duration-300" />
+      <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+        <span class="text-white text-xl font-semibold">Peanut Butter Overnight Oats</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="relative group overflow-hidden rounded-2xl shadow-md">
+      <img src="images/muscleupchickenjar_4.jpg" alt="Muscle Up Chicken Jar Salad" class="w-full h-64 object-cover group-hover:scale-110 duration-300" />
+      <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+        <span class="text-white text-xl font-semibold">Muscle Up Chicken Jar Salad</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 🌱 Customize Your Weekly Plan -->
+<section id="order-form" class="py-16 bg-gradient-to-br from-emerald-50 via-white to-emerald-100">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-4xl font-extrabold text-center text-emerald-700 mb-8 drop-shadow">
+      Customize Your Weekly Plan
+    </h2>
+
+    <!-- Plan Size Buttons -->
+    <div class="flex flex-wrap justify-center gap-4 mb-6">
+      <button class="plan-btn bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold px-6 py-3 rounded-2xl shadow hover:scale-105 duration-200" data-meals="6">6 Meals</button>
+      <button class="plan-btn bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold px-6 py-3 rounded-2xl shadow hover:scale-105 duration-200" data-meals="12">12 Meals</button>
+      <button class="plan-btn bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold px-6 py-3 rounded-2xl shadow hover:scale-105 duration-200" data-meals="18">18 Meals</button>
+    </div>
+
+    <!-- Live count helper -->
+    <p id="countHelper" class="text-center text-emerald-700 font-semibold mb-8">Select a plan to begin.</p>
+
+    <!-- Meal Tier Accordions (collapsed by default) -->
+    <div id="meal-tiers" class="space-y-6">
+
+      <!-- Essential -->
+      <details class="group border border-emerald-200 rounded-2xl bg-white shadow">
+        <summary class="cursor-pointer font-bold text-xl text-emerald-700 px-5 py-4 bg-emerald-100 rounded-t-2xl">
+          Essential Meals
+        </summary>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
+          <!-- 12 Essential -->
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Classic Peanut Butter Banana Oats" data-price="7.00">
+            <span>🍽️ Classic Peanut Butter Banana Oats</span>
+            <div class="flex items-center gap-2">
+              <button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button>
+            </div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Apple Cinnamon Oats" data-price="7.00">
+            <span>🍽️ Apple Cinnamon Oats</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Berry Yogurt Oats" data-price="7.00">
+            <span>🍽️ Berry Yogurt Oats</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Power Plate" data-price="12.00">
+            <span>🍽️ Power Plate</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Strength Builder" data-price="12.00">
+            <span>🍽️ Strength Builder</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Lean Machine" data-price="13.50">
+            <span>🍽️ Lean Machine</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Brown Rice & Steamed Broccoli" data-price="7.00">
+            <span>🍽️ Brown Rice & Steamed Broccoli</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Mixed Veggie Medley with Rice" data-price="7.50">
+            <span>🍽️ Mixed Veggie Medley with Rice</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Cauliflower Rice & Roasted Vegetables" data-price="8.00">
+            <span>🍽️ Cauliflower Rice & Roasted Vegetables</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Primal Pork Chops" data-price="17.99">
+            <span>🍽️ Primal Pork Chops</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Hunters Chicken Thighs" data-price="14.99">
+            <span>🍽️ Hunters Chicken Thighs</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="essential" data-name="Apex Ground Beef Bowl" data-price="16.99">
+            <span>🍽️ Apex Ground Beef Bowl</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
           </div>
         </div>
+      </details>
 
-        <!-- ✅ Add Kid Meals Dropdown -->
-        <div class="md:col-span-2">
-          <label for="kidMeals" class="block font-bold text-lg mb-2 text-emerald-700">
-            🍝 Add Kid Meals (optional) — $7.50 each
-          </label>
-          <select id="kidMeals" class="w-full border-2 border-emerald-400 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600">
-            <option value="0">No Kid Meals</option>
-            <option value="1">1 Kid Meal (+$7.50)</option>
-            <option value="2">2 Kid Meals (+$15.00)</option>
-            <option value="3">3 Kid Meals (+$22.50)</option>
-            <option value="4">4 Kid Meals (+$30.00)</option>
-            <option value="5">5 Kid Meals (+$37.50)</option>
-          </select>
+      <!-- Premium -->
+      <details class="group border border-emerald-200 rounded-2xl bg-white shadow">
+        <summary class="cursor-pointer font-bold text-xl text-emerald-700 px-5 py-4 bg-emerald-100 rounded-t-2xl">
+          Premium Meals
+        </summary>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
+          <!-- 8 Premium -->
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="premium" data-name="Tropical Coconut Mango" data-price="9.00">
+            <span>💎 Tropical Coconut Mango</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="premium" data-name="Alpha Ribeye Steak" data-price="24.99">
+            <span>💎 Alpha Ribeye Steak</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="premium" data-name="Beast Mode Beef Brisket" data-price="19.99">
+            <span>💎 Beast Mode Beef Brisket</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="premium" data-name="Warrior Salmon Fillet" data-price="18.99">
+            <span>💎 Warrior Salmon Fillet</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="premium" data-name="Quinoa & Roasted Broccoli Bowl" data-price="8.50">
+            <span>💎 Quinoa & Roasted Broccoli Bowl</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="premium" data-name="Muscle-Up Chicken Ranch Jar" data-price="11.00">
+            <span>💎 Muscle-Up Chicken Ranch Jar</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="premium" data-name="Power Play Buffalo Crunch Jar" data-price="11.50">
+            <span>💎 Power Play Buffalo Crunch Jar</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="premium" data-name="Shred & Spread Caesar Jar" data-price="11.00">
+            <span>💎 Shred & Spread Caesar Jar</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
         </div>
+      </details>
 
-        <!-- Pickup or Delivery -->
-        <div class="md:col-span-2">
-          <label class="block font-bold text-lg mb-2 text-emerald-700">Pickup or Delivery</label>
-          <select id="deliveryOptionOrder" class="w-full border-2 border-emerald-400 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600">
-            <option value="pickup">🏋️ Pickup at Centerville Gym (Mondays 8am–10am) — FREE</option>
-            <option value="delivery">🚚 Home Delivery (+$9.99)</option>
-          </select>
+      <!-- Gourmet -->
+      <details class="group border border-emerald-200 rounded-2xl bg-white shadow">
+        <summary class="cursor-pointer font-bold text-xl text-emerald-700 px-5 py-4 bg-emerald-100 rounded-t-2xl">
+          Gourmet Meals
+        </summary>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
+          <!-- 10 Gourmet -->
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="HIIT Fuel" data-price="12.00">
+            <span>👑 HIIT Fuel</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Carrot Cake" data-price="7.00">
+            <span>👑 Carrot Cake</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Maple Walnut" data-price="7.00">
+            <span>👑 Maple Walnut</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Carnivore Power Trio" data-price="22.99">
+            <span>👑 Carnivore Power Trio</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Land & Sea Warrior Plate" data-price="27.99">
+            <span>👑 Land & Sea Warrior Plate</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Roasted Sweet Potatoes & Green Beans" data-price="8.00">
+            <span>👑 Roasted Sweet Potatoes & Green Beans</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Asian Veggie Fried Rice" data-price="8.50">
+            <span>👑 Asian Veggie Fried Rice</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Twirly Spaghetti Jar" data-price="10.00">
+            <span>👑 Twirly Spaghetti Jar</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Bagel Pizza Party Bites" data-price="8.50">
+            <span>👑 Bagel Pizza Party Bites</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
+          <div class="meal-item flex justify-between items-center border rounded-xl px-4 py-3 bg-emerald-50 shadow-sm" data-tier="gourmet" data-name="Fiesta Fuel Quinoa Jar" data-price="9.50">
+            <span>👑 Fiesta Fuel Quinoa Jar</span>
+            <div class="flex items-center gap-2"><button class="minus px-2 py-1 bg-gray-200 rounded">−</button><span class="qty">0</span><button class="plus px-2 py-1 bg-emerald-500 text-white rounded">+</button></div>
+          </div>
         </div>
-
-        <!-- Delivery Address -->
-        <div id="deliveryAddressBlock" class="hidden md:col-span-2">
-          <label for="deliveryAddressOrder" class="block font-bold text-lg mb-2 text-emerald-700">Delivery Address</label>
-          <textarea id="deliveryAddressOrder" rows="3" class="w-full border-2 border-emerald-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-600" placeholder="Street, city, zip"></textarea>
-        </div>
-      </div>
-
-      <!-- Alert -->
-      <div id="orderAlert" class="hidden mt-6 text-center font-semibold border-2 rounded-xl px-4 py-3 bg-red-100 border-red-400 text-red-700"></div>
-
-      <!-- Totals and Buttons -->
-      <div class="mt-6 grid md:grid-cols-2 gap-4 items-center">
-        <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4">
-          <h4 class="font-black text-emerald-700 text-lg mb-1">Order Total</h4>
-          <div id="orderTotal" data-base-total="0" class="text-3xl font-black text-emerald-600">$0.00</div>
-          <p class="text-emerald-700 text-sm">(Includes delivery if selected)</p>
-        </div>
-        <div class="flex flex-col md:items-end gap-3">
-          <button id="openMealPickerBtn" class="w-full md:w-auto bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-lg px-6 py-3 rounded-xl shadow hover:scale-[1.02] transition">🍽️ Select My Meals</button>
-          <button id="checkoutNowBtn" class="w-full md:w-auto bg-gray-900 text-white font-extrabold text-lg px-6 py-3 rounded-xl shadow hover:bg-black transition">🚀 Checkout Now</button>
-        </div>
-      </div>
+      </details>
     </div>
 
-    <p class="mt-6 text-emerald-100 text-center text-sm">Orders close every Wednesday • Fresh meals ready Monday</p>
+    <!-- Add-ons -->
+    <div class="max-w-md mx-auto mt-10 space-y-5 bg-white p-6 rounded-2xl shadow">
+      <label class="block font-semibold text-emerald-700">Delivery Method</label>
+      <select id="delivery" class="w-full border rounded-lg px-3 py-2">
+        <option value="pickup">Gym Pick-Up — FREE</option>
+        <option value="delivery">Home Delivery — $9.99</option>
+      </select>
+      <input id="address" type="text" placeholder="Enter Delivery Address" class="hidden w-full border rounded-lg px-3 py-2 mt-2"/>
+
+      <label class="block font-semibold text-emerald-700 mt-4">Add Kids Meals</label>
+      <select id="kids" class="w-full border rounded-lg px-3 py-2">
+        <option value="0">None</option>
+        <option value="1">1 Kids Meal — $7.50</option>
+        <option value="2">2 Kids Meals — $15.00</option>
+        <option value="3">3 Kids Meals — $22.50</option>
+        <option value="4">4 Kids Meals — $30.00</option>
+        <option value="5">5 Kids Meals — $37.50</option>
+        <option value="6">6 Kids Meals — $45.00</option>
+        <option value="7">7 Kids Meals — $52.50</option>
+        <option value="8">8 Kids Meals — $60.00</option>
+        <option value="9">9 Kids Meals — $67.50</option>
+        <option value="10">10 Kids Meals — $75.00</option>
+      </select>
+    </div>
+
+    <!-- Totals + Checkout -->
+    <div class="text-center mt-12">
+      <p id="totalDisplay" class="text-3xl font-extrabold text-emerald-800 mb-2">
+        Current Total: $0.00
+      </p>
+      <p id="selectionDisplay" class="text-emerald-700 mb-4">Meals selected: 0</p>
+
+      <style>
+        @keyframes rocketBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+        .rocket-bounce:hover { animation: rocketBounce .8s ease-in-out infinite; }
+      </style>
+      <button id="checkoutBtn"
+        class="rocket-bounce bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold px-10 py-4 rounded-2xl shadow-lg opacity-50 cursor-not-allowed transition"
+        disabled>
+        🚀 Checkout Now
+      </button>
+    </div>
   </div>
 </section>
 
-<!-- Modal (unchanged) -->
+
+</section>
+
+<!-- Modal -->
 <div id="mealPickerModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50">
   <div class="bg-white w-[95%] max-w-5xl max-h-[85vh] overflow-hidden rounded-2xl shadow-2xl">
     <div class="flex items-center justify-between px-6 py-4 border-b">
@@ -1315,37 +1494,24 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 (() => {
   const MEALS = {
-    essential: [ {emoji:"🍽️",name:"Classic Peanut Butter Banana Oats",desc:"Overnight Oats",price:7.00}, {emoji:"🍽️",name:"Apple Cinnamon Oats",desc:"Overnight Oats",price:7.00}, {emoji:"🍽️",name:"Berry Yogurt Oats",desc:"Overnight Oats",price:7.00}, {emoji:"🍽️",name:"Power Plate",desc:"High Protein",price:12.00}, {emoji:"🍽️",name:"Strength Builder",desc:"High Protein",price:12.00}, {emoji:"🍽️",name:"Lean Machine",desc:"High Protein",price:13.50}, {emoji:"🍽️",name:"Brown Rice & Steamed Broccoli",desc:"All Veggies",price:7.00}, {emoji:"🍽️",name:"Mixed Veggie Medley with Rice",desc:"All Veggies",price:7.50}, {emoji:"🍽️",name:"Cauliflower Rice & Roasted Vegetables",desc:"All Veggies",price:8.00}, {emoji:"🍽️",name:"Primal Pork Chops",desc:"Carnivore",price:17.99}, {emoji:"🍽️",name:"Hunters Chicken Thighs",desc:"Carnivore",price:14.99}, {emoji:"🍽️",name:"Apex Ground Beef Bowl",desc:"Carnivore",price:16.99} ],
-    premium: [ {emoji:"💎",name:"Tropical Coconut Mango",desc:"Rolled oats, coconut milk, yogurt, mango, coconut, honey",price:9.00}, {emoji:"💎",name:"Alpha Ribeye Steak",desc:"8oz premium ribeye",price:24.99}, {emoji:"💎",name:"Beast Mode Beef Brisket",desc:"6oz slow-cooked brisket",price:19.99}, {emoji:"💎",name:"Warrior Salmon Fillet",desc:"7oz wild-caught salmon",price:18.99}, {emoji:"💎",name:"Quinoa & Roasted Broccoli Bowl",desc:"Quinoa, broccoli, lemon, herbs",price:8.50}, {emoji:"💎",name:"Muscle-Up Chicken Ranch Jar",desc:"Chicken, romaine, carrots, ranch, cheddar",price:11.00}, {emoji:"💎",name:"Power Play Buffalo Crunch Jar",desc:"Buffalo chicken, romaine, celery",price:11.50}, {emoji:"💎",name:"Shred & Spread Caesar Jar",desc:"Chicken, romaine, tomatoes, parmesan",price:11.00} ],
-    gourmet: [ {emoji:"👑",name:"HIIT Fuel",desc:"Chicken fried rice with veggies",price:12.00}, {emoji:"👑",name:"Carrot Cake",desc:"Oats with carrot, raisins, cinnamon",price:7.00}, {emoji:"👑",name:"Maple Walnut",desc:"Oats with maple & walnuts",price:7.00}, {emoji:"👑",name:"Carnivore Power Trio",desc:"Beef, pork tenderloin, chicken thigh",price:22.99}, {emoji:"👑",name:"Land & Sea Warrior Plate",desc:"Sirloin + salmon",price:27.99}, {emoji:"👑",name:"Roasted Sweet Potatoes & Green Beans",desc:"Lemon & herbs",price:8.00}, {emoji:"👑",name:"Asian Veggie Fried Rice",desc:"Rice, broccoli, carrots, soy",price:8.50}, {emoji:"👑",name:"Twirly Spaghetti Jar",desc:"Spaghetti with marinara",price:10.00}, {emoji:"👑",name:"Bagel Pizza Party Bites",desc:"Mini bagel pizzas",price:8.50}, {emoji:"👑",name:"Fiesta Fuel Quinoa Jar",desc:"Quinoa, beans, corn, salsa",price:9.50} ]
+    essential: [ {emoji:"🍽️",name:"Classic Peanut Butter Banana Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Apple Cinnamon Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Berry Yogurt Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Power Plate",desc:"High Protein",price:12.00},{emoji:"🍽️",name:"Strength Builder",desc:"High Protein",price:12.00},{emoji:"🍽️",name:"Lean Machine",desc:"High Protein",price:13.50},{emoji:"🍽️",name:"Brown Rice & Steamed Broccoli",desc:"All Veggies",price:7.00},{emoji:"🍽️",name:"Mixed Veggie Medley with Rice",desc:"All Veggies",price:7.50},{emoji:"🍽️",name:"Cauliflower Rice & Roasted Vegetables",desc:"All Veggies",price:8.00},{emoji:"🍽️",name:"Primal Pork Chops",desc:"Carnivore",price:17.99},{emoji:"🍽️",name:"Hunters Chicken Thighs",desc:"Carnivore",price:14.99},{emoji:"🍽️",name:"Apex Ground Beef Bowl",desc:"Carnivore",price:16.99} ],
+    premium: [ {emoji:"💎",name:"Tropical Coconut Mango",desc:"Rolled oats, coconut milk, yogurt, mango, coconut, honey",price:9.00},{emoji:"💎",name:"Alpha Ribeye Steak",desc:"8oz premium ribeye",price:24.99},{emoji:"💎",name:"Beast Mode Beef Brisket",desc:"6oz slow-cooked brisket",price:19.99},{emoji:"💎",name:"Warrior Salmon Fillet",desc:"7oz wild-caught salmon",price:18.99},{emoji:"💎",name:"Quinoa & Roasted Broccoli Bowl",desc:"Quinoa, broccoli, lemon, herbs",price:8.50},{emoji:"💎",name:"Muscle-Up Chicken Ranch Jar",desc:"Chicken, romaine, carrots, ranch, cheddar",price:11.00},{emoji:"💎",name:"Power Play Buffalo Crunch Jar",desc:"Buffalo chicken, romaine, celery",price:11.50},{emoji:"💎",name:"Shred & Spread Caesar Jar",desc:"Chicken, romaine, tomatoes, parmesan",price:11.00} ],
+    gourmet: [ {emoji:"👑",name:"HIIT Fuel",desc:"Chicken fried rice with veggies",price:12.00},{emoji:"👑",name:"Carrot Cake",desc:"Oats with carrot, raisins, cinnamon",price:7.00},{emoji:"👑",name:"Maple Walnut",desc:"Oats with maple & walnuts",price:7.00},{emoji:"👑",name:"Carnivore Power Trio",desc:"Beef, pork tenderloin, chicken thigh",price:22.99},{emoji:"👑",name:"Land & Sea Warrior Plate",desc:"Sirloin + salmon",price:27.99},{emoji:"👑",name:"Roasted Sweet Potatoes & Green Beans",desc:"Lemon & herbs",price:8.00},{emoji:"👑",name:"Asian Veggie Fried Rice",desc:"Rice, broccoli, carrots, soy",price:8.50},{emoji:"👑",name:"Twirly Spaghetti Jar",desc:"Spaghetti with marinara",price:10.00},{emoji:"👑",name:"Bagel Pizza Party Bites",desc:"Mini bagel pizzas",price:8.50},{emoji:"👑",name:"Fiesta Fuel Quinoa Jar",desc:"Quinoa, beans, corn, salsa",price:9.50} ],
   };
 
   const state = { plan:"", count:0, delivery:"pickup", address:"", selections:[] };
+
   const fmt = n => `$${(+n).toFixed(2)}`;
   const showAlert = msg => { const el=document.getElementById("orderAlert"); el.textContent=msg; el.classList.remove("hidden"); setTimeout(()=>el.classList.add("hidden"),4000); };
   const computeBaseTotal = () => state.selections.reduce((s,m)=>s+(m.price||0),0);
 
   const updateDisplayTotal = () => {
-  const hasPlan = !!state.plan;
-  const hasMeals = state.selections.length > 0;
-
-  // Don’t show a total until both plan and meals are picked
-  if (!hasPlan || !hasMeals) {
-    document.getElementById("orderTotal").textContent = "$0.00";
-    document.getElementById("orderTotal").setAttribute("data-base-total", 0);
-    return;
-  }
-
-  const base = computeBaseTotal();
-  const delivery = state.delivery === "delivery" ? 9.99 : 0;
-  const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
-  const kidTotal = kidMeals * 7.5;
-  const total = base + delivery + kidTotal;
-
-  document.getElementById("orderTotal").textContent = fmt(total);
-  document.getElementById("orderTotal").setAttribute("data-base-total", base);
-};
-
+    const base = computeBaseTotal();
+    const delivery = state.delivery === "delivery" ? 9.99 : 0;
+    const total = base + delivery;
+    document.getElementById("orderTotal").textContent = fmt(total);
+    document.getElementById("orderTotal").setAttribute("data-base-total", base);
+  };
 
   // Meal picker elements
   const mealGrid = document.getElementById("mealGrid");
@@ -1391,7 +1557,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // ✅ OPEN MEAL PICKER
+  // Open modal
   openBtn.onclick = () => {
     state.plan = document.getElementById("orderPlanType").value;
     state.count = parseInt(document.querySelector('input[name="orderMealCount"]:checked')?.value || 0);
@@ -1425,25 +1591,22 @@ document.addEventListener('DOMContentLoaded', () => {
     state.address = e.target.value;
   };
 
-  // Kid meals live update
-  document.getElementById("kidMeals")?.addEventListener("change", updateDisplayTotal);
-
-  // ✅ STRIPE CHECKOUT
+  // Stripe checkout
   document.getElementById("checkoutNowBtn").onclick = async () => {
     if (!state.plan || !state.count) return showAlert("Please choose your plan and meal count first!");
     if (state.selections.length < state.count) return showAlert("Please select all your meals first!");
+
     const base = computeBaseTotal();
     const delivery = state.delivery === "delivery" ? 9.99 : 0;
-    const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
-    const kidTotal = kidMeals * 7.5;
-    const total = base + delivery + kidTotal;
+    const total = base + delivery;
+
     try {
       const response = await fetch("/.netlify/functions/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           planName: `${state.plan.toUpperCase()} Plan`,
-          description: `${state.count} meals${kidMeals ? " + " + kidMeals + " kid meal" + (kidMeals > 1 ? "s" : "") : ""} (${state.delivery}${state.address ? " to " + state.address : ""})`,
+          description: `${state.count} meals (${state.delivery}${state.address ? " to " + state.address : ""})`,
           total
         })
       });
@@ -1618,7 +1781,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="text-2xl mr-4">🚚</div>
 <div>
 <h4 class="font-semibold">Delivery Area</h4>
-<p class="text-gray-300">Centerville &amp; surrounding areas</p>
+<p class="text-gray-300">Centerville, Tx &amp; surrounding areas</p>
 </div>
 </div>
 </div>
@@ -1705,65 +1868,115 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <div class="h-12 md:h-16"></div>
 </footer>
-<!-- ✅ Kid Meals Total + Stripe Integration -->
-<script>
-document.getElementById("kidMeals")?.addEventListener("change", updateDisplayedTotal);
 
-function updateDisplayedTotal() {
-  const mealCount = parseInt(document.querySelector('input[name="orderMealCount"]:checked')?.value || 0);
-  const planPrice = mealCount === 6 ? 10 : mealCount === 12 ? 9 : mealCount === 18 ? 8.5 : 0;
+  <!-- ✅ Final Clean Ending -->
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const planBtns = document.querySelectorAll(".plan-btn");
+  const totalDisplay = document.getElementById("totalDisplay");
+  const selectionDisplay = document.getElementById("selectionDisplay");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  const deliverySelect = document.getElementById("delivery");
+  const addressInput = document.getElementById("address");
+  const kidsSelect = document.getElementById("kids");
+  let requiredMeals = 0;
 
-  // If meals haven't been selected yet, show $0.00
-  const baseTotal = state.selections && state.selections.length > 0
-    ? state.selections.reduce((sum, m) => sum + (m.price || 0), 0)
-    : 0;
+  // --- Plan selection ---
+  planBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      requiredMeals = parseInt(btn.dataset.meals, 10);
+      planBtns.forEach(b => b.classList.remove("ring-4","ring-amber-300","scale-105"));
+      btn.classList.add("ring-4","ring-amber-300","scale-105");
+      updateTotals();
+    });
+  });
 
-  const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
-  const kidTotal = kidMeals * 7.5;
+  // --- Quantity buttons ---
+  document.querySelectorAll(".meal-item").forEach(item => {
+    const plus = item.querySelector(".plus");
+    const minus = item.querySelector(".minus");
+    const qtyEl = item.querySelector(".qty");
 
-  const deliveryOption = document.getElementById("deliveryOptionOrder")?.value;
-  const deliveryFee = deliveryOption === "delivery" ? 9.99 : 0;
+    plus.addEventListener("click", e => {
+      e.stopPropagation();
+      qtyEl.textContent = (+qtyEl.textContent + 1);
+      updateTotals();
+    });
+    minus.addEventListener("click", e => {
+      e.stopPropagation();
+      qtyEl.textContent = Math.max(0, +qtyEl.textContent - 1);
+      updateTotals();
+    });
+  });
 
-  const grandTotal = baseTotal + kidTotal + deliveryFee;
+  // --- Delivery + kids meals ---
+  deliverySelect.addEventListener("change", () => {
+    addressInput.classList.toggle("hidden", deliverySelect.value !== "delivery");
+    updateTotals();
+  });
+  kidsSelect.addEventListener("change", updateTotals);
+  addressInput.addEventListener("input", updateTotals);
 
-  const orderTotalEl = document.getElementById("orderTotal");
-  orderTotalEl.textContent = `$${grandTotal.toFixed(2)}`;
-  orderTotalEl.setAttribute("data-base-total", grandTotal);
-}
+  // --- Totals function ---
+  function updateTotals() {
+    let mealsSelected = 0;
+    let mealsSubtotal = 0;
+    document.querySelectorAll(".meal-item").forEach(item => {
+      const qty = +item.querySelector(".qty").textContent;
+      const price = parseFloat(item.dataset.price);
+      mealsSelected += qty;
+      mealsSubtotal += qty * price;
+    });
+    const kidsCost = (+kidsSelect.value) * 7.5;
+    const deliveryCost = (deliverySelect.value === "delivery") ? 9.99 : 0;
+    const total = mealsSubtotal + kidsCost + deliveryCost;
 
-// ✅ Add kid meals into Stripe checkout
-document.getElementById("checkoutNowBtn")?.addEventListener("click", async () => {
-  const kidMeals = parseInt(document.getElementById("kidMeals")?.value || 0);
-  const kidTotal = kidMeals * 7.5;
-  const delivery = state.delivery === "delivery" ? 9.99 : 0;
-  const base = computeBaseTotal();
-  const total = base + delivery + kidTotal;
+    selectionDisplay.textContent = (requiredMeals > 0)
+      ? `Meals selected: ${mealsSelected} of ${requiredMeals}`
+      : `Meals selected: ${mealsSelected}`;
+    totalDisplay.textContent = `Current Total: $${total.toFixed(2)}`;
 
-  try {
-    const response = await fetch("/.netlify/functions/create-checkout-session", {
+    const addressOK = (deliverySelect.value !== "delivery") || (addressInput.value.trim().length > 4);
+    const ready = (requiredMeals > 0) && (mealsSelected >= requiredMeals) && addressOK;
+
+    if (ready) {
+      checkoutBtn.disabled = false;
+      checkoutBtn.classList.remove("opacity-50","cursor-not-allowed");
+    } else {
+      checkoutBtn.disabled = true;
+      checkoutBtn.classList.add("opacity-50","cursor-not-allowed");
+    }
+
+    checkoutBtn.dataset.total = total.toFixed(2);
+    checkoutBtn.dataset.mealsSelected = mealsSelected;
+  }
+
+  // --- Initial run ---
+  updateTotals();
+
+  // --- Checkout ---
+  checkoutBtn.addEventListener("click", () => {
+    if (checkoutBtn.disabled) return;
+
+    const total = checkoutBtn.dataset.total;
+    const mealsSelected = checkoutBtn.dataset.mealsSelected;
+    const delivery = deliverySelect.value;
+    const kids = kidsSelect.value;
+    const address = addressInput.value.trim();
+
+    fetch("/.netlify/functions/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        planName: `${state.plan.toUpperCase()} Plan`,
-        description: `${state.count} meals${
-          kidMeals
-            ? " + " + kidMeals + " kid meal" + (kidMeals > 1 ? "s" : "")
-            : ""
-        } (${state.delivery}${state.address ? " to " + state.address : ""})`,
-        total,
-      }),
-    });
-
-    const data = await response.json();
-    if (data.url) window.location.href = data.url;
-    else showAlert("Checkout failed — please try again.");
-  } catch (err) {
-    console.error(err);
-    showAlert("Error connecting to Stripe. Please try again.");
-  }
+      body: JSON.stringify({ total, mealsSelected, delivery, kids, address })
+    })
+    .then(res => res.json())
+    .then(({ url }) => window.location = url)
+    .catch(err => console.error(err));
+  });
 });
 </script>
-  
+
+
   </body>
 </html>
 
@@ -1773,5 +1986,6 @@ document.getElementById("checkoutNowBtn")?.addEventListener("click", async () =>
 
 
   
+
 
 
