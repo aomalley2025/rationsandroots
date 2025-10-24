@@ -1,75 +1,60 @@
-import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// netlify/functions/create-checkout-session.js
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export async function handler(event) {
+exports.handler = async (event) => {
   try {
-    console.log("Incoming body:", event.body);
-    const { planName, description, total } = JSON.parse(event.body);
+    const { total, mealsSelected, delivery, kids, address } = JSON.parse(event.body || "{}");
 
-    if (!total || total <= 0) {
-      console.error("Invalid total received:", total);
+    // Validate input
+    if (!total || isNaN(total)) {
       return {
         statusCode: 400,
-        headers: { "Access-Control-Allow-Origin": "*" },
-        body: JSON.stringify({ error: "Invalid total amount" }),
+        body: JSON.stringify({ error: "Invalid total amount." }),
       };
     }
 
-    console.log("Creating session with total:", total);
+    // Stripe requires cents
+    const amountInCents = Math.round(parseFloat(total) * 100);
 
+    // Create checkout session with ONE line item (your total)
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      automatic_tax: { enabled: true },
       line_items: [
         {
           price_data: {
             currency: "usd",
             product_data: {
-              name: planName,
-              description: description,
+              name: "Rations & Roots Weekly Meal Plan",
+              description: `Includes ${mealsSelected} meals${kids > 0 ? ` + ${kids} kids meals` : ""}${
+                delivery === "delivery" ? " (with delivery)" : ""
+              }`,
             },
-            unit_amount: Math.round(total * 100), // Convert dollars → cents
+            unit_amount: amountInCents,
           },
           quantity: 1,
         },
       ],
-      success_url: "https://www.rationsandrootsmeal.com/success",
-      cancel_url: "https://www.rationsandrootsmeal.com/cancel",
+      success_url: `${process.env.URL || "https://rationsandrootsmeal.netlify.app"}/?success=true`,
+      cancel_url: `${process.env.URL || "https://rationsandrootsmeal.netlify.app"}/?canceled=true`,
+      metadata: {
+        mealsSelected,
+        delivery,
+        kids,
+        address,
+        total,
+      },
     });
 
-    // ✅ Optional: trigger confirmation email
-    try {
-      await fetch(`${process.env.URL || 'https://www.rationsandrootsmeal.com'}/.netlify/functions/send-confirmation-email`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          customerEmail: 'orders@rationsandrootsmeal.com', // can replace with real customer email
-          planName,
-          description,
-          total,
-        }),
-      });
-      console.log("✅ Confirmation email triggered successfully");
-    } catch (emailError) {
-      console.error("⚠️ Failed to trigger SendGrid confirmation email:", emailError);
-    }
-
-    console.log("Session created successfully:", session.url);
-
-    // ✅ Return the Stripe session URL to frontend
     return {
       statusCode: 200,
-      headers: { "Access-Control-Allow-Origin": "*" },
       body: JSON.stringify({ url: session.url }),
     };
-
   } catch (err) {
-    console.error("Stripe error:", err);
+    console.error("❌ Stripe checkout error:", err);
     return {
-      statusCode: 500,
-      headers: { "Access-Control-Allow-Origin": "*" },
+      statusCode: err.statusCode || 500,
       body: JSON.stringify({ error: err.message }),
     };
   }
-}
+};
