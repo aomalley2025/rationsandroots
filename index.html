@@ -1965,27 +1965,27 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTotals();
 
   // --- Checkout ---
-  checkoutBtn.addEventListener("click", () => {
-    if (checkoutBtn.disabled) return;
+checkoutBtn.addEventListener("click", () => {
+  if (checkoutBtn.disabled) return;
 
-    const total = checkoutBtn.dataset.total;
-    const mealsSelected = checkoutBtn.dataset.mealsSelected;
-    const delivery = deliverySelect.value;
-    const kids = kidsSelect.value;
-    const address = addressInput.value.trim();
-	const email = document.getElementById("customerEmail").value.trim();
+  const total = checkoutBtn.dataset.total;
+  const mealsSelected = checkoutBtn.dataset.mealsSelected;
+  const delivery = deliverySelect.value;
+  const kids = kidsSelect.value;
+  const address = addressInput.value.trim();
+  const email = document.getElementById("customerEmail").value.trim();
 
-
-    fetch("/.netlify/functions/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ total, mealsSelected, delivery, kids, address, Email })
-    })
-    .then(res => res.json())
-    .then(({ url }) => window.location = url)
-    .catch(err => console.error(err));
-  });
+  fetch("/.netlify/functions/create-checkout-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ total, mealsSelected, delivery, kids, address, email }) // ✅ fixed lowercase "email"
+  })
+  .then(res => res.json())
+  .then(({ url }) => window.location = url)
+  .catch(err => console.error(err));
 });
+});
+
 </script>
 
 
