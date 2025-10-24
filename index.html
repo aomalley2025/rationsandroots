@@ -1973,11 +1973,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const delivery = deliverySelect.value;
     const kids = kidsSelect.value;
     const address = addressInput.value.trim();
+	const email = document.getElementById("customerEmail").value.trim();
+
 
     fetch("/.netlify/functions/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ total, mealsSelected, delivery, kids, address })
+      body: JSON.stringify({ total, mealsSelected, delivery, kids, address, Email })
     })
     .then(res => res.json())
     .then(({ url }) => window.location = url)
