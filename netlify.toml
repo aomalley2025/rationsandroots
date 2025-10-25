@@ -6,7 +6,14 @@
   to = "/index.html"
   status = 200
 
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
+[functions]
+  directory = "netlify/functions"
+
 [[notifications]]
   to = "orders@rationsandrootsmeal.com"
   form = "contact"
+  trigger = "form_submission"
   enabled = true
