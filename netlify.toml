@@ -12,8 +12,8 @@
 [functions]
   directory = "netlify/functions"
 
-[[notifications]]
-  to = "orders@rationsandrootsmeal.com"
-  form = "contact"
-  trigger = "form_submission"
-  enabled = true
+# ✅ Remove the old [[notifications]] section
+# and replace it with this new event trigger
+[[events]]
+  event = "submission_created"
+  handler = "form-handler"
