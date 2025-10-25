@@ -3,11 +3,13 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function handler(event) {
   try {
+    // Netlify form submission payload structure
     const body = JSON.parse(event.body);
-    const payload = body && body.payload ? body.payload.data : {};
-    const name = payload.name || "Unknown";
-    const email = payload.email || "No email";
-    const message = payload.message || "No message";
+    const data = body.payload && body.payload.data ? body.payload.data : {};
+
+    const name = data.name || "Unknown";
+    const email = data.email || "No email provided";
+    const message = data.message || "No message";
 
     const businessEmail = "orders@rationsandrootsmeal.com";
 
@@ -26,7 +28,7 @@ export async function handler(event) {
     const msg = {
       to: businessEmail,
       from: businessEmail,
-      subject: `New Message from ${name}`,
+      subject: `New Contact Form Submission from ${name}`,
       html: htmlContent,
     };
 
