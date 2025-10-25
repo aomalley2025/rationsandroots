@@ -2019,11 +2019,14 @@ checkoutBtn.addEventListener("click", () => {
 });
 
 </script>
-
+<!-- ✅ Contact Form Script -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   const successMsg = document.getElementById("formSuccess");
+
+  // Only run if form exists on the page
+  if (!form) return;
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -2031,20 +2034,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData(form);
     const encoded = new URLSearchParams(formData).toString();
 
-    const res = await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encoded
-    });
+    try {
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encoded
+      });
 
-    if (res.ok) {
-      form.reset();
-      successMsg.classList.remove("hidden");
-      setTimeout(() => successMsg.classList.add("hidden"), 5000);
+      if (res.ok) {
+        form.reset();
+        successMsg.classList.remove("hidden");
+        setTimeout(() => successMsg.classList.add("hidden"), 5000);
+      } else {
+        alert("There was an issue sending your message. Please try again.");
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      alert("Something went wrong. Please try again later.");
     }
   });
 });
 </script>
+</body>
+</html>
+
 
   </body>
 </html>
