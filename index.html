@@ -1798,11 +1798,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 <div>
 <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
-<form name="contact" method="POST" data-netlify="true" id="contactForm">
-  <input type="hidden" name="form-name" value="contact" />
-  <input type="hidden" name="netlify-email" value="orders@rationsandrootsmeal.com" />
-
-  <div>
+<form id="contactForm">
+    <div>
     <input
       name="name"
       class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-white"
@@ -1913,7 +1910,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </footer>
 
   <!-- ✅ Final Clean Ending -->
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const planBtns = document.querySelectorAll(".plan-btn");
   const totalDisplay = document.getElementById("totalDisplay");
@@ -1998,48 +1995,49 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTotals();
 
   // --- Checkout ---
-checkoutBtn.addEventListener("click", () => {
-  if (checkoutBtn.disabled) return;
+  checkoutBtn.addEventListener("click", () => {
+    if (checkoutBtn.disabled) return;
 
-  const total = checkoutBtn.dataset.total;
-  const mealsSelected = checkoutBtn.dataset.mealsSelected;
-  const delivery = deliverySelect.value;
-  const kids = kidsSelect.value;
-  const address = addressInput.value.trim();
-  const email = document.getElementById("customerEmail").value.trim();
+    const total = checkoutBtn.dataset.total;
+    const mealsSelected = checkoutBtn.dataset.mealsSelected;
+    const delivery = deliverySelect.value;
+    const kids = kidsSelect.value;
+    const address = addressInput.value.trim();
+    const email = document.getElementById("customerEmail").value.trim();
 
-  fetch("/.netlify/functions/create-checkout-session", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ total, mealsSelected, delivery, kids, address, email }) // ✅ fixed lowercase "email"
-  })
-  .then(res => res.json())
-  .then(({ url }) => window.location = url)
-  .catch(err => console.error(err));
+    fetch("/.netlify/functions/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ total, mealsSelected, delivery, kids, address, email })
+    })
+    .then(res => res.json())
+    .then(({ url }) => window.location = url)
+    .catch(err => console.error(err));
+  });
 });
-});
-
 </script>
-<!-- ✅ Contact Form Script -->
+
+<!-- ✅ FINAL WORKING CONTACT FORM SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   const successMsg = document.getElementById("formSuccess");
 
-  // Only run if form exists on the page
   if (!form) return;
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = new FormData(form);
-    const encoded = new URLSearchParams(formData).toString();
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
 
     try {
-      const res = await fetch("/", {
+      const res = await fetch("/.netlify/functions/form-handler", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encoded
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
       });
 
       if (res.ok) {
@@ -2047,17 +2045,19 @@ document.addEventListener("DOMContentLoaded", () => {
         successMsg.classList.remove("hidden");
         setTimeout(() => successMsg.classList.add("hidden"), 5000);
       } else {
-        alert("There was an issue sending your message. Please try again.");
+        alert("❌ There was an issue sending your message. Please try again.");
       }
     } catch (err) {
       console.error("Form submission error:", err);
-      alert("Something went wrong. Please try again later.");
+      alert("❌ Something went wrong. Please try again later.");
     }
   });
 });
 </script>
+
 </body>
 </html>
+
 
 
 
