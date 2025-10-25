@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[notifications]]
+  to = "orders@rationsandrootsmeal.com"
+  form = "contact"
+  enabled = true
