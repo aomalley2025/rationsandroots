@@ -1797,9 +1797,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </div>
 <div>
-<h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
-<form id="contactForm">
-    <div>
+<form id="contactForm" name="contact" method="POST" data-netlify="true">
+  <div>
     <input
       name="name"
       class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-white"
@@ -1829,6 +1828,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ></textarea>
   </div>
 
+  <!-- Optional: Add this hidden honeypot field for basic spam protection (bots might fill it, humans won't see it) -->
+  <input type="text" name="bot-field" style="display:none;" />
+
   <button
     class="w-full bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-colors font-semibold"
     type="submit"
@@ -1836,7 +1838,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Send Message
   </button>
 
-  <!-- ✅ Hidden success message -->
+  <!-- ✅ Hidden success message (keep this) -->
   <p id="formSuccess" class="hidden mt-4 text-emerald-400 font-semibold text-center">
     ✅ Message sent! We'll get back to you soon.
   </p>
@@ -2026,18 +2028,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!form) return;
 
   form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent page reload
 
     const formData = new FormData(form);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
 
     try {
-      const res = await fetch("/.netlify/functions/form-handler", {
+      const res = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: new URLSearchParams(formData).toString(),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
       });
 
       if (res.ok) {
