@@ -5,60 +5,92 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 exports.handler = async (event) => {
   try {
     const {
-      total,
       mealsSelected,
       delivery,
       kids,
       address,
-      extras,
       email,
-      selectedMeals // ✅ new
+      selectedMeals,  // Now array of {name, qty, price}
+      selectedExtras  // Optional: array of {name, price}
     } = JSON.parse(event.body || "{}");
 
-    // ✅ Validate input
-    if (!total || isNaN(total)) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Invalid total amount." }),
-      };
+    // Build line_items
+    const line_items = [];
+
+    // Add meals
+    (selectedMeals || []).forEach(meal => {
+      if (meal.name && meal.qty > 0 && !isNaN(meal.price)) {
+        line_items.push({
+          price_data: {
+            currency: "usd",
+            product_data: { name: meal.name },
+            unit_amount: Math.round(meal.price * 100),  // e.g., 15.00 -> 1500 cents
+          },
+          quantity: meal.qty,
+        });
+      }
+    });
+
+    // Add kids meals
+    const kidsNum = parseInt(kids, 10);
+    if (kidsNum > 0) {
+      line_items.push({
+        price_data: {
+          currency: "usd",
+          product_data: { name: `Kids Meal x${kidsNum}` },
+          unit_amount: 750,  // $7.50 in cents (adjust if different)
+        },
+        quantity: 1,  // Group as one line; or use quantity: kidsNum if per-meal
+      });
     }
 
-    // ✅ Convert total to cents for Stripe
-    const amountInCents = Math.round(parseFloat(total) * 100);
+    // Add delivery
+    if (delivery === "delivery") {
+      line_items.push({
+        price_data: {
+          currency: "usd",
+          product_data: { name: "Home Delivery" },
+          unit_amount: 999,  // $9.99 in cents
+        },
+        quantity: 1,
+      });
+    }
 
-    // ✅ Create checkout session
+    // Add extras (if sent)
+    (selectedExtras || []).forEach(extra => {
+      if (extra.name && !isNaN(extra.price)) {
+        line_items.push({
+          price_data: {
+            currency: "usd",
+            product_data: { name: extra.name },
+            unit_amount: Math.round(extra.price * 100),
+          },
+          quantity: 1,
+        });
+      }
+    });
+
+    // Validate: At least one item
+    if (line_items.length === 0) {
+      return { statusCode: 400, body: JSON.stringify({ error: "No items selected." }) };
+    }
+
+    // Create session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      line_items: [
-        {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: "Rations & Roots Weekly Meal Plan",
-              description: `Includes ${mealsSelected} meals${kids > 0 ? ` + ${kids} kids meals` : ""}${
-                delivery === "delivery" ? " (with delivery)" : ""
-              }${extras ? ` | Extras: ${extras}` : ""}${selectedMeals?.length ? ` | Meals: ${Array.isArray(selectedMeals) ? selectedMeals.join(", ") : selectedMeals}` : ""}`,
-            },
-            unit_amount: amountInCents,
-          },
-          quantity: 1,
-        },
-      ],
-      customer_email: email, // ✅ prefill Stripe Checkout with their email
-      metadata: {
+      line_items,
+      customer_email: email,
+      metadata: {  // For your dashboard reference
         mealsSelected,
         kids,
         delivery,
         address,
-        extras,
-        total,
         email,
-        selectedMeals: Array.isArray(selectedMeals) ? selectedMeals.join(", ") : selectedMeals // ✅ add here
+        selectedMeals: selectedMeals ? JSON.stringify(selectedMeals) : ""
       },
       success_url: `${process.env.SITE_URL}/success.html`,
-	  cancel_url: `${process.env.SITE_URL}/cancel.html`,
-
+      cancel_url: `${process.env.SITE_URL}/cancel.html`,
     });
 
     return {

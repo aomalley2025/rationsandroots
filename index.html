@@ -2018,12 +2018,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateTotals() {
     let mealsSelected = 0;
     let mealsSubtotal = 0;
+    let selectedMeals = [];  // New: Collect as objects with price
 
     document.querySelectorAll(".meal-item").forEach(item => {
       const qty = +item.querySelector(".qty").textContent;
       const price = parseFloat(item.dataset.price);
+      const name = item.querySelector(".meal-name")?.textContent?.trim();
       mealsSelected += qty;
       mealsSubtotal += qty * price;
+      if (qty > 0 && name && !isNaN(price)) {
+        selectedMeals.push({ name, qty, price });
+      }
     });
 
     const kidsCost = (+kidsSelect.value) * 7.5;
@@ -2031,9 +2036,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Extras add-ons ---
     let extrasCost = 0;
+    let selectedExtras = [];  // New: Collect extras with names/prices (optional)
     document.querySelectorAll('#extra-dressing, #extra-condiments, #extra-protein, #double-veggies, #extra-rice')
       .forEach(extra => {
-        if (extra.checked) extrasCost += parseFloat(extra.value);
+        if (extra.checked) {
+          const extraPrice = parseFloat(extra.value);
+          extrasCost += extraPrice;
+          selectedExtras.push({
+            name: extra.id.replace('extra-', 'Extra ').replace(/-/g, ' '),  // e.g., "Extra Dressing"
+            price: extraPrice
+          });
+        }
       });
 
     const total = mealsSubtotal + kidsCost + deliveryCost + extrasCost;
@@ -2072,20 +2085,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const address = addressInput.value.trim();
     const email = document.getElementById("customerEmail").value.trim();
 
-    // 🌿 Collect selected meal names
-    const selectedMeals = [];
-    document.querySelectorAll(".meal-item").forEach(item => {
-      const qty = +item.querySelector(".qty").textContent;
-      const name = item.querySelector(".meal-name")?.textContent?.trim();
-      if (qty > 0 && name) {
-        selectedMeals.push(`${name} x${qty}`);
-      }
-    });
+    // Run updateTotals to get latest selectedMeals and selectedExtras
+    updateTotals();
 
     fetch("/.netlify/functions/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ total, mealsSelected, delivery, kids, address, email, selectedMeals })
+      body: JSON.stringify({ total, mealsSelected, delivery, kids, address, email, selectedMeals, selectedExtras })  // Updated: Send objects
     })
     .then(res => res.json())
     .then(({ url }) => window.location = url)
@@ -2093,9 +2099,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-
-</body>
-</html>
 
 
 
