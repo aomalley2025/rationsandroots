@@ -1973,6 +1973,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const addressInput = document.getElementById("address");
   const kidsSelect = document.getElementById("kids");
   let requiredMeals = 0;
+  let selectedMeals = [];  // Moved: Declare here so it's in scope for checkout
+  let selectedExtras = [];  // Moved: Declare here (optional: remove if no extras)
 
   // --- Plan selection ---
   planBtns.forEach(btn => {
@@ -2018,7 +2020,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateTotals() {
     let mealsSelected = 0;
     let mealsSubtotal = 0;
-    let selectedMeals = [];  // New: Collect as objects with price
+    selectedMeals = [];  // Updated: Assign here (no 'let')
 
     document.querySelectorAll(".meal-item").forEach(item => {
       const qty = +item.querySelector(".qty").textContent;
@@ -2036,7 +2038,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Extras add-ons ---
     let extrasCost = 0;
-    let selectedExtras = [];  // New: Collect extras with names/prices (optional)
+    selectedExtras = [];  // Updated: Assign here (no 'let') (optional: remove if no extras)
     document.querySelectorAll('#extra-dressing, #extra-condiments, #extra-protein, #double-veggies, #extra-rice')
       .forEach(extra => {
         if (extra.checked) {
@@ -2091,7 +2093,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/.netlify/functions/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ total, mealsSelected, delivery, kids, address, email, selectedMeals, selectedExtras })  // Updated: Send objects
+      body: JSON.stringify({ total, mealsSelected, delivery, kids, address, email, selectedMeals, selectedExtras })  // Now in scope
     })
     .then(res => res.json())
     .then(({ url }) => window.location = url)
@@ -2099,6 +2101,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+</body>
+</html>
 
 
 
