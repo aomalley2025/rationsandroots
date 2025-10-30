@@ -1,19 +1,8 @@
 [build]
   publish = "."
+  functions = "netlify/functions"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[plugins]]
-  package = "@netlify/plugin-functions-install-core"
-
-[functions]
-  directory = "netlify/functions"
-
-# ✅ Remove the old [[notifications]] section
-# and replace it with this new event trigger
-[[events]]
-  event = "submission_created"
-  handler = "form-handler"
