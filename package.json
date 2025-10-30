@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "@sendgrid/mail": "^8.1.6",
     "node-fetch": "^2.7.0",
