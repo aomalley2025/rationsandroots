@@ -1,11 +1,20 @@
 // netlify/functions/create-checkout-session.js
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async (event) => {
   try {
-    const { total, mealsSelected, delivery, kids, address } = JSON.parse(event.body || "{}");
+    const {
+      total,
+      mealsSelected,
+      delivery,
+      kids,
+      address,
+      extras,
+      email,
+      selectedMeals // ✅ new
+    } = JSON.parse(event.body || "{}");
 
-    // Validate input
+    // ✅ Validate input
     if (!total || isNaN(total)) {
       return {
         statusCode: 400,
@@ -13,10 +22,10 @@ exports.handler = async (event) => {
       };
     }
 
-    // Stripe requires cents
+    // ✅ Convert total to cents for Stripe
     const amountInCents = Math.round(parseFloat(total) * 100);
 
-    // Create checkout session with ONE line item (your total)
+    // ✅ Create checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
@@ -28,22 +37,27 @@ exports.handler = async (event) => {
               name: "Rations & Roots Weekly Meal Plan",
               description: `Includes ${mealsSelected} meals${kids > 0 ? ` + ${kids} kids meals` : ""}${
                 delivery === "delivery" ? " (with delivery)" : ""
-              }`,
+              }${extras ? ` | Extras: ${extras}` : ""}${selectedMeals?.length ? ` | Meals: ${Array.isArray(selectedMeals) ? selectedMeals.join(", ") : selectedMeals}` : ""}`,
             },
             unit_amount: amountInCents,
           },
           quantity: 1,
         },
       ],
-      success_url: `${process.env.URL || "https://rationsandrootsmeal.netlify.app"}/?success=true`,
-      cancel_url: `${process.env.URL || "https://rationsandrootsmeal.netlify.app"}/?canceled=true`,
+      customer_email: email, // ✅ prefill Stripe Checkout with their email
       metadata: {
         mealsSelected,
-        delivery,
         kids,
+        delivery,
         address,
+        extras,
         total,
+        email,
+        selectedMeals: Array.isArray(selectedMeals) ? selectedMeals.join(", ") : selectedMeals // ✅ add here
       },
+      success_url: `${process.env.SITE_URL}/success.html`,
+	  cancel_url: `${process.env.SITE_URL}/cancel.html`,
+
     });
 
     return {

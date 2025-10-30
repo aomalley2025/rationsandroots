@@ -5,22 +5,24 @@ exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body || "{}");
 
-    // Expecting: { email, total, mealsSelected, delivery, kids, address }
+    // Expecting: { email, total, mealsSelected, delivery, kids, address, extras, selectedMeals }
     const {
       email,
       total,
       mealsSelected,
       delivery,
       kids,
-      address
+      address,
+      extras,
+      selectedMeals
     } = data;
 
     // Set SendGrid API key
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    // Create the shared HTML summary
+    // Build the order summary HTML
     const summaryHTML = `
-      <h2>Rations & Roots Meal Prep Order</h2>
+      <h2>🌱 Rations & Roots Meal Prep Order</h2>
       <p><strong>Meals Selected:</strong> ${mealsSelected}</p>
       <p><strong>Kids Meals:</strong> ${kids}</p>
       <p><strong>Delivery Option:</strong> ${delivery}</p>
@@ -29,13 +31,19 @@ exports.handler = async (event) => {
           ? `<p><strong>Delivery Address:</strong> ${address}</p>`
           : ""
       }
+      ${extras ? `<p><strong>Extras:</strong> ${extras}</p>` : ""}
+      ${
+        selectedMeals
+          ? `<p><strong>Selected Meals:</strong><br>${Array.isArray(selectedMeals) ? selectedMeals.join("<br>") : selectedMeals}</p>`
+          : ""
+      }
       <p><strong>Total:</strong> $${total}</p>
       <br>
-      <p>Thank you for choosing <strong>Rations & Roots</strong> 🌱<br>
+      <p>Thank you for choosing <strong>Rations & Roots</strong> 🌿<br>
       <em>Fuel Your Body. Fork the Rest.</em></p>
     `;
 
-    // Send email to you (the business)
+    // Email to you (business)
     const ownerMsg = {
       to: "orders@rationsandrootsmeal.com",
       from: "orders@rationsandrootsmeal.com",
@@ -43,7 +51,7 @@ exports.handler = async (event) => {
       html: summaryHTML,
     };
 
-    // Send confirmation to customer (if they included their email)
+    // Email to customer (confirmation)
     const customerMsg = email
       ? {
           to: email,
