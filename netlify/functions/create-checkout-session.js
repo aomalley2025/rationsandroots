@@ -5,103 +5,108 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 exports.handler = async (event) => {
   try {
     const {
-      mealsSelected,
+      email,
+      address,
       delivery,
       kids,
-      address,
-      email,
-      selectedMeals,  // Now array of {name, qty, price}
-      selectedExtras  // Optional: array of {name, price}
+      lineItems,       // meals + extras coming directly from frontend
+      selectedMeals,   // fallback if older structure used
+      selectedExtras   // fallback for old extras format
     } = JSON.parse(event.body || "{}");
 
-    // Build line_items
-    const line_items = [];
+    let line_items = [];
 
-    // Add meals
-    (selectedMeals || []).forEach(meal => {
-      if (meal.name && meal.qty > 0 && !isNaN(meal.price)) {
+    // ✅ If the frontend already sent a ready-to-use lineItems array
+    if (Array.isArray(lineItems) && lineItems.length > 0) {
+      line_items = lineItems;
+    } else {
+      // Legacy fallback: build manually if needed
+      (selectedMeals || []).forEach(meal => {
+        if (meal.name && meal.qty > 0 && !isNaN(meal.price)) {
+          line_items.push({
+            price_data: {
+              currency: "usd",
+              product_data: { name: meal.name },
+              unit_amount: Math.round(meal.price * 100)
+            },
+            quantity: meal.qty
+          });
+        }
+      });
+
+      // Delivery
+      if (delivery === "delivery") {
         line_items.push({
           price_data: {
             currency: "usd",
-            product_data: { name: meal.name },
-            unit_amount: Math.round(meal.price * 100),  // e.g., 15.00 -> 1500 cents
+            product_data: { name: "Home Delivery" },
+            unit_amount: 999
           },
-          quantity: meal.qty,
+          quantity: 1
         });
       }
-    });
 
-    // Add kids meals
-    const kidsNum = parseInt(kids, 10);
-    if (kidsNum > 0) {
-      line_items.push({
-        price_data: {
-          currency: "usd",
-          product_data: { name: `Kids Meal x${kidsNum}` },
-          unit_amount: 750,  // $7.50 in cents (adjust if different)
-        },
-        quantity: 1,  // Group as one line; or use quantity: kidsNum if per-meal
-      });
-    }
-
-    // Add delivery
-    if (delivery === "delivery") {
-      line_items.push({
-        price_data: {
-          currency: "usd",
-          product_data: { name: "Home Delivery" },
-          unit_amount: 999,  // $9.99 in cents
-        },
-        quantity: 1,
-      });
-    }
-
-    // Add extras (if sent)
-    (selectedExtras || []).forEach(extra => {
-      if (extra.name && !isNaN(extra.price)) {
+      // Kids meals
+      const kidsNum = parseInt(kids, 10);
+      if (kidsNum > 0) {
         line_items.push({
           price_data: {
             currency: "usd",
-            product_data: { name: extra.name },
-            unit_amount: Math.round(extra.price * 100),
+            product_data: { name: `Kids Meal x${kidsNum}` },
+            unit_amount: 750
           },
-          quantity: 1,
+          quantity: 1
         });
       }
-    });
 
-    // Validate: At least one item
+      // Extras
+      (selectedExtras || []).forEach(extra => {
+        if (extra.name && !isNaN(extra.price)) {
+          line_items.push({
+            price_data: {
+              currency: "usd",
+              product_data: { name: extra.name },
+              unit_amount: Math.round(extra.price * 100)
+            },
+            quantity: 1
+          });
+        }
+      });
+    }
+
     if (line_items.length === 0) {
-      return { statusCode: 400, body: JSON.stringify({ error: "No items selected." }) };
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "No items selected." })
+      };
     }
 
-    // Create session
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
       mode: "payment",
+      payment_method_types: ["card"],
       line_items,
       customer_email: email,
-      metadata: {  // For your dashboard reference
-        mealsSelected,
-        kids,
+      metadata: {
         delivery,
         address,
-        email,
-        selectedMeals: selectedMeals ? JSON.stringify(selectedMeals) : ""
+        kids,
+        selectedMeals: JSON.stringify(selectedMeals || []),
+        selectedExtras: JSON.stringify(selectedExtras || [])
       },
       success_url: `${process.env.SITE_URL}/success.html`,
-      cancel_url: `${process.env.SITE_URL}/cancel.html`,
+      cancel_url: `${process.env.SITE_URL}/cancel.html`
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ url: session.url }),
+      body: JSON.stringify({ url: session.url })
     };
+
   } catch (err) {
     console.error("❌ Stripe checkout error:", err);
     return {
       statusCode: err.statusCode || 500,
-      body: JSON.stringify({ error: err.message }),
+      body: JSON.stringify({ error: err.message })
     };
   }
 };
