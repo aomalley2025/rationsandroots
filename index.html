@@ -1987,7 +1987,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Quantity buttons ---
-  document.querySelectorAll(".meal-item").forEach(item => {
+  document.querySelectorAll(".meal-item").forEach(item => {  // Use ".meal-item" as per your script
     const plus = item.querySelector(".plus");
     const minus = item.querySelector(".minus");
     const qtyEl = item.querySelector(".qty");
@@ -2012,7 +2012,7 @@ document.addEventListener("DOMContentLoaded", () => {
   kidsSelect.addEventListener("change", updateTotals);
   addressInput.addEventListener("input", updateTotals);
 
-  // --- Extras checkboxes --- (remove this block if no extras)
+  // --- Extras checkboxes --- (remove if no extras)
   document.querySelectorAll('#extra-dressing, #extra-condiments, #extra-protein, #double-veggies, #extra-rice')
     .forEach(extra => extra.addEventListener('change', updateTotals));
 
@@ -2022,14 +2022,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let mealsSubtotal = 0;
     selectedMeals = [];  // Reset and assign
 
-    document.querySelectorAll(".meal-item").forEach(item => {
+    document.querySelectorAll(".meal-item").forEach(item => {  // Use ".meal-item"
       const qty = +item.querySelector(".qty").textContent;
-      let price = parseFloat(item.dataset.price);  // Try dataset first
+      let price = parseFloat(item.dataset.price);  // Prefer this if present
       if (isNaN(price)) {
-        // Fallback: Parse from DOM text (e.g., "$15.00")
-        const priceEl = item.querySelector('.text-2xl.font-bold');  // Your price class
+        // Fallback: Parse from the price text (adjust selector if needed)
+        const priceEl = item.querySelector('.font-semibold.mt-2');  // Based on modal example, if applicable
         if (priceEl) {
           price = parseFloat(priceEl.textContent.replace('$', '').trim());
+        } else {
+          const fallbackPriceEl = item.querySelector('[class*="text-2xl"][class*="font-bold"]');  // For menu cards
+          if (fallbackPriceEl) {
+            price = parseFloat(fallbackPriceEl.textContent.replace('$', '').trim());
+          }
         }
       }
       const name = item.querySelector(".meal-name")?.textContent?.trim();
@@ -2045,7 +2050,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const kidsCost = (+kidsSelect.value) * 7.5;
     const deliveryCost = (deliverySelect.value === "delivery") ? 9.99 : 0;
 
-    // --- Extras add-ons --- (remove this block if no extras)
+    // --- Extras add-ons --- (remove if no extras)
     let extrasCost = 0;
     selectedExtras = [];  // Reset and assign
     document.querySelectorAll('#extra-dressing, #extra-condiments, #extra-protein, #double-veggies, #extra-rice')
@@ -2098,6 +2103,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateTotals();  // Refresh data
 
+    if (selectedMeals.length === 0 && selectedExtras.length === 0 && kids === "0" && delivery !== "delivery") {
+      alert("No items selected - please add meals or options.");
+      return;
+    }
+
     fetch("/.netlify/functions/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -2106,9 +2116,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(data => {
       if (data.url) {
-        window.location.href = data.url;  // Only redirect if URL exists
+        window.location.href = data.url;
       } else {
-        alert(data.error || 'Checkout failed - please check selections and try again.');  // Show error message
+        alert(data.error || 'Checkout failed - please check selections and try again.');
       }
     })
     .catch(err => {
