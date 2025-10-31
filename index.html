@@ -1962,7 +1962,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </footer>
 
   <!-- ✅ Final Clean Ending -->
-<!-- ✅ Final Clean Ending -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const planBtns = document.querySelectorAll(".plan-btn");
@@ -1972,9 +1971,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const deliverySelect = document.getElementById("delivery");
   const addressInput = document.getElementById("address");
   const kidsSelect = document.getElementById("kids");
+  const countHelper = document.getElementById("countHelper");
+
   let requiredMeals = 0;
-  let selectedMeals = [];  // Declare here so it's in scope
-  let selectedExtras = [];  // Declare here (remove if no extras)
+  let selectedMeals = [];
+  let selectedExtras = [];
 
   // --- Plan selection ---
   planBtns.forEach(btn => {
@@ -1982,12 +1983,15 @@ document.addEventListener("DOMContentLoaded", () => {
       requiredMeals = parseInt(btn.dataset.meals, 10);
       planBtns.forEach(b => b.classList.remove("ring-4","ring-amber-300","scale-105"));
       btn.classList.add("ring-4","ring-amber-300","scale-105");
+      countHelper.textContent = `Plan selected: ${requiredMeals} meals. Start choosing below!`;
+      checkoutBtn.disabled = false;
+      checkoutBtn.classList.remove("opacity-50","cursor-not-allowed");
       updateTotals();
     });
   });
 
   // --- Quantity buttons ---
-  document.querySelectorAll(".meal-item").forEach(item => {  // Use ".meal-item" as per your script
+  document.querySelectorAll(".meal-item").forEach(item => {
     const plus = item.querySelector(".plus");
     const minus = item.querySelector(".minus");
     const qtyEl = item.querySelector(".qty");
@@ -2012,7 +2016,7 @@ document.addEventListener("DOMContentLoaded", () => {
   kidsSelect.addEventListener("change", updateTotals);
   addressInput.addEventListener("input", updateTotals);
 
-  // --- Extras checkboxes --- (remove if no extras)
+  // --- Extras checkboxes ---
   document.querySelectorAll('#extra-dressing, #extra-condiments, #extra-protein, #double-veggies, #extra-rice')
     .forEach(extra => extra.addEventListener('change', updateTotals));
 
@@ -2020,161 +2024,57 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateTotals() {
     let mealsSelected = 0;
     let mealsSubtotal = 0;
-    selectedMeals = [];  // Reset and assign
+    selectedMeals = [];
 
-    document.querySelectorAll(".meal-item").forEach(item => {  // Use ".meal-item"
+    document.querySelectorAll(".meal-item").forEach(item => {
       const qty = +item.querySelector(".qty").textContent;
-      let price = parseFloat(item.dataset.price);  // Prefer this if present
-      if (isNaN(price)) {
-        // Fallback: Parse from the price text (adjust selector if needed)
-        const priceEl = item.querySelector('.font-semibold.mt-2');  // Based on modal example, if applicable
-        if (priceEl) {
-          price = parseFloat(priceEl.textContent.replace('$', '').trim());
-        } else {
-          const fallbackPriceEl = item.querySelector('[class*="text-2xl"][class*="font-bold"]');  // For menu cards
-          if (fallbackPriceEl) {
-            price = parseFloat(fallbackPriceEl.textContent.replace('$', '').trim());
-          }
-        }
-      }
-      const name = item.querySelector(".meal-name")?.textContent?.trim();
+      const price = parseFloat(item.dataset.price);
+      const name = item.dataset.name;
       mealsSelected += qty;
-      if (!isNaN(price)) {
-        mealsSubtotal += qty * price;
-      }
-      if (qty > 0 && name && !isNaN(price)) {
-        selectedMeals.push({ name, qty, price });
-      }
+      if (!isNaN(price)) mealsSubtotal += qty * price;
+      if (qty > 0 && name && !isNaN(price)) selectedMeals.push({ name, qty, price });
     });
 
     const kidsCost = (+kidsSelect.value) * 7.5;
     const deliveryCost = (deliverySelect.value === "delivery") ? 9.99 : 0;
 
-    // --- Extras add-ons --- (remove if no extras)
     let extrasCost = 0;
-    selectedExtras = [];  // Reset and assign
+    selectedExtras = [];
     document.querySelectorAll('#extra-dressing, #extra-condiments, #extra-protein, #double-veggies, #extra-rice')
       .forEach(extra => {
         if (extra.checked) {
           const extraPrice = parseFloat(extra.value);
           extrasCost += extraPrice;
-          selectedExtras.push({
-            name: extra.id.replace('extra-', 'Extra ').replace(/-/g, ' '),
-            price: extraPrice
-          });
+          selectedExtras.push({ name: extra.id.replace('extra-', 'Extra '), price: extraPrice });
         }
       });
 
     const total = mealsSubtotal + kidsCost + deliveryCost + extrasCost;
-
-    selectionDisplay.textContent = (requiredMeals > 0)
-      ? `Meals selected: ${mealsSelected} of ${requiredMeals}`
-      : `Meals selected: ${mealsSelected}`;
+    selectionDisplay.textContent = `Meals selected: ${mealsSelected} of ${requiredMeals}`;
     totalDisplay.textContent = `Current Total: $${total.toFixed(2)}`;
+  }
 
-    const addressOK = (deliverySelect.value !== "delivery") || (addressInput.value.trim().length > 4);
-    const ready = (requiredMeals > 0) && (mealsSelected >= requiredMeals) && addressOK;
-
-    if (ready) {
-      checkoutBtn.disabled = false;
-      checkoutBtn.classList.remove("opacity-50","cursor-not-allowed");
-    } else {
-      checkoutBtn.disabled = true;
-      checkoutBtn.classList.add("opacity-50","cursor-not-allowed");
+  // --- Checkout ---
+  checkoutBtn.addEventListener("click", async () => {
+    const email = document.getElementById("customerEmail").value.trim();
+    if (!email) {
+      alert("Please enter your email before checkout.");
+      return;
+    }
+    if (selectedMeals.length === 0 && selectedExtras.length === 0) {
+      alert("No items selected!");
+      return;
     }
 
-    checkoutBtn.dataset.total = total.toFixed(2);
-    checkoutBtn.dataset.mealsSelected = mealsSelected;
-  }
-
-  // --- Initial run ---
-  updateTotals();
-
- // --- Checkout ---
-checkoutBtn.addEventListener("click", async () => {
-  if (checkoutBtn.disabled) return;
-
-  updateTotals(); // Make sure data is up to date
-  const email = document.getElementById("customerEmail").value.trim();
-  if (!email) {
-    alert("Please enter your email before checkout.");
-    return;
-  }
-
-  // Build Stripe line items array
-  const lineItems = [];
-
-  // Include meals
-  selectedMeals.forEach(meal => {
-    lineItems.push({
-      price_data: {
-        currency: "usd",
-        product_data: { name: meal.name },
-        unit_amount: Math.round(meal.price * 100)
-      },
-      quantity: meal.qty
-    });
-  });
-
-  // Kids Meals
-  const kidsNum = parseInt(kidsSelect.value);
-  if (kidsNum > 0) {
-    lineItems.push({
-      price_data: {
-        currency: "usd",
-        product_data: { name: `Kids Meal x${kidsNum}` },
-        unit_amount: 750
-      },
-      quantity: 1
-    });
-  }
-
-  // Delivery
-  if (deliverySelect.value === "delivery") {
-    lineItems.push({
-      price_data: {
-        currency: "usd",
-        product_data: { name: "Home Delivery" },
-        unit_amount: 999
-      },
-      quantity: 1
-    });
-  }
-
-  // Extras
-  selectedExtras.forEach(extra => {
-    lineItems.push({
-      price_data: {
-        currency: "usd",
-        product_data: { name: extra.name },
-        unit_amount: Math.round(extra.price * 100)
-      },
-      quantity: 1
-    });
-  });
-
-  if (lineItems.length === 0) {
-    alert("No items selected! Please add some meals or extras before checkout.");
-    return;
-  }
-
-  try {
     const response = await fetch("/.netlify/functions/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lineItems, email })
+      body: JSON.stringify({ selectedMeals, selectedExtras, email })
     });
-
     const data = await response.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert(data.error || "Checkout failed. Please try again.");
-    }
-  } catch (err) {
-    console.error("Checkout error:", err);
-    alert("Error connecting to checkout. Please try again.");
-  }
+    if (data.url) window.location.href = data.url;
+    else alert(data.error || "Checkout failed. Please try again.");
+  });
 });
 </script>
 </body>
