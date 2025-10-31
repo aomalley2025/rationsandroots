@@ -2090,42 +2090,91 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Initial run ---
   updateTotals();
 
-  // --- Checkout ---
-  checkoutBtn.addEventListener("click", () => {
-    if (checkoutBtn.disabled) return;
+ // --- Checkout ---
+checkoutBtn.addEventListener("click", async () => {
+  if (checkoutBtn.disabled) return;
 
-    const total = checkoutBtn.dataset.total;
-    const mealsSelected = checkoutBtn.dataset.mealsSelected;
-    const delivery = deliverySelect.value;
-    const kids = kidsSelect.value;
-    const address = addressInput.value.trim();
-    const email = document.getElementById("customerEmail").value.trim();
+  updateTotals(); // Make sure data is up to date
+  const email = document.getElementById("customerEmail").value.trim();
+  if (!email) {
+    alert("Please enter your email before checkout.");
+    return;
+  }
 
-    updateTotals();  // Refresh data
+  // Build Stripe line items array
+  const lineItems = [];
 
-    if (selectedMeals.length === 0 && selectedExtras.length === 0 && kids === "0" && delivery !== "delivery") {
-      alert("No items selected - please add meals or options.");
-      return;
-    }
-
-    fetch("/.netlify/functions/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ total, mealsSelected, delivery, kids, address, email, selectedMeals, selectedExtras })
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert(data.error || 'Checkout failed - please check selections and try again.');
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Error connecting to checkout. Please try again.');
+  // Include meals
+  selectedMeals.forEach(meal => {
+    lineItems.push({
+      price_data: {
+        currency: "usd",
+        product_data: { name: meal.name },
+        unit_amount: Math.round(meal.price * 100)
+      },
+      quantity: meal.qty
     });
   });
+
+  // Kids Meals
+  const kidsNum = parseInt(kidsSelect.value);
+  if (kidsNum > 0) {
+    lineItems.push({
+      price_data: {
+        currency: "usd",
+        product_data: { name: `Kids Meal x${kidsNum}` },
+        unit_amount: 750
+      },
+      quantity: 1
+    });
+  }
+
+  // Delivery
+  if (deliverySelect.value === "delivery") {
+    lineItems.push({
+      price_data: {
+        currency: "usd",
+        product_data: { name: "Home Delivery" },
+        unit_amount: 999
+      },
+      quantity: 1
+    });
+  }
+
+  // Extras
+  selectedExtras.forEach(extra => {
+    lineItems.push({
+      price_data: {
+        currency: "usd",
+        product_data: { name: extra.name },
+        unit_amount: Math.round(extra.price * 100)
+      },
+      quantity: 1
+    });
+  });
+
+  if (lineItems.length === 0) {
+    alert("No items selected! Please add some meals or extras before checkout.");
+    return;
+  }
+
+  try {
+    const response = await fetch("/.netlify/functions/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lineItems, email })
+    });
+
+    const data = await response.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert(data.error || "Checkout failed. Please try again.");
+    }
+  } catch (err) {
+    console.error("Checkout error:", err);
+    alert("Error connecting to checkout. Please try again.");
+  }
 });
 </script>
 </body>
