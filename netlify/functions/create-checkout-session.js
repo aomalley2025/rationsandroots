@@ -9,9 +9,10 @@ exports.handler = async (event) => {
       address,
       delivery,
       kids,
-      lineItems,       // meals + extras coming directly from frontend
-      selectedMeals,   // fallback if older structure used
-      selectedExtras   // fallback for old extras format
+      lineItems,        // meals + extras coming directly from frontend
+      selectedMeals,    // fallback if older structure used
+      selectedExtras,   // fallback for old extras format
+      recurring         // 🌿 new field from checkbox
     } = JSON.parse(event.body || "{}");
 
     let line_items = [];
@@ -81,6 +82,9 @@ exports.handler = async (event) => {
       };
     }
 
+    // 🌿 Optional: Add recurring note to description for quick view
+    const recurringNote = recurring ? " | Recurring Weekly Order" : "";
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
@@ -90,6 +94,7 @@ exports.handler = async (event) => {
         delivery,
         address,
         kids,
+        recurring, // 🌿 added here so you can see it in Stripe metadata
         selectedMeals: JSON.stringify(selectedMeals || []),
         selectedExtras: JSON.stringify(selectedExtras || [])
       },
@@ -110,3 +115,4 @@ exports.handler = async (event) => {
     };
   }
 };
+
