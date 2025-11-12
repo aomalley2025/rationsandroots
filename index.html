@@ -2096,6 +2096,8 @@ checkoutBtn.addEventListener("click", async () => {
   const data = await response.json();
   if (data.url) window.location.href = data.url;
   else alert(data.error || "Checkout failed. Please try again.");
+  });
+
 }); // ✅ only one closing bracket here
 </script>
 
