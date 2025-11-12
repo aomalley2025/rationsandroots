@@ -2080,6 +2080,13 @@ checkoutBtn.addEventListener("click", async () => {
     return;
   }
 
+  // ✅ Only allow 6, 12, or 18 meals
+  const allowedCounts = [6, 12, 18];
+  if (!allowedCounts.includes(selectedMeals.length)) {
+    alert(`You must select exactly 6, 12, or 18 meals. You currently have ${selectedMeals.length}.`);
+    return;
+  }
+
   const response = await fetch("/.netlify/functions/create-checkout-session", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -2089,9 +2096,9 @@ checkoutBtn.addEventListener("click", async () => {
   const data = await response.json();
   if (data.url) window.location.href = data.url;
   else alert(data.error || "Checkout failed. Please try again.");
-});
-});
+}); // ✅ only one closing bracket here
 </script>
+
 <script>
 document.querySelectorAll(".accordion-btn").forEach(btn => {
   btn.addEventListener("click", () => {
