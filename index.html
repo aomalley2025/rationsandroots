@@ -1559,10 +1559,53 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 (() => {
   const MEALS = {
-    essential: [ {emoji:"🍽️",name:"Classic Peanut Butter Banana Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Apple Cinnamon Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Berry Yogurt Oats",desc:"Overnight Oats",price:7.00},{emoji:"🍽️",name:"Power Plate",desc:"High Protein",price:12.00},{emoji:"🍽️",name:"Strength Builder",desc:"High Protein",price:12.00},{emoji:"🍽️",name:"Lean Machine",desc:"High Protein",price:13.50},{emoji:"🍽️",name:"Brown Rice & Steamed Broccoli",desc:"All Veggies",price:7.00},{emoji:"🍽️",name:"Mixed Veggie Medley with Rice",desc:"All Veggies",price:7.50},{emoji:"🍽️",name:"Cauliflower Rice & Roasted Vegetables",desc:"All Veggies",price:8.00},{emoji:"🍽️",name:"Primal Pork Chops",desc:"Carnivore",price:17.99},{emoji:"🍽️",name:"Hunters Chicken Thighs",desc:"Carnivore",price:14.99},{emoji:"🍽️",name:"Apex Ground Beef Bowl",desc:"Carnivore",price:16.99} ],
-    premium: [ {emoji:"💎",name:"Tropical Coconut Mango",desc:"Rolled oats, coconut milk, yogurt, mango, coconut, honey",price:9.00},{emoji:"💎",name:"Alpha Ribeye Steak",desc:"8oz premium ribeye",price:24.99},{emoji:"💎",name:"Beast Mode Beef Brisket",desc:"6oz slow-cooked brisket",price:19.99},{emoji:"💎",name:"Warrior Salmon Fillet",desc:"7oz wild-caught salmon",price:18.99},{emoji:"💎",name:"Quinoa & Roasted Broccoli Bowl",desc:"Quinoa, broccoli, lemon, herbs",price:8.50},{emoji:"💎",name:"Muscle-Up Chicken Ranch Jar",desc:"Chicken, romaine, carrots, ranch, cheddar",price:11.00},{emoji:"💎",name:"Power Play Buffalo Crunch Jar",desc:"Buffalo chicken, romaine, celery",price:11.50},{emoji:"💎",name:"Shred & Spread Caesar Jar",desc:"Chicken, romaine, tomatoes, parmesan",price:11.00} ],
-    gourmet: [ {emoji:"👑",name:"HIIT Fuel",desc:"Chicken fried rice with veggies",price:12.00},{emoji:"👑",name:"Carrot Cake",desc:"Oats with carrot, raisins, cinnamon",price:7.00},{emoji:"👑",name:"Maple Walnut",desc:"Oats with maple & walnuts",price:7.00},{emoji:"👑",name:"Carnivore Power Trio",desc:"Beef, pork tenderloin, chicken thigh",price:22.99},{emoji:"👑",name:"Land & Sea Warrior Plate",desc:"Sirloin + salmon",price:27.99},{emoji:"👑",name:"Roasted Sweet Potatoes & Green Beans",desc:"Lemon & herbs",price:8.00},{emoji:"👑",name:"Asian Veggie Fried Rice",desc:"Rice, broccoli, carrots, soy",price:8.50},{emoji:"👑",name:"Twirly Spaghetti Jar",desc:"Spaghetti with marinara",price:10.00},{emoji:"👑",name:"Bagel Pizza Party Bites",desc:"Mini bagel pizzas",price:8.50},{emoji:"👑",name:"Fiesta Fuel Quinoa Jar",desc:"Quinoa, beans, corn, salsa",price:9.50} ],
-  };
+  essential: [
+    {emoji:"🍽️",name:"Classic Peanut Butter Banana Oats",desc:"Overnight Oats",price:7.00},
+    {emoji:"🍽️",name:"Apple Cinnamon Oats",desc:"Overnight Oats",price:7.00},
+    {emoji:"🍽️",name:"Berry Yogurt Oats",desc:"Overnight Oats",price:7.00},
+    {emoji:"🍽️",name:"Power Plate",desc:"High Protein",price:12.00},
+    {emoji:"🍽️",name:"Strength Builder",desc:"High Protein",price:13.00},
+    {emoji:"🍽️",name:"Lean Machine",desc:"High Protein",price:13.50},
+    {emoji:"🍽️",name:"Brown Rice & Steamed Broccoli",desc:"All Veggies",price:7.00},
+    {emoji:"🍽️",name:"Mixed Veggie Medley with Rice",desc:"All Veggies",price:7.50},
+    {emoji:"🍽️",name:"Cauliflower Rice & Roasted Vegetables",desc:"All Veggies",price:8.00},
+    {emoji:"🍽️",name:"Primal Pork Chops",desc:"Carnivore",price:17.99},
+    {emoji:"🍽️",name:"Hunters Chicken Thighs",desc:"Carnivore",price:15.99},
+    {emoji:"🍽️",name:"Apex Ground Beef Bowl",desc:"Carnivore",price:16.99}
+  ],
+
+  premium: [
+    {emoji:"💎",name:"Tropical Coconut Mango",desc:"Oats, coconut milk, yogurt, mango, coconut, honey",price:8.00},
+    {emoji:"💎",name:"Alpha Ribeye Steak",desc:"8oz premium ribeye",price:24.99},
+    {emoji:"💎",name:"Beast Mode Beef Brisket",desc:"6oz slow-cooked brisket",price:19.99},
+    {emoji:"💎",name:"Warrior Salmon Fillet",desc:"7oz wild-caught salmon",price:18.99},
+    {emoji:"💎",name:"Quinoa & Roasted Broccoli Bowl",desc:"Quinoa & broccoli",price:8.50},
+
+    // ⭐ UPDATED 32 oz Mason Jars
+    {emoji:"💎",name:"Muscle-Up Chicken Ranch Jar (32 oz)",desc:"Chicken, romaine, tomatoes, carrots, yogurt ranch, cheddar",price:15.00},
+    {emoji:"💎",name:"Power Play Buffalo Crunch Jar (32 oz)",desc:"Buffalo chicken, romaine, carrots, celery, yogurt blue cheese",price:15.50},
+    {emoji:"💎",name:"Shred & Spread Caesar Jar (32 oz)",desc:"Chicken, romaine, tomatoes, parmesan, yogurt Caesar",price:14.00},
+
+    // ⭐ NEW Taco Salad
+    {emoji:"💪",name:"Flex Fuel Taco Crunch Jar (32 oz)",desc:"Lettuce, beef, cheese, tomatoes, croutons",price:15.00}
+  ],
+
+  gourmet: [
+    {emoji:"👑",name:"HIIT Fuel",desc:"Deconstructed taco salad",price:13.00},
+    {emoji:"👑",name:"Carrot Cake",desc:"Oats with carrot & raisins",price:7.00},
+    {emoji:"👑",name:"Maple Walnut",desc:"Oats with maple & walnuts",price:7.00},
+    {emoji:"👑",name:"Carnivore Power Trio",desc:"Beef, pork, chicken",price:22.99},
+    {emoji:"👑",name:"Land & Sea Warrior Plate",desc:"Sirloin + salmon",price:27.99},
+    {emoji:"👑",name:"Roasted Sweet Potatoes & Green Beans",desc:"Lemon & herbs",price:8.00},
+    {emoji:"👑",name:"Asian Veggie Fried Rice",desc:"Rice & mixed veggies",price:8.50},
+    {emoji:"👑",name:"Twirly Spaghetti Jar",desc:"Spaghetti marinara",price:10.00},
+    {emoji:"👑",name:"Bagel Pizza Party Bites",desc:"Mini pizzas",price:8.50},
+
+    // ⭐ Fiesta Fuel (32 oz update)
+    {emoji:"👑",name:"Fiesta Fuel Quinoa Jar (32 oz)",desc:"Quinoa, beans, corn, peppers, salsa",price:12.50}
+  ]
+};
+
 
   const state = { plan:"", count:0, delivery:"pickup", address:"", selections:[] };
 
