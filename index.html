@@ -2066,40 +2066,45 @@ document.addEventListener("DOMContentLoaded", () => {
     totalDisplay.textContent = `Current Total: $${total.toFixed(2)}`;
   }
 
- // --- Checkout ---
+// --- Checkout ---
 checkoutBtn.addEventListener("click", async () => {
   const email = document.getElementById("customerEmail").value.trim();
-  const recurring = document.getElementById("recurring").checked; // ✅ new
+  const recurring = document.getElementById("recurring").checked;
 
   if (!email) {
     alert("Please enter your email before checkout.");
     return;
   }
+
   if (selectedMeals.length === 0 && selectedExtras.length === 0) {
     alert("No items selected!");
     return;
   }
 
-  // ✅ Only allow 6, 12, or 18 meals
+  // ✅ Only allow 6, 12, or 18 TOTAL meals
   const allowedCounts = [6, 12, 18];
-  if (!allowedCounts.includes(selectedMeals.length)) {
-    alert(`You must select exactly 6, 12, or 18 meals. You currently have ${selectedMeals.length}.`);
+  const totalMeals = selectedMeals.reduce((sum, m) => sum + m.qty, 0);
+
+  if (!allowedCounts.includes(totalMeals)) {
+    alert(`You must select exactly 6, 12, or 18 meals. You currently have ${totalMeals}.`);
     return;
   }
 
   const response = await fetch("/.netlify/functions/create-checkout-session", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ selectedMeals, selectedExtras, email, recurring }) // ✅ clean and correct
+    body: JSON.stringify({ selectedMeals, selectedExtras, email, recurring })
   });
 
   const data = await response.json();
   if (data.url) window.location.href = data.url;
   else alert(data.error || "Checkout failed. Please try again.");
-  });
+});
 
-}); // ✅ only one closing bracket here
+// ✅ Only ONE closing bracket for DOMContentLoaded
+});
 </script>
+
 
 <script>
 document.querySelectorAll(".accordion-btn").forEach(btn => {
